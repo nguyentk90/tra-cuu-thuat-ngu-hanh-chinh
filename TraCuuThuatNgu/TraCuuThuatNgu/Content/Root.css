@@ -1,0 +1,141 @@
+﻿/* Styles for _ROOT
+----------------------------------------------------------*/
+body
+{
+	background: url("img/backgrounds/body.jpg") left top repeat;
+}
+
+#main
+{
+	background: url(img/backgrounds/body.bg.png) repeat-y center top;
+}
+
+#header-bar-root
+{
+	width: 1030px;
+	margin: auto;
+}
+#header-bar-root > ul
+{
+	margin-right:0px;	
+}
+
+#logo-root
+{
+	float: left;
+	width: 155px;
+	padding-left: 50px;
+}
+
+#input-search-root
+{
+	float: left;
+}
+
+/*Grid span 8*/
+.span8
+{
+	display: block;
+	float: left;
+	width: 641px;
+	min-height: 30px;
+	margin-left: 0px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin-right:20px;
+}
+.span9
+{
+	display: block;
+	float: left;
+	width: 315px;
+	min-height: 30px;
+	margin-left: 0px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.head
+{
+	background: url("img/backgrounds/box-head-green.jpg") left top repeat-x;
+	background-clip: padding-box;
+	border: 1px solid #294008;
+	-moz-border-top-left-radius: 3px;
+	-moz-border-top-right-radius: 3px;
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-o-border-top-left-radius: 3px;
+	-o-border-top-right-radius: 3px;
+	-ms-border-top-left-radius: 3px;
+	-ms-border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+.head h1
+{
+	font-size: 12px;
+	color: white;
+	line-height: 22px;
+	padding: 8px 0px;
+	margin: 0px;
+	font-weight: bold;
+	margin-left: 10px;
+	display: block;
+	/*float: left;*/
+	-moz-text-shadow: 0 1px 0 #333;
+	-webkit-text-shadow: 0 1px 0 #333;
+	text-shadow: 0 1px 0 #333;
+}
+.block
+{
+	border: 1px solid #CCC;
+	border-top: 0px;
+	background-color: #F9F9F9;
+	margin-bottom: 20px;
+	-moz-border-bottom-left-radius: 3px;
+	-moz-border-bottom-right-radius: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	-webkit-border-bottom-right-radius: 3px;
+	-o-border-bottom-left-radius: 3px;
+	-o-border-bottom-right-radius: 3px;
+	-ms-border-bottom-left-radius: 3px;
+	-ms-border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+
+/*Styles for Result page*/
+.first-result
+{
+	padding:20px;	
+}
+
+.first-result h1
+{
+	margin:0px;
+	color:#2C83EF;
+	font-size:14pt;
+	float:left;
+	line-height: 28px;	
+}
+
+.like
+{
+	float:left;
+	margin-left:20px;
+	background: url('img/icons/Thumb-up-icon-24.png') left center no-repeat transparent;	
+	font-size:10pt;
+	vertical-align:bottom;
+	width:24px;
+	height:24px;
+	cursor:pointer;
+}
+
+.count-like 
+{
+	float:left;
+	margin-left:7px;	
+	line-height: 2.6em;
+	color: #2C83EF;
+}
