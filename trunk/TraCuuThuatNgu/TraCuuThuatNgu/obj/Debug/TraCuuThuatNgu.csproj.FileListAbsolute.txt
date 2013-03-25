@@ -12,3 +12,10 @@ E:\SkyDrive\Senior Project\Source code\TraCuuThuatNgu\TraCuuThuatNgu\bin\EntityF
 E:\SkyDrive\Senior Project\Source code\TraCuuThuatNgu\TraCuuThuatNgu\obj\Debug\ResolveAssemblyReference.cache
 E:\SkyDrive\Senior Project\Source code\TraCuuThuatNgu\TraCuuThuatNgu\obj\Debug\TraCuuThuatNgu.dll
 E:\SkyDrive\Senior Project\Source code\TraCuuThuatNgu\TraCuuThuatNgu\obj\Debug\TraCuuThuatNgu.pdb
+C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\bin\TraCuuThuatNgu.dll
+C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\bin\TraCuuThuatNgu.pdb
+C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\bin\EntityFramework.dll
+C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\bin\EntityFramework.xml
+C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\obj\Debug\TraCuuThuatNgu.dll
+C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\obj\Debug\TraCuuThuatNgu.pdb
