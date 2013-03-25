@@ -1,0 +1,14 @@
+c:\documents and settings\forbes\my documents\visual studio 2010\Projects\TraCuuThuatNgu\TraCuuThuatNgu\bin\TraCuuThuatNgu.dll
+c:\documents and settings\forbes\my documents\visual studio 2010\Projects\TraCuuThuatNgu\TraCuuThuatNgu\bin\TraCuuThuatNgu.pdb
+c:\documents and settings\forbes\my documents\visual studio 2010\Projects\TraCuuThuatNgu\TraCuuThuatNgu\bin\EntityFramework.dll
+c:\documents and settings\forbes\my documents\visual studio 2010\Projects\TraCuuThuatNgu\TraCuuThuatNgu\bin\EntityFramework.xml
+c:\documents and settings\forbes\my documents\visual studio 2010\Projects\TraCuuThuatNgu\TraCuuThuatNgu\obj\Debug\ResolveAssemblyReference.cache
+c:\documents and settings\forbes\my documents\visual studio 2010\Projects\TraCuuThuatNgu\TraCuuThuatNgu\obj\Debug\TraCuuThuatNgu.dll
+c:\documents and settings\forbes\my documents\visual studio 2010\Projects\TraCuuThuatNgu\TraCuuThuatNgu\obj\Debug\TraCuuThuatNgu.pdb
+E:\SkyDrive\Senior Project\Source code\TraCuuThuatNgu\TraCuuThuatNgu\bin\TraCuuThuatNgu.dll
+E:\SkyDrive\Senior Project\Source code\TraCuuThuatNgu\TraCuuThuatNgu\bin\TraCuuThuatNgu.pdb
+E:\SkyDrive\Senior Project\Source code\TraCuuThuatNgu\TraCuuThuatNgu\bin\EntityFramework.dll
+E:\SkyDrive\Senior Project\Source code\TraCuuThuatNgu\TraCuuThuatNgu\bin\EntityFramework.xml
+E:\SkyDrive\Senior Project\Source code\TraCuuThuatNgu\TraCuuThuatNgu\obj\Debug\ResolveAssemblyReference.cache
+E:\SkyDrive\Senior Project\Source code\TraCuuThuatNgu\TraCuuThuatNgu\obj\Debug\TraCuuThuatNgu.dll
+E:\SkyDrive\Senior Project\Source code\TraCuuThuatNgu\TraCuuThuatNgu\obj\Debug\TraCuuThuatNgu.pdb

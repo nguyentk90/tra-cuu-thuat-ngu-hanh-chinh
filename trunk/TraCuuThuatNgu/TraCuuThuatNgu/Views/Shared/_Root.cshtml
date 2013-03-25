@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles {
+    <link href="@Url.Content("~/Content/Root.css")" rel="stylesheet" type="text/css"/>
+}
+@section Header {
+    <div id="header-bar-root">
+        <ul id="menu">
+            <li><a href="Home">Trang chủ</a> </li>
+            <li><a href="#">Đăng nhập</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Thông tin tài khoản</a></li>
+                    <li><a href="#">Lịch sử tra cứu</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Thoát</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Đăng ký</a></li>
+        </ul>
+    </div>
+}
+<div id="header-root">
+    <div id="logo-root">
+        <img src="../../Content/img/red-search-icon-mini.png" alt="Tra cứu thuật ngữ" />
+    </div>
+    <div id="input-search-root">
+        <form class="form-wrapper-mini cf">
+            <input type="text" placeholder="Nhập thuật ngữ...">
+            <button type="submit">
+                Tra cứu</button>
+        </form>
+    </div>
+    <div class="clear">
+    </div>
+</div>
+<div class="dr"><span></span></div>
+<div id="main-root" class="box">
+    @RenderBody()
+</div>
