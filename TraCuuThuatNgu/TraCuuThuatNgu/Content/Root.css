@@ -95,6 +95,12 @@ footer
 {
     background: url('img/icons/ws/ic_chats.png') center center no-repeat transparent;
 }
+
+.icm-list
+{
+    background: url('img/icons/ws/ic_list.png') center center no-repeat transparent;
+}
+
 [class*="icm-"]
 {
     margin-left: 10px;
