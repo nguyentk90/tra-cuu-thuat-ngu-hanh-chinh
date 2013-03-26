@@ -14,6 +14,7 @@ body
 {
     width: 1030px;
     margin: auto;
+    padding-right: 36px;
 }
 #header-bar-root > ul
 {
@@ -24,6 +25,7 @@ body
 {
     float: left;
     width: 155px;
+    height:100px;
     padding-left: 50px;
 }
 

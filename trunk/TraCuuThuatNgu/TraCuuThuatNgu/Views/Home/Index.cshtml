@@ -4,16 +4,8 @@
 @section Header {
     <div id="header-bar">
         <ul id="menu">
-            <li><a href="Home">Trang chủ</a> </li>
-            <li><a href="#">Đăng nhập</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Thông tin tài khoản</a></li>
-                    <li><a href="#">Lịch sử tra cứu</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Thoát</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Đăng ký</a></li>
+            <li><a href="@Url.Content("~/Home")">Trang chủ</a> </li>
+            @Html.Partial("_LogOnPartial")
         </ul>
     </div>
 }

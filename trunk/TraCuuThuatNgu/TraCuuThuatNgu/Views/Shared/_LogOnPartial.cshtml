@@ -1,7 +1,16 @@
-﻿@if(Request.IsAuthenticated) {
-    <text>Welcome <strong>@User.Identity.Name</strong>!
-    [ @Html.ActionLink("Log Off", "LogOff", "Account") ]</text>
+﻿@if (Request.IsAuthenticated)
+{
+    <li>Xin chào, <a id="user-login" href="#">Edward</a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Thông tin tài khoản</a></li>
+            <li><a href="#">Lịch sử tra cứu</a></li>
+            <li class="divider"></li>
+            <li><a href="@Url.Content("~/Account/LogOut")">Thoát</a></li>
+        </ul>
+    </li>
 }
-else {
-    @:[ @Html.ActionLink("Log On", "LogOn", "Account") ]
+else
+{
+    <li><a href="#" id="popUpLogon">Đăng nhập</a></li>
+    <li><a href="@Url.Content("~/Account/Register")">Đăng ký</a></li>
 }

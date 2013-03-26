@@ -183,7 +183,7 @@ ul#menu
 {
     padding: 0 0 2px;
     position: relative;
-    margin: 0 20px;
+    margin: 0 40px;
     text-align: right;
 }
 
@@ -193,6 +193,7 @@ ul#menu li
     list-style: none;
     margin-left: 8px;
     position: relative;
+    color: White;
 }
 
 ul#menu li#greeting
@@ -231,6 +232,23 @@ ul#menu li.selected a
     color: #000;
 }
 
+
+#user-login:after
+{
+    position: absolute;
+    top: 5px;
+    right: -13px;
+    display: inline-block;
+    border-right: 6px solid transparent;
+    border-top: 6px solid white;
+    border-left: 6px solid transparent;
+    content: ' ';
+}
+#user-login:after:hover
+{
+    border-top: 6px solid #ccc;
+}
+
 /* FORM LAYOUT ELEMENTS   
 ----------------------------------------------------------*/
 
@@ -257,10 +275,11 @@ input[type="text"], input[type="password"]
 {
     font-family: Arial, Helvetica, sans-serif;
     border: 1px solid #ccc;
-    padding: 2px;
-    font-size: 1.2em;
+    padding: 5px;
+    font-size: 15px;
     color: #444;
-    width: 200px;
+    width: 250px;
+    border-radius: 6px;
 }
 
 select
@@ -477,7 +496,7 @@ div#title
     top: 26px;
     right: 0;
     z-index: 1000;
-    display: block;
+    display: none;
     float: left;
     min-width: 160px;
     padding: 5px 0;
@@ -549,4 +568,74 @@ div#title
     overflow: hidden;
     background-color: #E5E5E5;
     border-bottom: 1px solid white;
+}
+
+/*Logon Form*/
+.logon-wapper
+{
+    width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #CCC;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    background: #fff;
+}
+
+.logon-wapper h2
+{
+    text-align: center;
+    font-size: 22px;
+}
+
+.login-form, .register-form
+{
+    width: 300px;
+    margin: auto;
+}
+
+.login-form input[type="text"], .login-form input[type="password"]
+{
+    padding: 8px;
+    color: #2C83EF;
+}
+.register-form input[type="text"], .register-form input[type="password"]
+{
+    color: #2C83EF;
+}
+
+/*Pop Up*/
+.ui-widget-overlay
+{
+    display: none;
+    background: #333;
+    opacity: .60;
+    z-index: 9003;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.ui-dialog
+{
+    z-index: 9004;
+    position: absolute;
+    padding: 0px;
+    width: 484px;
+    display: none;
+}
+.close-button
+{
+    z-index: 9004;
+    position: absolute;
+    padding: 0px;
+    display: block;
+    right: 0px;
 }

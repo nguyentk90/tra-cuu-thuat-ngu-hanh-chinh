@@ -29,11 +29,11 @@ namespace TraCuuThuatNgu.Models
 
     public class LogOnModel
     {
-        [Required]
+        [Required(ErrorMessage="Bạn chưa nhập tên đăng nhập.")]      
         [Display(Name = "User name")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Bạn chưa nhập mật khẩu.")] 
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
