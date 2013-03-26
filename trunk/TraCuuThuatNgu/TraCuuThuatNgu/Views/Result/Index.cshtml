@@ -3,7 +3,13 @@
     ViewBag.Title = "Result Page";
 }
 <div class="span8">
-    <div class="head clearfix">
+    <div class="head">
+        <div class="icm-list">
+        </div>
+        <h1>
+            Kết quả</h1>
+        <div class="clear">
+        </div>
     </div>
     <div class="block">
         <div class="first-result">
@@ -38,29 +44,32 @@
         </div>
         <div class="comments">
             <div class="comments-head">
-            </div>           
+            </div>
             <div class="comment-input">
                 <div class="itemOut">
                     <a href="#" class="image">
                         <img src="../Content/img/users/alexander.jpg" class="img-polaroid"></a>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                    <textarea class="text"></textarea>
-                        }
-                        else
-                        { 
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <textarea class="text"></textarea>
+                    }
+                    else
+                    { 
                         <div class="text" style="min-height: 75px">
                             Bạn phải <a href="#">đăng nhập</a> mới có thể bình luận.
                         </div>
-                        }
-                    <div style="text-align:right">
-                    <button class="btn" type="button">Gửi</button>
+                    }
+                    <div style="text-align: right">
+                        <button class="btn" type="button">
+                            Gửi</button>
                     </div>
                     <div class="clear">
-                </div>
+                    </div>
                 </div>
             </div>
-            <div class="dr"><span></span></div>
+            <div class="dr">
+                <span></span>
+            </div>
             <div class="comments-list">
                 <div class="itemOut">
                     <a href="#" class="image">
@@ -68,14 +77,15 @@
                     <div class="text">
                         <div class="info">
                             <span class="name">Aqvatarius</span> <span class="date">7 min ago</span>
-                            <div class="clear"></div>
+                            <div class="clear">
+                            </div>
                         </div>
                         In id adipiscing diam. Sed lobortis dui ut odio tempor blandit. Suspendisse scelerisque
                         mi nec nunc gravida quis mollis lacus dignissim. Cras nec risus dolor, ut tristique
                         neque. Donec mauris sapien, pellentesque at porta id, varius eu tellus.
                     </div>
                     <div class="clear">
-                </div>
+                    </div>
                 </div>
                 <div class="itemOut">
                     <a href="#" class="image">
@@ -83,14 +93,15 @@
                     <div class="text">
                         <div class="info">
                             <span class="name">Aqvatarius</span> <span class="date">7 min ago</span>
-                            <div class="clear"></div>
+                            <div class="clear">
+                            </div>
                         </div>
                         In id adipiscing diam. Sed lobortis dui ut odio tempor blandit. Suspendisse scelerisque
                         mi nec nunc gravida quis mollis lacus dignissim. Cras nec risus dolor, ut tristique
                         neque. Donec mauris sapien, pellentesque at porta id, varius eu tellus.
                     </div>
                     <div class="clear">
-                </div>
+                    </div>
                 </div>
                 <div class="itemOut">
                     <a href="#" class="image">
@@ -98,16 +109,16 @@
                     <div class="text">
                         <div class="info">
                             <span class="name">Aqvatarius</span> <span class="date">7 min ago</span>
-                            <div class="clear"></div>
+                            <div class="clear">
+                            </div>
                         </div>
                         In id adipiscing diam. Sed lobortis dui ut odio tempor blandit. Suspendisse scelerisque
                         mi nec nunc gravida quis mollis lacus dignissim. Cras nec risus dolor, ut tristique
                         neque. Donec mauris sapien, pellentesque at porta id, varius eu tellus.
                     </div>
                     <div class="clear">
+                    </div>
                 </div>
-                </div>
-               
             </div>
         </div>
     </div>
@@ -127,4 +138,4 @@
     </div>
 </div>
 <div class="clear">
-                </div>
+</div>
