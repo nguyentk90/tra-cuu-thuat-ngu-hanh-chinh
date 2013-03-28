@@ -334,6 +334,8 @@ input[type="submit"]
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
+
+
 /* TABLE
 ----------------------------------------------------------*/
 
@@ -592,17 +594,32 @@ div#title
 
 .logon-wapper h2
 {
-    text-align: center;
+    background-color: #3a87ad;
+    display: inline-block;
+    padding: 8px 8px;
     font-size: 22px;
+    font-weight: bold;
+    line-height: 22px;
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
+    vertical-align: baseline;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.logon-title
+{
+    text-align:center;    
 }
 
-.login-form, .register-form
+.logon-form, .register-form
 {
     width: 300px;
     margin: auto;
 }
 
-.login-form input[type="text"], .login-form input[type="password"]
+.logon-form input[type="text"], .logon-form input[type="password"]
 {
     padding: 8px;
     color: #2C83EF;
