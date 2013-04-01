@@ -1,0 +1,44 @@
+﻿<div class="ui-dialog">
+    <div class="close-button">
+        <a href="#" id="close-popup"><img src="@Url.Content("~/Content/img/icons/bb/ic_cancel.png")" alt="Tra cứu thuật ngữ" /></a>
+    </div>  
+        <div class="logon-wapper">
+            <div class="logon-title"><h2>
+                ĐĂNG NHẬP</h2></div>
+            <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+            <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+            @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
+            @using (Html.BeginForm())
+            {   
+                <div class="logon-form">
+                    <div class="editor-label">
+                        Tên đăng nhập
+                    </div>
+                    <div class="editor-field">
+                        <input type="text" />
+                        <br />                        
+                    </div>
+                    <div class="editor-label">
+                        Mật khẩu
+                    </div>
+                    <div class="editor-field">
+                        <input type="password" />
+                        <br />
+                    </div>
+                    <div class="editor-label">
+                        <input type="checkbox" />
+                        Ghi nhớ
+                    </div>
+                    <p>
+                        <input type="submit" class="btn" value="Đăng nhập" />
+                    </p>
+                    <p>
+                        @Html.ActionLink("Đăng ký", "Register","Account") nếu bạn chưa có tài khoản.
+                    </p>
+                </div>
+            }
+        </div>         
+    </div>
+    
+    <div class="ui-widget-overlay">
+    </div>
