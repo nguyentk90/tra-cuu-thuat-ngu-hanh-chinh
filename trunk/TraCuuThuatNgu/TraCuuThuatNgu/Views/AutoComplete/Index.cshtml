@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@section Styles {
+<link rel="stylesheet" type="text/css" href="Content/lib/jquery.autocomplete.css">
+<script type="text/javascript" src="Content/lib/jquery.autocomplete.js"></script>
+<script type='text/javascript' src='Content/lib/localdata.js'></script>
+
+    <style type="text/css">
+        #search
+        {
+            position: relative;
+        }
+        #list-data
+        {
+            height: 121px;
+            margin-left: -2px;
+            padding-left: 2px;
+            padding-right: 2px;
+            padding-bottom: 4px;
+            overflow: visible;
+            display: block;
+            position: absolute;
+            top: 20px;
+            z-index: 10002;
+            left: 20px;            
+            border: 1px solid #666;
+            width: 200px;
+            list-style: none;
+        }
+        .item:focus
+        {
+            background-color:Green;            
+        }
+        .item:hover
+        {
+            background-color:red;            
+        }
+    </style>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#suggest1").focus().autocomplete(cities);
+          
+        });
+
+    </script>
+}
+<h2>
+    Autocompete</h2>
+
+<input type="text" id="suggest1" autocomplete="off" class="ac_input"/>
