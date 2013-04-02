@@ -13,6 +13,7 @@ namespace TraCuuThuatNgu.Controllers
 
         public ActionResult Index(string keyword)
         {
+            ViewBag.Keyword = keyword;
             return View();
         }
 
