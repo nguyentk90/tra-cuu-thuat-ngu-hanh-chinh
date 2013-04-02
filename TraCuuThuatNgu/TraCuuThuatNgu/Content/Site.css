@@ -610,13 +610,14 @@ div#title
 }
 .logon-title
 {
-    text-align:center;    
+    text-align: center;
 }
 
 .logon-form, .register-form
 {
     width: 300px;
     margin: auto;
+    padding-left: 30px;
 }
 
 .logon-form input[type="text"], .logon-form input[type="password"]
@@ -655,4 +656,15 @@ div#title
     padding: 0px;
     display: block;
     right: 0px;
+}
+
+/*Auto complete*/
+.highlight
+{
+    color: #3399FF;
+    font-weight: bold;
+}
+.ui-autocomplete
+{
+   border: 1px solid red;     
 }

@@ -11,23 +11,27 @@ namespace TraCuuThuatNgu.Controllers
     {
         //
         // GET: /AutoComplete/
-
+        [HttpGet]
         public ActionResult Index()
         {
-
-            //String a = "heelll";
-            //List<SuggestWordsModel> list = new List<SuggestWordsModel>();
-            //list.Add(new SuggestWordsModel("Nguyen", 21));
-            //list.Add(new SuggestWordsModel("Edward", 22));
-            //list.Add(new SuggestWordsModel("Tran", 22));
-            //list.Add(new SuggestWordsModel("Nguyen", 21));
-            //list.Add(new SuggestWordsModel("Nguyen", 21));
-
-
-
-            //return Json(list, "Stores", JsonRequestBehavior.AllowGet);
             return View();
+        }
 
+        //
+        // POST: /AutoComplete/
+        [HttpPost]
+        public ActionResult Index(string prefix)
+        {
+            List<string> list = new List<string>();
+            //list.Add(new OneWord("hello" + prefix, 3));
+            //list.Add(new OneWord("hi" + prefix, 5));
+            //list.Add(new OneWord("Chao", 3));
+            //list.Add(new OneWord("Mobile", 3));
+            list.Add("hello");
+            list.Add("nguyên");
+            list.Add("Chào");
+            list.Add("Mobile");
+            return Json(list, JsonRequestBehavior.DenyGet);
         }
 
     }

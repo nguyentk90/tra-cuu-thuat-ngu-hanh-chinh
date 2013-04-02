@@ -11,7 +11,7 @@ namespace TraCuuThuatNgu.Controllers
         //
         // GET: /Result/
 
-        public ActionResult Index()
+        public ActionResult Index(string keyword)
         {
             return View();
         }
