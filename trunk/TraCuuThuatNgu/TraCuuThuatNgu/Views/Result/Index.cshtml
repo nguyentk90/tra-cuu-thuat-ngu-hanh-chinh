@@ -45,12 +45,14 @@
             <div class="comments-head">
             </div>
             <div class="comment-input">
+                @using (Html.BeginForm("Add","Comment")){
                 <div class="itemOut">
                     <a href="#" class="image">
                         <img src="../Content/img/users/alexander.jpg" class="img-polaroid"></a>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <textarea class="text"></textarea>
+                    @if (!User.Identity.IsAuthenticated)
+                    {                        
+                        <input name="keyword" type="hidden" value='@Request.Params["keyword"].ToString()' />
+                        <textarea name="content" class="text"></textarea>
                     }
                     else
                     { 
@@ -59,12 +61,13 @@
                         </div>
                     }
                     <div style="text-align: right">
-                        <button class="btn" type="button">
+                        <button class="btn" type="submit">
                             Gửi</button>
                     </div>
                     <div class="clear">
                     </div>
                 </div>
+                }
             </div>
             <div class="dr">
                 <span></span>
