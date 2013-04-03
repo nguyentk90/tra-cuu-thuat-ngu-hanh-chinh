@@ -28,7 +28,7 @@ namespace TraCuuThuatNgu.Controllers
             //list.Add(new OneWord("Chao", 3));
             //list.Add(new OneWord("Mobile", 3));
             list.Add("hello");
-            list.Add("nguyên");
+            list.Add("khánh nguyên");
             list.Add("Chào");
             list.Add("Mobile");
             return Json(list, JsonRequestBehavior.DenyGet);
