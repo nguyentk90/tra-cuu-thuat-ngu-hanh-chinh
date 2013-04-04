@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TraCuuThuatNgu.Models;
+using TraCuuThuatNgu.ViewModels;
 
 namespace TraCuuThuatNgu.Controllers
 {
@@ -14,10 +15,12 @@ namespace TraCuuThuatNgu.Controllers
         TraCuuThuatNguEntities entity = new TraCuuThuatNguEntities();
 
         public ActionResult Index(string keyword)
-        {
+        {            
             ThuatNgu thuatngu = entity.ThuatNgus.Find(keyword);
-            ViewBag.Keyword = keyword;
-            return View();
+            ResultViewModel result = new ResultViewModel();
+            result.ThuatNgu = thuatngu;
+
+            return View(result);
         }
     }
 }

@@ -17,6 +17,8 @@ namespace TraCuuThuatNgu.Controllers
 
         public ActionResult LogOn()
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -26,30 +28,40 @@ namespace TraCuuThuatNgu.Controllers
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
-            if (ModelState.IsValid)
+            if (Request.IsAjaxRequest())
             {
-                if (Membership.ValidateUser(model.UserName, model.Password))
+                return PartialView();
+            }
+            else
+            {
+                if (ModelState.IsValid)
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                    if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
-                        && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+                    if (Membership.ValidateUser(model.UserName, model.Password))
                     {
-                        return Redirect(returnUrl);
+                        FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                        if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
+                            && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        ModelState.AddModelError("", "Sai tên đăng nhập hoặc mật khẩu.");
                     }
                 }
-                else
-                {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
-                }
+                // If we got this far, something failed, redisplay form
+                return View(model);
             }
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            
         }
+
+
 
         //
         // GET: /Account/LogOff
