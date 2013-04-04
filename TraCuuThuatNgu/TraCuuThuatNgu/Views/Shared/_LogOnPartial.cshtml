@@ -1,16 +1,24 @@
-﻿@if (!Request.IsAuthenticated)
+﻿@if (Request.IsAuthenticated)
 {
-    <li>Xin chào, <a id="user-login" href="#">Edward</a>
+    <li>Xin chào, <a id="user-login" href="#">@User.Identity.Name</a>
         <ul class="dropdown-menu">
             <li><a href="#">Thông tin tài khoản</a></li>
             <li><a href="#">Lịch sử tra cứu</a></li>
             <li class="divider"></li>
-            <li><a href="@Url.Content("~/Account/LogOut")">Thoát</a></li>
+            <li><a href="@Url.Content("~/Account/LogOff")">Thoát</a></li>
         </ul>
     </li>
 }
 else
 {
-    <li><a href="#" class="popUpLogon">Đăng nhập</a></li>
+    var controllerName = ViewContext.RouteData.Values["Controller"].ToString();
+    if (controllerName.Equals("Home")||controllerName.Equals("Account"))
+    {
+    <li><a href="/Account/LogOn" class="popUpLogon">Đăng nhập</a></li>   
+    }
+    else
+    { 
+    <li><a href="#" class="popUpLogon">Đăng nhập</a></li> 
+    }
     <li><a href="@Url.Content("~/Account/Register")">Đăng ký</a></li>
 }

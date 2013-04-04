@@ -203,6 +203,7 @@ footer
     line-height: 22px;
     position: relative;
     padding: 0 7px;
+    min-width: 20px;
 }
 .count-like:before
 {

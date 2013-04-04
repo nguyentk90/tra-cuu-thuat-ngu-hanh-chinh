@@ -23,6 +23,32 @@
     //Close logon popup
     $('#close-popup').click(popUpLogonClose);
 
+
+    //like button
+    $('#like-check').click(function () {
+        var checkLogOn = confirm('Hãy đăng nhập dùng chức năng này.');
+        if (checkLogOn) {
+            popUpLogonOpen();
+        }
+    });
+
+    //like button
+    $('#like-submit').click(function () {
+        $.ajax({
+            url: '/Like/Add',
+            type: 'POST',
+            data: "{ 'muctu': 'aaaa', 'mataikhoan':'bbb' }",
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                alert(data.success);
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+    });
+
+
 });
 
 function popUpLogonOpen() {
@@ -40,6 +66,9 @@ function popUpLogonOpen() {
     $('.ui-dialog').css("top", top + "px");
     $('.ui-dialog').css("left", left + "px");
     $('.ui-dialog').slideDown('slow');
+
+    //focus to input field
+    //$('#UserName').focus();
 }
 
 function popUpLogonClose() {
