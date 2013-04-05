@@ -14,9 +14,9 @@
     </div>
     <div class="block">
         <div class="first-result">
-            @if (Model.ThuatNgu != null)
+            @if (Model.Entry != null)
             {
-                <h1>@Model.ThuatNgu.MucTu</h1>
+                <h1 id="headWord">@Model.Entry.HeadWord</h1>
                 if(User.Identity.IsAuthenticated)
                 {
                     <div id="like-submit" class="like" title="Yêu thích"></div>
@@ -27,7 +27,7 @@
                 }
                 
                 <div class="count-like">
-                 @Model.ThuatNgu.YeuThiches.Count</div>
+                 @Model.Entry.Favorites.Count</div>
                 <div class="clear">
                 </div>
             }
@@ -57,7 +57,7 @@
         <div class="description-result">
             <span class="ic-chat"></span><span class="description-text">Thảo luận</span>
         </div>
-        @if (Model.ThuatNgu != null)
+        @if (Model.Entry != null)
         {
             <div class="comments">
                 <div class="comments-head">
@@ -70,7 +70,7 @@
                                 <img src="../Content/img/users/alexander.jpg" class="img-polaroid"></a>
                             @if (User.Identity.IsAuthenticated)
                             {                        
-                                <input name="keyword" type="hidden" value='@Request.Params["keyword"].ToString()' />
+                                <input name="headWord" type="hidden" value='@Request.Params["keyword"].ToString()' />
                                 <textarea name="content" class="text"></textarea>
                             }
                             else
@@ -91,16 +91,16 @@
                 <div class="dr">
                     <span></span>
                 </div>
-                @if (Model.ThuatNgu.BinhLuans.Count == 0)
+                @if (Model.Entry.Comments.Count == 0)
                 { 
                     <p>
                         Chưa có bình luận nào</p>
                 }
                 else
                 {<p>
-                    Có <b>@Model.ThuatNgu.BinhLuans.Count</b> bình luận</p>}
+                    Có <b>@Model.Entry.Comments.Count</b> bình luận</p>}
                 <div class="comments-list">
-                    @foreach (var item in Model.ThuatNgu.BinhLuans)
+                    @foreach (var item in Model.Entry.Comments)
                     {   
                         
                         <div class="itemOut">
@@ -108,11 +108,11 @@
                                 <img src="../Content/img/users/alexander.jpg" class="img-polaroid"></a>
                             <div class="text">
                                 <div class="info">
-                                    <span class="name">@item.aspnet_Users.UserName</span> <span class="date">@item.NgayDang</span>
+                                    <span class="name">@item.aspnet_Users.UserName</span> <span class="date">@item.DateAdd</span>
                                     <div class="clear">
                                     </div>
                                 </div>
-                                @item.NoiDung
+                                @item.CmContent
                             </div>
                             <div class="clear">
                             </div>

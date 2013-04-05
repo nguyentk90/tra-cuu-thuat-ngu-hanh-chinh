@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TraCuuThuatNguModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="TraCuuThuatNguModelStoreContainer">
+    <EntitySet Name="aspnet_Users" EntityType="TraCuuThuatNguModel.Store.aspnet_Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Comment" EntityType="TraCuuThuatNguModel.Store.Comment" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Entry" EntityType="TraCuuThuatNguModel.Store.Entry" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Favorite" EntityType="TraCuuThuatNguModel.Store.Favorite" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_BinhLuan_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_BinhLuan_aspnet_Users">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BinhLuan_ThuatNgu" Association="TraCuuThuatNguModel.Store.FK_BinhLuan_ThuatNgu">
+      <End Role="Entry" EntitySet="Entry" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_YeuThich_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_YeuThich_aspnet_Users">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="Favorite" EntitySet="Favorite" />
+    </AssociationSet>
+    <AssociationSet Name="FK_YeuThich_ThuatNgu" Association="TraCuuThuatNguModel.Store.FK_YeuThich_ThuatNgu">
+      <End Role="Entry" EntitySet="Entry" />
+      <End Role="Favorite" EntitySet="Favorite" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="aspnet_Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="LoweredUserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
+    <Property Name="IsAnonymous" Type="bit" Nullable="false" />
+    <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="HeadWord" Type="nvarchar" MaxLength="256" />
+    <Property Name="CmContent" Type="nvarchar" MaxLength="500" />
+    <Property Name="UserId" Type="uniqueidentifier" />
+    <Property Name="DateAdd" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Entry">
+    <Key>
+      <PropertyRef Name="HeadWord" />
+    </Key>
+    <Property Name="HeadWord" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="WordType" Type="varchar" MaxLength="1" />
+    <Property Name="Category" Type="varchar" MaxLength="1" />
+    <Property Name="Synonym" Type="nvarchar" MaxLength="256" />
+    <Property Name="Def" Type="nvarchar" MaxLength="512" />
+    <Property Name="Exa" Type="nvarchar" MaxLength="512" />
+  </EntityType>
+  <EntityType Name="Favorite">
+    <Key>
+      <PropertyRef Name="HeadWord" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="HeadWord" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DateAdd" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_BinhLuan_aspnet_Users">
+    <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="0..1" />
+    <End Role="Comment" Type="TraCuuThuatNguModel.Store.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BinhLuan_ThuatNgu">
+    <End Role="Entry" Type="TraCuuThuatNguModel.Store.Entry" Multiplicity="0..1" />
+    <End Role="Comment" Type="TraCuuThuatNguModel.Store.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entry">
+        <PropertyRef Name="HeadWord" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="HeadWord" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_YeuThich_aspnet_Users">
+    <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="1" />
+    <End Role="Favorite" Type="TraCuuThuatNguModel.Store.Favorite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Favorite">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_YeuThich_ThuatNgu">
+    <End Role="Entry" Type="TraCuuThuatNguModel.Store.Entry" Multiplicity="1" />
+    <End Role="Favorite" Type="TraCuuThuatNguModel.Store.Favorite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entry">
+        <PropertyRef Name="HeadWord" />
+      </Principal>
+      <Dependent Role="Favorite">
+        <PropertyRef Name="HeadWord" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

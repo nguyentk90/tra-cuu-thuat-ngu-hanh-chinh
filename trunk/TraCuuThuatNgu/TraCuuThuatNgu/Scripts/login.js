@@ -37,10 +37,20 @@
         $.ajax({
             url: '/Like/Add',
             type: 'POST',
-            data: "{ 'muctu': 'aaaa', 'mataikhoan':'bbb' }",
+            data: "{ 'headWord': '" + $('#headWord').text() + "'}",
             contentType: 'application/json; charset=utf-8',
             success: function (data) {
-                alert(data.success);
+                if (data.message == 'SUCCESS') {
+                    //var counter = $('.count-like').text() + 1;
+                    //$('.count-like').text(counter);
+                    alert("Đã thêm vào thuật ngữ yêu thích.");
+                } else if (data.message == 'EXISTED') {
+                    alert("Bạn đã thích từ này");
+                } else {
+                    alert("Lỗi thêm yêu thích");
+                }
+
+
             },
             error: function () {
                 alert("error");

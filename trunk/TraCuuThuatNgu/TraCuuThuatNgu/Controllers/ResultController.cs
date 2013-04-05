@@ -15,10 +15,10 @@ namespace TraCuuThuatNgu.Controllers
         TraCuuThuatNguEntities entity = new TraCuuThuatNguEntities();
 
         public ActionResult Index(string keyword)
-        {            
-            ThuatNgu thuatngu = entity.ThuatNgus.Find(keyword);
+        {
+            Entry entry = entity.Entries.Find(keyword);
             ResultViewModel result = new ResultViewModel();
-            result.ThuatNgu = thuatngu;
+            result.Entry = entry;
 
             return View(result);
         }

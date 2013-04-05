@@ -14,11 +14,11 @@ else
     var controllerName = ViewContext.RouteData.Values["Controller"].ToString();
     if (controllerName.Equals("Home")||controllerName.Equals("Account"))
     {
-    <li><a href="/Account/LogOn" class="popUpLogon">Đăng nhập</a></li>   
+    <li class="login-icon"><a href="/Account/LogOn" class="popUpLogon">Đăng nhập</a></li>   
     }
     else
     { 
-    <li><a href="#" class="popUpLogon">Đăng nhập</a></li> 
+    <li class="login-icon"><a href="#" class="popUpLogon">Đăng nhập</a></li> 
     }
-    <li><a href="@Url.Content("~/Account/Register")">Đăng ký</a></li>
+    <li class="register-icon"><a href="@Url.Content("~/Account/Register")">Đăng ký</a></li>
 }
