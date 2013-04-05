@@ -193,8 +193,25 @@ ul#menu li
     list-style: none;
     margin-left: 8px;
     position: relative;
-    color: White;
+    color: White;        
 }
+li.home-icon
+{
+     background: url('img/icons/glyphicons_020_home.png') top left no-repeat transparent;
+     padding-left:17px;
+}
+li.login-icon
+{
+     background: url('img/icons/glyphicons_003_user.png') top left no-repeat transparent;
+     padding-left:17px;   
+}
+.register-icon
+{
+    background: url('img/icons/glyphicons_030_pencil.png') top left no-repeat transparent;
+     padding-left:17px;   
+}
+
+
 
 ul#menu li#greeting
 {
