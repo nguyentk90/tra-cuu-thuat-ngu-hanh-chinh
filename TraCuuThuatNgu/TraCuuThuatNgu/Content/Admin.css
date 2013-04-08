@@ -1,0 +1,166 @@
+﻿body
+{
+    background: url("img/backgrounds/body.jpg") left top repeat;
+}
+#main
+{
+    width: 100%;
+    background-color: transparent;
+    padding: 0px;
+}
+header, #header
+{
+    background: url("img/backgrounds/header.jpg") left top repeat;
+}
+
+/*Main menu*/
+.menu
+{
+    display: block;
+    width: 219px;
+    position: absolute;
+    margin-top: 0px; /*z-index: 999;*/
+    background: url("img/backgrounds/menu.jpg") left top repeat;
+    border-bottom: 1px solid #CCCCCC;
+    -webkit-border-bottom-left-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-bottom-left-radius: 3px;
+    -moz-border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.35);
+    -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.35);
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.navigation
+{
+    list-style: none;
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+    float: left;
+}
+.navigation li
+{
+    border-top: 1px solid #335A85;
+    border-right: 1px solid #335A85;
+    background: url("img/backgrounds/menu-item.jpg") left top repeat-x;
+    padding: 0px;
+    margin: 0px;
+    display: block;
+    float: left;
+    width: 219px;
+    position: relative;
+    line-height: 20px;
+}
+.navigation li > a span.text
+{
+    width: 183px;
+    padding: 9px 0px;
+    display: block;
+    margin-left: 10px;
+    float: left;
+    overflow: hidden;
+    color: White;
+}
+.menu .navigation li:hover, .menu .navigation li.active
+{
+    border-color: #143D6B;
+    background: url("img/backgrounds/menu-item-active.jpg") left top repeat-x;
+}
+
+.isw-grid
+{
+    background: url('img/icons/ws/ic_grid.png') center center no-repeat transparent;
+}
+
+.isw-user
+{
+    background: url('img/icons/ws/ic_user.png') center center no-repeat transparent;
+}
+.isw-list
+{
+    background: url('img/icons/ws/ic_list.png') center center no-repeat transparent;
+}
+.isw-zoom
+{
+    background: url('img/icons/ws/ic_zoom.png') center center no-repeat transparent;
+}
+.isw-list
+{
+    background: url('img/icons/ws/ic_list.png') center center no-repeat transparent;
+}
+.isw-chat
+{
+    background: url('img/icons/ws/ic_chat.png') center center no-repeat transparent;
+}
+.isw-chats
+{
+    background: url('img/icons/ws/ic_chats.png') center center no-repeat transparent;
+}
+[class*="isw-"], [class*="isb-"]
+{
+    margin-left: 10px;
+    padding: 11px 0px;
+    width: 16px;
+    height: 16px;
+    font-size: 14px;
+    font-weight: normal;
+    display: block;
+    float: left;
+}
+.breadLine
+{
+    height: 23px;
+    background: url("img/backgrounds/nav.jpg") left top repeat-x;
+    border-bottom: 1px solid #CCC;
+}
+
+/*date picker*/
+.menu .widget-fluid
+{
+    padding: 0px;
+    width: 219px;
+}
+.menu .widget, .menu .widget-fluid
+{
+    display: block;
+    float: left;
+    width: 200px;
+}
+.ui-datepicker
+{
+    width: 213px;
+}
+/*
+.ui-datepicker .ui-datepicker-header {
+    position: relative;
+    padding: 8px 0 7px 0;
+    border: 0px;
+    font-weight: bold;
+    font-size: 11px;
+    width: 100%;
+    color: #FFF;
+    border-bottom: 1px solid #335A85;
+    border-radius: 0!important;
+    box-shadow: 0 1px 0 #fff;
+    -webkit-box-shadow: 0 1px 0 #fff;
+    -moz-box-shadow: 0 1px 0 #fff;
+    background: url("img/backgrounds/box-head.jpg") left top repeat-x;
+}
+*/
+.content-admin
+{
+    position: relative;
+    margin-left: 220px;
+    padding-top: 0px;
+}
+.title-admin
+{
+    font-size:14px;
+    font-weight:bold;
+    text-align:center;
+    line-height:22px;  
+    color:#666;  
+}
