@@ -21,6 +21,7 @@
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
       <End Role="Favorite" EntitySet="Favorites" />
     </AssociationSet>
+    <EntitySet Name="SearchHistories" EntityType="TraCuuThuatNguModel.SearchHistory" />
   </EntityContainer>
   <EntityType Name="Comment">
     <Key>
@@ -120,4 +121,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="SearchHistory">
+    <Key>
+      <PropertyRef Name="Keyword" />
+    </Key>
+    <Property Type="String" Name="Keyword" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsExist" />
+    <Property Type="Int32" Name="Counter" />
+  </EntityType>
 </Schema>

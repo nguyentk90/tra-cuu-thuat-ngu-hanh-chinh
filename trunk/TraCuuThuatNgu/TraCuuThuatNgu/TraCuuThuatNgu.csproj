@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AutoCompleteController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="ViewModels\ResultViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Admin.css" />
     <Content Include="Content\Home.css" />
     <Content Include="Content\img\ajax-loader.gif" />
     <Content Include="Content\img\backgrounds\box-head-green.jpg" />
@@ -230,6 +232,8 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </None>
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\_Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
 
 namespace TraCuuThuatNgu.Models
 {
@@ -16,7 +17,7 @@ namespace TraCuuThuatNgu.Models
 
         //It has not done yet!
         //add searching history 
-        public int AddHistory(string keyword)
+        public int AddSearchHistory(string keyword, bool isExist)
         {
             try
             {
@@ -25,21 +26,26 @@ namespace TraCuuThuatNgu.Models
                 {
                     searchHistory = new SearchHistory();
                     searchHistory.Keyword = keyword;
-                    searchHistory.IsExist = true;
+                    searchHistory.IsExist = isExist;
                     searchHistory.Counter = 0;
+                    //add new
                     context.SearchHistories.Add(searchHistory);
                 }
                 else
                 {
-                    searchHistory.IsExist = true;
+                    searchHistory.IsExist = isExist;
                     searchHistory.Counter++;
-
-                    //context.SearchHistories.
+                    //increment
+                    context.Entry(searchHistory).State = EntityState.Modified;
                 }
 
+                //change context
+                return context.SaveChanges();
             }
             catch
-            { }
+            {
+                return 0;
+            }
 
         }
     }

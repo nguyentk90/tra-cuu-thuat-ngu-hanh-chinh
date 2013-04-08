@@ -5,6 +5,7 @@
     <EntitySet Name="Comment" EntityType="TraCuuThuatNguModel.Store.Comment" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Entry" EntityType="TraCuuThuatNguModel.Store.Entry" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Favorite" EntityType="TraCuuThuatNguModel.Store.Favorite" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SearchHistory" EntityType="TraCuuThuatNguModel.Store.SearchHistory" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_BinhLuan_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_BinhLuan_aspnet_Users">
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
       <End Role="Comment" EntitySet="Comment" />
@@ -63,6 +64,14 @@
     <Property Name="HeadWord" Type="nvarchar" Nullable="false" MaxLength="256" />
     <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="DateAdd" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SearchHistory">
+    <Key>
+      <PropertyRef Name="Keyword" />
+    </Key>
+    <Property Name="Keyword" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="IsExist" Type="bit" />
+    <Property Name="Counter" Type="int" />
   </EntityType>
   <Association Name="FK_BinhLuan_aspnet_Users">
     <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="0..1" />
