@@ -21,7 +21,16 @@
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
       <End Role="Favorite" EntitySet="Favorites" />
     </AssociationSet>
+    <EntitySet Name="UserHistories" EntityType="TraCuuThuatNguModel.UserHistory" />
+    <AssociationSet Name="FK_UserHistory_aspnet_Users" Association="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="UserHistory" EntitySet="UserHistories" />
+    </AssociationSet>
     <EntitySet Name="SearchHistories" EntityType="TraCuuThuatNguModel.SearchHistory" />
+    <AssociationSet Name="FK_UserHistory_SearchHistory" Association="TraCuuThuatNguModel.FK_UserHistory_SearchHistory">
+      <End Role="SearchHistory" EntitySet="SearchHistories" />
+      <End Role="UserHistory" EntitySet="UserHistories" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Comment">
     <Key>
@@ -96,6 +105,7 @@
     <Property Type="DateTime" Name="LastActivityDate" Nullable="false" />
     <NavigationProperty Name="Comments" Relationship="TraCuuThuatNguModel.FK_BinhLuan_aspnet_Users" FromRole="aspnet_Users" ToRole="Comment" />
     <NavigationProperty Name="Favorites" Relationship="TraCuuThuatNguModel.FK_YeuThich_aspnet_Users" FromRole="aspnet_Users" ToRole="Favorite" />
+    <NavigationProperty Name="UserHistories" Relationship="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users" FromRole="aspnet_Users" ToRole="UserHistory" />
   </EntityType>
   <Association Name="FK_BinhLuan_aspnet_Users">
     <End Type="TraCuuThuatNguModel.aspnet_Users" Role="aspnet_Users" Multiplicity="0..1" />
@@ -121,12 +131,49 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="UserHistory">
+    <Key>
+      <PropertyRef Name="Keyword" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Type="String" Name="Keyword" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="UserId" Nullable="false" />
+    <Property Type="DateTime" Name="DateModify" />
+    <NavigationProperty Name="aspnet_Users" Relationship="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users" FromRole="UserHistory" ToRole="aspnet_Users" />
+    <NavigationProperty Name="SearchHistory" Relationship="TraCuuThuatNguModel.FK_UserHistory_SearchHistory" FromRole="UserHistory" ToRole="SearchHistory" />
+  </EntityType>
+  <Association Name="FK_UserHistory_aspnet_Users">
+    <End Type="TraCuuThuatNguModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
+    <End Type="TraCuuThuatNguModel.UserHistory" Role="UserHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserHistory">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityType Name="SearchHistory">
     <Key>
       <PropertyRef Name="Keyword" />
     </Key>
     <Property Type="String" Name="Keyword" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-    <Property Type="Boolean" Name="IsExist" />
-    <Property Type="Int32" Name="Counter" />
+    <Property Type="Boolean" Name="IsExist" Nullable="false" />
+    <Property Type="Int32" Name="Counter" Nullable="false" />
+    <Property Type="DateTime" Name="DateModify" Nullable="false" />
+    <NavigationProperty Name="UserHistories" Relationship="TraCuuThuatNguModel.FK_UserHistory_SearchHistory" FromRole="SearchHistory" ToRole="UserHistory" />
   </EntityType>
+  <Association Name="FK_UserHistory_SearchHistory">
+    <End Type="TraCuuThuatNguModel.SearchHistory" Role="SearchHistory" Multiplicity="1" />
+    <End Type="TraCuuThuatNguModel.UserHistory" Role="UserHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SearchHistory">
+        <PropertyRef Name="Keyword" />
+      </Principal>
+      <Dependent Role="UserHistory">
+        <PropertyRef Name="Keyword" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

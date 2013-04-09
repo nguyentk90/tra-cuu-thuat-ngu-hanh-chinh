@@ -15,7 +15,13 @@ namespace TraCuuThuatNgu.Models
             context = new TraCuuThuatNguEntities();
         }
 
-        //It has not done yet!
+        //get top % history lastest
+        public IQueryable<SearchHistory> GetTopLastest(int top)
+        {
+            return context.SearchHistories.OrderByDescending(x => x.DateModify).Take(top);   
+        }
+
+                
         //add searching history 
         public int AddSearchHistory(string keyword, bool isExist)
         {
@@ -24,10 +30,12 @@ namespace TraCuuThuatNgu.Models
                 SearchHistory searchHistory = context.SearchHistories.Find(keyword);
                 if (searchHistory == null)
                 {
+                    
                     searchHistory = new SearchHistory();
                     searchHistory.Keyword = keyword;
                     searchHistory.IsExist = isExist;
-                    searchHistory.Counter = 0;
+                    searchHistory.Counter = 1;
+                    searchHistory.DateModify = DateTime.Now;
                     //add new
                     context.SearchHistories.Add(searchHistory);
                 }
@@ -35,9 +43,10 @@ namespace TraCuuThuatNgu.Models
                 {
                     searchHistory.IsExist = isExist;
                     searchHistory.Counter++;
-                    //increment
+                    searchHistory.DateModify = DateTime.Now;
+                    //increment count
                     context.Entry(searchHistory).State = EntityState.Modified;
-                }
+                }                
 
                 //change context
                 return context.SaveChanges();

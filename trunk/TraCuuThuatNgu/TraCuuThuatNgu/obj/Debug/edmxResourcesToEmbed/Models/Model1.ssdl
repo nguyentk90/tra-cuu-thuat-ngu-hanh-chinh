@@ -6,6 +6,7 @@
     <EntitySet Name="Entry" EntityType="TraCuuThuatNguModel.Store.Entry" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Favorite" EntityType="TraCuuThuatNguModel.Store.Favorite" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SearchHistory" EntityType="TraCuuThuatNguModel.Store.SearchHistory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserHistory" EntityType="TraCuuThuatNguModel.Store.UserHistory" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_BinhLuan_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_BinhLuan_aspnet_Users">
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
       <End Role="Comment" EntitySet="Comment" />
@@ -13,6 +14,14 @@
     <AssociationSet Name="FK_BinhLuan_ThuatNgu" Association="TraCuuThuatNguModel.Store.FK_BinhLuan_ThuatNgu">
       <End Role="Entry" EntitySet="Entry" />
       <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserHistory_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_UserHistory_aspnet_Users">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="UserHistory" EntitySet="UserHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserHistory_SearchHistory" Association="TraCuuThuatNguModel.Store.FK_UserHistory_SearchHistory">
+      <End Role="SearchHistory" EntitySet="SearchHistory" />
+      <End Role="UserHistory" EntitySet="UserHistory" />
     </AssociationSet>
     <AssociationSet Name="FK_YeuThich_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_YeuThich_aspnet_Users">
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
@@ -70,8 +79,18 @@
       <PropertyRef Name="Keyword" />
     </Key>
     <Property Name="Keyword" Type="nvarchar" Nullable="false" MaxLength="256" />
-    <Property Name="IsExist" Type="bit" />
-    <Property Name="Counter" Type="int" />
+    <Property Name="IsExist" Type="bit" Nullable="false" />
+    <Property Name="Counter" Type="int" Nullable="false" />
+    <Property Name="DateModify" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserHistory">
+    <Key>
+      <PropertyRef Name="Keyword" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="Keyword" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DateModify" Type="datetime" />
   </EntityType>
   <Association Name="FK_BinhLuan_aspnet_Users">
     <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="0..1" />
@@ -94,6 +113,30 @@
       </Principal>
       <Dependent Role="Comment">
         <PropertyRef Name="HeadWord" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserHistory_aspnet_Users">
+    <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="1" />
+    <End Role="UserHistory" Type="TraCuuThuatNguModel.Store.UserHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserHistory">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserHistory_SearchHistory">
+    <End Role="SearchHistory" Type="TraCuuThuatNguModel.Store.SearchHistory" Multiplicity="1" />
+    <End Role="UserHistory" Type="TraCuuThuatNguModel.Store.UserHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SearchHistory">
+        <PropertyRef Name="Keyword" />
+      </Principal>
+      <Dependent Role="UserHistory">
+        <PropertyRef Name="Keyword" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

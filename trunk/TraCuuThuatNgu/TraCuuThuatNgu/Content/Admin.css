@@ -156,6 +156,12 @@ header, #header
     margin-left: 220px;
     padding-top: 0px;
 }
+
+.content-admin .workplace {
+    position: relative;
+    padding: 20px;
+}
+
 .title-admin
 {
     font-size:14px;
@@ -163,4 +169,30 @@ header, #header
     text-align:center;
     line-height:22px;  
     color:#666;  
+}
+
+.row-fluid {
+    width: 100%;
+}
+
+.row-fluid .first
+{
+    margin-left:0px;    
+}
+
+/*Block for dashboard*/
+.span10
+{
+    width:49%;   
+    margin-left:2%;
+}
+
+.head
+{
+    background: url("img/backgrounds/box-head.jpg") left top repeat-x;
+}
+
+.span12
+{
+    width:100%;    
 }
