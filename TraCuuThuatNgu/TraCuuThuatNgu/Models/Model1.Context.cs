@@ -29,6 +29,7 @@ namespace TraCuuThuatNgu.Models
         public DbSet<Entry> Entries { get; set; }
         public DbSet<Favorite> Favorites { get; set; }
         public DbSet<aspnet_Users> aspnet_Users { get; set; }
+        public DbSet<UserHistory> UserHistories { get; set; }
         public DbSet<SearchHistory> SearchHistories { get; set; }
     }
 }

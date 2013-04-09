@@ -46,9 +46,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="UserHistories">
+      <EntityTypeMapping TypeName="TraCuuThuatNguModel.UserHistory">
+        <MappingFragment StoreEntitySet="UserHistory">
+          <ScalarProperty Name="DateModify" ColumnName="DateModify" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="SearchHistories">
       <EntityTypeMapping TypeName="TraCuuThuatNguModel.SearchHistory">
         <MappingFragment StoreEntitySet="SearchHistory">
+          <ScalarProperty Name="DateModify" ColumnName="DateModify" />
           <ScalarProperty Name="Counter" ColumnName="Counter" />
           <ScalarProperty Name="IsExist" ColumnName="IsExist" />
           <ScalarProperty Name="Keyword" ColumnName="Keyword" />

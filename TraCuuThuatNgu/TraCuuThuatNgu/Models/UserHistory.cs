@@ -12,18 +12,13 @@ namespace TraCuuThuatNgu.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SearchHistory
+    public partial class UserHistory
     {
-        public SearchHistory()
-        {
-            this.UserHistories = new HashSet<UserHistory>();
-        }
-    
         public string Keyword { get; set; }
-        public bool IsExist { get; set; }
-        public int Counter { get; set; }
-        public System.DateTime DateModify { get; set; }
+        public System.Guid UserId { get; set; }
+        public Nullable<System.DateTime> DateModify { get; set; }
     
-        public virtual ICollection<UserHistory> UserHistories { get; set; }
+        public virtual aspnet_Users aspnet_Users { get; set; }
+        public virtual SearchHistory SearchHistory { get; set; }
     }
 }

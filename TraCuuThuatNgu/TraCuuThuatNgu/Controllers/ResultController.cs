@@ -12,15 +12,39 @@ namespace TraCuuThuatNgu.Controllers
     {
         //
         // GET: /Result/
-        TraCuuThuatNguEntities entity = new TraCuuThuatNguEntities();
-
+        
         public ActionResult Index(string keyword)
         {
-            Entry entry = entity.Entries.Find(keyword);
-            ResultViewModel result = new ResultViewModel();
-            result.Entry = entry;
+            ResultModel resultModel = new ResultModel();
 
-            return View(result);
+            ResultViewModel resultViewModel = new ResultViewModel();
+            Entry entry = resultModel.GetEntryByKeyword(keyword);
+
+            bool isExistData = true;
+            if (entry != null)
+            {
+                //set view model
+                resultViewModel.Entry = entry;
+
+                //add history
+                isExistData = true;
+            }
+            else
+            {
+                isExistData = false;
+            }
+
+            //add history
+            SearchHistoryModel searchHistoryModel = new SearchHistoryModel();
+            searchHistoryModel.AddSearchHistory(keyword, isExistData);
+            //add user history
+            if (Request.IsAuthenticated)
+            {
+                UserHistoryModel userHistoryModel = new UserHistoryModel();
+                userHistoryModel.AddUserHistory(keyword);
+            }
+            
+            return View(resultViewModel);
         }
     }
 }
