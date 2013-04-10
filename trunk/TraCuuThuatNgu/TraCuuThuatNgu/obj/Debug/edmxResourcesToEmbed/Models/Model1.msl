@@ -1,6 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="TraCuuThuatNguModelStoreContainer" CdmEntityContainer="TraCuuThuatNguEntities">
+    <EntitySetMapping Name="aspnet_Users">
+      <EntityTypeMapping TypeName="TraCuuThuatNguModel.aspnet_Users">
+        <MappingFragment StoreEntitySet="aspnet_Users">
+          <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+          <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+          <ScalarProperty Name="MobileAlias" ColumnName="MobileAlias" />
+          <ScalarProperty Name="LoweredUserName" ColumnName="LoweredUserName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Comments">
       <EntityTypeMapping TypeName="TraCuuThuatNguModel.Comment">
         <MappingFragment StoreEntitySet="Comment">
@@ -15,6 +28,7 @@
     <EntitySetMapping Name="Entries">
       <EntityTypeMapping TypeName="TraCuuThuatNguModel.Entry">
         <MappingFragment StoreEntitySet="Entry">
+          <ScalarProperty Name="TopicId" ColumnName="TopicId" />
           <ScalarProperty Name="Exa" ColumnName="Exa" />
           <ScalarProperty Name="Def" ColumnName="Def" />
           <ScalarProperty Name="Synonym" ColumnName="Synonym" />
@@ -33,16 +47,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="aspnet_Users">
-      <EntityTypeMapping TypeName="TraCuuThuatNguModel.aspnet_Users">
-        <MappingFragment StoreEntitySet="aspnet_Users">
-          <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
-          <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
-          <ScalarProperty Name="MobileAlias" ColumnName="MobileAlias" />
-          <ScalarProperty Name="LoweredUserName" ColumnName="LoweredUserName" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+    <EntitySetMapping Name="SearchHistories">
+      <EntityTypeMapping TypeName="TraCuuThuatNguModel.SearchHistory">
+        <MappingFragment StoreEntitySet="SearchHistory">
+          <ScalarProperty Name="DateModify" ColumnName="DateModify" />
+          <ScalarProperty Name="Counter" ColumnName="Counter" />
+          <ScalarProperty Name="IsExist" ColumnName="IsExist" />
+          <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tests">
+      <EntityTypeMapping TypeName="TraCuuThuatNguModel.Test">
+        <MappingFragment StoreEntitySet="Test">
+          <ScalarProperty Name="TestName" ColumnName="TestName" />
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -55,13 +74,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SearchHistories">
-      <EntityTypeMapping TypeName="TraCuuThuatNguModel.SearchHistory">
-        <MappingFragment StoreEntitySet="SearchHistory">
-          <ScalarProperty Name="DateModify" ColumnName="DateModify" />
-          <ScalarProperty Name="Counter" ColumnName="Counter" />
-          <ScalarProperty Name="IsExist" ColumnName="IsExist" />
-          <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+    <EntitySetMapping Name="Topics">
+      <EntityTypeMapping TypeName="TraCuuThuatNguModel.Topic">
+        <MappingFragment StoreEntitySet="Topic">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TopicId" ColumnName="TopicId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -19,3 +19,5 @@ C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu
 C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\obj\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\obj\Debug\TraCuuThuatNgu.dll
 C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\obj\Debug\TraCuuThuatNgu.pdb
+C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\bin\Newtonsoft.Json.dll
+C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\bin\Newtonsoft.Json.xml

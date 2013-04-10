@@ -17,8 +17,8 @@ namespace TraCuuThuatNgu.Models
         public aspnet_Users()
         {
             this.Comments = new HashSet<Comment>();
-            this.Favorites = new HashSet<Favorite>();
             this.UserHistories = new HashSet<UserHistory>();
+            this.Favorites = new HashSet<Favorite>();
         }
     
         public System.Guid ApplicationId { get; set; }
@@ -30,7 +30,7 @@ namespace TraCuuThuatNgu.Models
         public System.DateTime LastActivityDate { get; set; }
     
         public virtual ICollection<Comment> Comments { get; set; }
-        public virtual ICollection<Favorite> Favorites { get; set; }
         public virtual ICollection<UserHistory> UserHistories { get; set; }
+        public virtual ICollection<Favorite> Favorites { get; set; }
     }
 }

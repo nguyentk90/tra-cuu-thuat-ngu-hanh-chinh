@@ -14,16 +14,9 @@ namespace TraCuuThuatNgu.Models
     
     public partial class SearchHistory
     {
-        public SearchHistory()
-        {
-            this.UserHistories = new HashSet<UserHistory>();
-        }
-    
         public string Keyword { get; set; }
         public bool IsExist { get; set; }
         public int Counter { get; set; }
         public System.DateTime DateModify { get; set; }
-    
-        public virtual ICollection<UserHistory> UserHistories { get; set; }
     }
 }

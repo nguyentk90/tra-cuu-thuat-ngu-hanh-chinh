@@ -1,0 +1,87 @@
+﻿@model TraCuuThuatNgu.Models.Entry
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<div class="row-fluid">
+    <div class="span span12">
+        <div class="head">
+            <div class="icm-chats">
+            </div>
+            <h1>
+                Thêm thuật ngữ</h1>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="block">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true, "Đăng ký tài khoản không thành công.")
+    
+                <div class="entry-form">
+                    <div class="editor">
+                        <div class="editor-label">
+                            Thuật ngữ
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(m => m.HeadWord)
+                        </div>
+                        <div class="clear">
+                        </div>
+                    </div>
+                    <div class="editor">
+                        <div class="editor-label">
+                            Loại từ
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(m => m.Category)
+                        </div>
+                        <div class="clear">
+                        </div>
+                    </div>
+                    <div class="editor">
+                        <div class="editor-label">
+                            Chủ đề
+                        </div>
+                        <div class="editor-field">
+                            <input type="text" />
+                        </div>
+                        <div class="clear">
+                        </div>
+                    </div>
+                    <div class="editor">
+                        <div class="editor-label">
+                            Giải thích
+                        </div>
+                        <div class="editor-field">
+                            <textarea class="text"></textarea>
+                        </div>
+                        <div class="clear">
+                        </div>
+                    </div>
+                    <div class="editor">
+                        <div class="editor-label">
+                            Ví dụ
+                        </div>
+                        <div class="editor-field">
+                            <textarea class="text"></textarea>
+                        </div>
+                        <div class="clear">
+                        </div>
+                    </div>
+                    <div class="editor">
+                        <div class="editor-label">
+                        </div>
+                        <div class="editor-field">
+                            <input type="submit" class="btn" value="Thêm" />
+                        </div>
+                        <div class="clear">
+                        </div>
+                    </div>
+                </div>   
+            }
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+</div>

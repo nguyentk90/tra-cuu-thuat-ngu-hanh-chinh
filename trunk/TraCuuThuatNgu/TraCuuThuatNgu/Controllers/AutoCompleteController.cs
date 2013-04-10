@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TraCuuThuatNgu.Models;
+using System.Web.Script.Serialization;
+using Newtonsoft.Json;
+
 
 namespace TraCuuThuatNgu.Controllers
 {
@@ -14,7 +17,19 @@ namespace TraCuuThuatNgu.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            //get model
+            AutoCompleteModel autoCompleteModel = new AutoCompleteModel();
+
+            List<SearchHistory> list = new List<SearchHistory>();
+            SearchHistory s = new SearchHistory();
+            s.Keyword = "nguyen";
+            s.IsExist = true;
+            s.Counter = 1;
+            s.DateModify = DateTime.Now;
+
+            list.Add(s);
+
+            return Json(autoCompleteModel.GetByPrefix("n"), JsonRequestBehavior.AllowGet);           
         }
 
         //
@@ -22,16 +37,12 @@ namespace TraCuuThuatNgu.Controllers
         [HttpPost]
         public ActionResult Index(string prefix)
         {
-            List<string> list = new List<string>();
-            //list.Add(new OneWord("hello" + prefix, 3));
-            //list.Add(new OneWord("hi" + prefix, 5));
-            //list.Add(new OneWord("Chao", 3));
-            //list.Add(new OneWord("Mobile", 3));
-            list.Add("hello");
-            list.Add("khánh nguyên");
-            list.Add("Chào");
-            list.Add("Mobile");
-            return Json(list, JsonRequestBehavior.DenyGet);
+            //get model
+            AutoCompleteModel autoCompleteModel = new AutoCompleteModel();    
+
+
+
+            return Json(autoCompleteModel.GetByPrefix(prefix), JsonRequestBehavior.DenyGet);
         }
 
     }

@@ -15,6 +15,10 @@ namespace TraCuuThuatNgu.Controllers
         
         public ActionResult Index(string keyword)
         {
+
+            if (keyword == null || keyword.Trim().Equals(""))
+               return RedirectToAction("Index","Home");
+
             ResultModel resultModel = new ResultModel();
 
             ResultViewModel resultViewModel = new ResultViewModel();
