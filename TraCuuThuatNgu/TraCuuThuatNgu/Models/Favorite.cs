@@ -16,9 +16,9 @@ namespace TraCuuThuatNgu.Models
     {
         public string HeadWord { get; set; }
         public System.Guid UserId { get; set; }
-        public Nullable<System.DateTime> DateAdd { get; set; }
+        public System.DateTime DateAdd { get; set; }
     
-        public virtual Entry Entry { get; set; }
         public virtual aspnet_Users aspnet_Users { get; set; }
+        public virtual Entry Entry { get; set; }
     }
 }

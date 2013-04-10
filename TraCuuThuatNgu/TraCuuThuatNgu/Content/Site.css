@@ -867,3 +867,43 @@ table
 {
     background-color: #468847;
 }
+
+/*FORM --- Label and Field*/
+.entry-form
+{
+    padding: 15px 40px;
+}
+
+.entry-form .text
+{
+    padding: 7px 8px;
+    border: 1px solid #d5d5d5;
+    background-color: #FFF;
+    margin: 3px;    
+    color: #333;
+    line-height: 17px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    float: left;
+    width: 320px;
+}
+
+.entry-form .editor
+{
+    margin: 8px 0px;
+}
+
+.entry-form .editor-label
+{
+    width: 130px;
+    float: left;
+    line-height:15px;
+}
+
+.entry-form .editor-field
+{
+    float: left;
+}

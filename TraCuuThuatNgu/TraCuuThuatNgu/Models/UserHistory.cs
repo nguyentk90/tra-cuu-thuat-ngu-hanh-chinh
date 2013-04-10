@@ -19,6 +19,5 @@ namespace TraCuuThuatNgu.Models
         public Nullable<System.DateTime> DateModify { get; set; }
     
         public virtual aspnet_Users aspnet_Users { get; set; }
-        public virtual SearchHistory SearchHistory { get; set; }
     }
 }

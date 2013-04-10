@@ -17,10 +17,10 @@ namespace TraCuuThuatNgu.Models
         public int CommentId { get; set; }
         public string HeadWord { get; set; }
         public string CmContent { get; set; }
-        public Nullable<System.Guid> UserId { get; set; }
-        public Nullable<System.DateTime> DateAdd { get; set; }
+        public System.Guid UserId { get; set; }
+        public System.DateTime DateAdd { get; set; }
     
-        public virtual Entry Entry { get; set; }
         public virtual aspnet_Users aspnet_Users { get; set; }
+        public virtual Entry Entry { get; set; }
     }
 }

@@ -8,12 +8,11 @@ using TraCuuThuatNgu.Models;
 
 namespace TraCuuThuatNgu.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         //
-        // GET: /Admin/
-
-        [Authorize(Roles = "Admin")]
+        // GET: /Admin/        
         public ActionResult Index()
         {
             //instance search history model
@@ -25,6 +24,7 @@ namespace TraCuuThuatNgu.Controllers
 
             return View(adminIndexViewModel);
         }
+            
 
     }
 }
