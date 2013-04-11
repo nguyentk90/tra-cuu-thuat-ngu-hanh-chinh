@@ -6,6 +6,23 @@ using System.Data;
 
 namespace TraCuuThuatNgu.Models
 {
+    //summary search history model
+    public class SummarySearchHistoryModel : CommonModel
+    {
+        public SummarySearchHistoryModel()
+        {
+            GetSearchHistoryCountKeyword = context.SearchHistories.AsQueryable().Count();
+            GetSearchHistoryCountTime = context.SearchHistories.Sum(x => x.Counter);
+            GetSearchHistoryIsExist = context.SearchHistories.Where(x => x.IsExist == true).Count();
+            GetSearchHistoryIsNotExist = GetSearchHistoryCountKeyword - GetSearchHistoryIsExist;
+        }
+        public int GetSearchHistoryCountTime { get; set; }
+        public int GetSearchHistoryCountKeyword { get; set; }
+        public int GetSearchHistoryIsExist { get; set; }
+        public int GetSearchHistoryIsNotExist { get; set; }
+    }
+
+    //search history model
     public class SearchHistoryModel
     {
         TraCuuThuatNguEntities context = null;
@@ -15,13 +32,19 @@ namespace TraCuuThuatNgu.Models
             context = new TraCuuThuatNguEntities();
         }
 
+        //get all history lastest
+        public IQueryable<SearchHistory> GetAllSearchHistory()
+        {
+            return context.SearchHistories.OrderByDescending(x => x.DateModify);
+        }
+
         //get top % history lastest
         public IQueryable<SearchHistory> GetTopLastest(int top)
         {
-            return context.SearchHistories.OrderByDescending(x => x.DateModify).Take(top);   
+            return context.SearchHistories.OrderByDescending(x => x.DateModify).Take(top);
         }
 
-                
+
         //add searching history 
         public int AddSearchHistory(string keyword, bool isExist)
         {
@@ -30,7 +53,7 @@ namespace TraCuuThuatNgu.Models
                 SearchHistory searchHistory = context.SearchHistories.Find(keyword);
                 if (searchHistory == null)
                 {
-                    
+
                     searchHistory = new SearchHistory();
                     searchHistory.Keyword = keyword;
                     searchHistory.IsExist = isExist;
@@ -46,7 +69,7 @@ namespace TraCuuThuatNgu.Models
                     searchHistory.DateModify = DateTime.Now;
                     //increment count
                     context.Entry(searchHistory).State = EntityState.Modified;
-                }                
+                }
 
                 //change context
                 return context.SaveChanges();
