@@ -13,6 +13,11 @@ header, #header
     background: url("img/backgrounds/header.jpg") left top repeat;
 }
 
+footer, #footer
+{
+    position: relative;
+}
+
 /*Main menu*/
 .menu
 {
@@ -157,34 +162,43 @@ header, #header
     padding-top: 0px;
 }
 
-.content-admin .workplace {
+.content-admin .workplace
+{
     position: relative;
     padding: 20px;
 }
 
 .title-admin
 {
-    font-size:14px;
-    font-weight:bold;
-    text-align:center;
-    line-height:22px;  
-    color:#666;  
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 22px;
+    color: #666;
 }
 
-.row-fluid {
+.row-fluid
+{
     width: 100%;
+}
+
+.row-fluid h2
+{
+    margin: 5px 0px;
+    padding: 0px;
+    font-size: 24px;
 }
 
 .row-fluid .first
 {
-    margin-left:0px;    
+    margin-left: 0px;
 }
 
 /*Block for dashboard*/
 .span10
 {
-    width:49%;   
-    margin-left:2%;
+    width: 49%;
+    margin-left: 2%;
 }
 
 .head
@@ -194,5 +208,41 @@ header, #header
 
 .span12
 {
-    width:100%;    
+    width: 100%;
+    float: none;
+}
+
+
+/*Sumary*/
+
+.block-sumary
+{
+    border: 1px solid #CCC;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.sumary
+{
+    padding:15px 30px;
+}
+.sumary .sumary-item label
+{
+    width: 162px;
+    text-align: right;
+    display: block;
+    float: left;
+    color: #468847;
+    font-size:13px;
+}
+.sumary .sumary-item span
+{
+    font-size:17px;
+    font-weight:bold;
+    text-align: right;
+    display: block;
+    float: left;
+    margin-left: 10px;
+    color: #3399FF;
+    width:150px;
 }

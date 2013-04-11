@@ -41,8 +41,9 @@
             contentType: 'application/json; charset=utf-8',
             success: function (data) {
                 if (data.message == 'SUCCESS') {
-                    //var counter = $('.count-like').text() + 1;
-                    //$('.count-like').text(counter);
+                    var counter = $('.count-like').html();
+                    counter++;
+                    $('.count-like').html(counter);
                     alert("Đã thêm vào thuật ngữ yêu thích.");
                 } else if (data.message == 'EXISTED') {
                     alert("Bạn đã thích từ này");
@@ -59,7 +60,26 @@
     });
 
 
+    //check space and special characters
+    $("#search-form").submit(function () {
+        if ($.trim($("#search-input").val()) == "") {
+            alert("Bạn chưa nhập từ");
+            return false;            
+        } else { 
+            var regex = /[~`!#@$%\^&*+=\-\[\]\\;,/{}|\\"':<>\?]/g ;   
+            if(regex.test($("#search-input").val()))
+            {
+                alert("Không nhập ký tự đặc biệt.");
+                return false;
+            }
+            return true;                       
+        }
+    });
+
+
 });
+
+
 
 function popUpLogonOpen() {
     //over-lay

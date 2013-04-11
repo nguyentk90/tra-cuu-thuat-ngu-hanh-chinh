@@ -74,6 +74,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LikeController.cs" />
     <Compile Include="Controllers\ManageEntriesController.cs" />
+    <Compile Include="Controllers\ManageSearchHistoryController.cs" />
     <Compile Include="Controllers\ResultController.cs" />
     <Compile Include="Controllers\SearchHistoryController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AdminIndexViewModel.cs" />
     <Compile Include="ViewModels\CommonViewModel.cs" />
+    <Compile Include="ViewModels\ManageSearchHistoryViewModel.cs" />
     <Compile Include="ViewModels\ResultViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -253,6 +255,7 @@
     <Content Include="Views\Shared\_Admin.cshtml" />
     <Content Include="Views\ManageEntries\Index.cshtml" />
     <Content Include="Views\ManageEntries\Add.cshtml" />
+    <Content Include="Views\ManageSearchHistory\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
