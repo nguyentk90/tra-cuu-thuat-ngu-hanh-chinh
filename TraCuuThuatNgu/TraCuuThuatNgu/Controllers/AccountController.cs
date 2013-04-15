@@ -6,11 +6,84 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using TraCuuThuatNgu.Models;
+using TraCuuThuatNgu.ViewModels;
+using System.Globalization;
 
 namespace TraCuuThuatNgu.Controllers
 {
     public class AccountController : Controller
     {
+
+        // Account Informations
+        // GET: /Account/AccountInformation
+        [Authorize]
+        public ActionResult Info()
+        {
+            MembershipUser user = Membership.GetUser();
+
+            ProfileModel profileModel = new ProfileModel();
+            Profile profile = profileModel.GetProfileByUserId((Guid)user.ProviderUserKey);
+
+            InfoViewModel info = new InfoViewModel();
+            info.Username = user.UserName;
+            info.Email = user.Email;
+            info.Fullname = profile.Fullname;
+            info.Birthday = profile.Birthday;
+            info.UserId = (Guid)user.ProviderUserKey;
+
+            ViewBag.Birthday = profile.Birthday;
+
+            return View(info);
+        }
+
+        // Account Informations
+        // POST: /Account/AccountInformation
+        [Authorize]
+        [HttpPost]
+        public ActionResult Info(InfoViewModel info, string birthday)
+        {
+            try
+            {
+                DateTime dt;
+                try
+                {
+                    string[] formats = { "dd/MM/yyyy" };
+                    dt = DateTime.ParseExact(birthday, formats, new CultureInfo("en-US"), DateTimeStyles.None);
+                }
+                catch
+                {
+                    ViewBag.Fail = "Nhập ngày sinh sai định dạng";
+                    return View(info);
+                }
+
+                ProfileModel profileModel = new ProfileModel();
+
+                Profile profile = profileModel.GetProfileByUserId(info.UserId);
+
+                profile.Birthday = dt;
+                profile.Fullname = info.Fullname;
+                //update profile
+                profileModel.UpdateProfile(profile);
+
+                MembershipUser user = Membership.GetUser();
+                user.Email = info.Email;
+                Membership.UpdateUser(user);
+
+                ViewBag.Birthday = dt;
+                ViewBag.Success = "Cập nhật thành công!";
+            }
+            catch
+            {
+
+                ViewBag.Fail = "Cập nhật không thành công!";
+            }
+
+            return View(info);
+
+
+        }
+
+
 
         //
         // GET: /Account/LogOn
@@ -58,7 +131,7 @@ namespace TraCuuThuatNgu.Controllers
                 return View(model);
             }
 
-            
+
         }
 
 

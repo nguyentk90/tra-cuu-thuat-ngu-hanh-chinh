@@ -5,6 +5,7 @@
     <EntitySet Name="Comment" EntityType="TraCuuThuatNguModel.Store.Comment" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Entry" EntityType="TraCuuThuatNguModel.Store.Entry" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Favorite" EntityType="TraCuuThuatNguModel.Store.Favorite" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Profile" EntityType="TraCuuThuatNguModel.Store.Profile" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SearchHistory" EntityType="TraCuuThuatNguModel.Store.SearchHistory" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Test" EntityType="TraCuuThuatNguModel.Store.Test" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Topic" EntityType="TraCuuThuatNguModel.Store.Topic" store:Type="Tables" Schema="dbo" />
@@ -20,6 +21,10 @@
     <AssociationSet Name="FK_Entry_Topic" Association="TraCuuThuatNguModel.Store.FK_Entry_Topic">
       <End Role="Topic" EntitySet="Topic" />
       <End Role="Entry" EntitySet="Entry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Profile_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_Profile_aspnet_Users">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="Profile" EntitySet="Profile" />
     </AssociationSet>
     <AssociationSet Name="FK_UserHistory_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_UserHistory_aspnet_Users">
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
@@ -76,6 +81,14 @@
     <Property Name="HeadWord" Type="nvarchar" Nullable="false" MaxLength="256" />
     <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="DateAdd" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Fullname" Type="nvarchar" MaxLength="256" />
+    <Property Name="Birthday" Type="date" />
   </EntityType>
   <EntityType Name="SearchHistory">
     <Key>
@@ -142,6 +155,18 @@
       </Principal>
       <Dependent Role="Entry">
         <PropertyRef Name="TopicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Profile_aspnet_Users">
+    <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="1" />
+    <End Role="Profile" Type="TraCuuThuatNguModel.Store.Profile" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Profile">
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

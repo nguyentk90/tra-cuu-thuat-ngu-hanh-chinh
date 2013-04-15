@@ -33,5 +33,6 @@ namespace TraCuuThuatNgu.Models
         public DbSet<Test> Tests { get; set; }
         public DbSet<UserHistory> UserHistories { get; set; }
         public DbSet<Topic> Topics { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
     }
 }
