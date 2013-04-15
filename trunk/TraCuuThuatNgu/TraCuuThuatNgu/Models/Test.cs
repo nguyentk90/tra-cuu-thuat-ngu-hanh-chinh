@@ -17,5 +17,4 @@ namespace TraCuuThuatNgu.Models
         public int TestId { get; set; }
         public string TestName { get; set; }
     }
-	//D:/Senior project backup
 }

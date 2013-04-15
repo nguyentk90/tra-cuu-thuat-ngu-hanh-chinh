@@ -266,6 +266,38 @@ ul#menu li.selected a
     border-top: 6px solid #ccc;
 }
 
+/*  SIMPLE MENU for ACCOUNT INFORMATION*/
+.simple-menu
+{
+    margin-top: 0px;
+    padding-top: 10px;
+}
+.simple-menu li
+{
+    color: #3399FF;
+}
+.simple-menu .active
+{
+    color: #666;
+}
+.simple-menu li a
+{
+    padding: 2px 2px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 26px;
+    color: #3399FF;
+}
+
+.simple-menu li a:hover
+{
+    color: #666;
+    text-decoration: none;
+}
+
+
+
 /* FORM LAYOUT ELEMENTS   
 ----------------------------------------------------------*/
 
@@ -377,6 +409,11 @@ input[type="submit"]
     background-color: transparent;
 }
 
+.btn-add
+{
+    padding-left:26px;
+    background: url('img/add1.png') left center no-repeat transparent;
+}
 
 
 /* TABLE
@@ -735,6 +772,16 @@ div#title
     width: 315px;
 }
 
+.span8-account
+{
+    width: 631px;
+}
+.span9-account
+{
+    width: 315px;
+    margin-right: 20px;
+}
+
 .span-comment
 {
     display: block;
@@ -755,6 +802,11 @@ div#title
 .icm-list
 {
     background: url('img/icons/ws/ic_list.png') center center no-repeat transparent;
+}
+
+.icm-user
+{
+    background: url('img/icons/ws/ic_user.png') center center no-repeat transparent;
 }
 
 [class*="icm-"]
@@ -879,7 +931,7 @@ table
     padding: 7px 8px;
     border: 1px solid #d5d5d5;
     background-color: #FFF;
-    margin: 3px;    
+    margin: 3px;
     color: #333;
     line-height: 17px;
     -moz-border-radius: 3px;
@@ -900,7 +952,7 @@ table
 {
     width: 130px;
     float: left;
-    line-height:15px;
+    line-height: 15px;
 }
 
 .entry-form .editor-field

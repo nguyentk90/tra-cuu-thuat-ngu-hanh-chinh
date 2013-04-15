@@ -10,6 +10,7 @@
           <EntitySet Name="Comment" EntityType="TraCuuThuatNguModel.Store.Comment" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Entry" EntityType="TraCuuThuatNguModel.Store.Entry" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Favorite" EntityType="TraCuuThuatNguModel.Store.Favorite" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Profile" EntityType="TraCuuThuatNguModel.Store.Profile" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SearchHistory" EntityType="TraCuuThuatNguModel.Store.SearchHistory" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Test" EntityType="TraCuuThuatNguModel.Store.Test" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Topic" EntityType="TraCuuThuatNguModel.Store.Topic" store:Type="Tables" Schema="dbo" />
@@ -25,6 +26,10 @@
           <AssociationSet Name="FK_Entry_Topic" Association="TraCuuThuatNguModel.Store.FK_Entry_Topic">
             <End Role="Topic" EntitySet="Topic" />
             <End Role="Entry" EntitySet="Entry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profile_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_Profile_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="Profile" EntitySet="Profile" />
           </AssociationSet>
           <AssociationSet Name="FK_UserHistory_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_UserHistory_aspnet_Users">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
@@ -81,6 +86,14 @@
           <Property Name="HeadWord" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="DateAdd" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Fullname" Type="nvarchar" MaxLength="256" />
+          <Property Name="Birthday" Type="date" />
         </EntityType>
         <EntityType Name="SearchHistory">
           <Key>
@@ -147,6 +160,18 @@
             </Principal>
             <Dependent Role="Entry">
               <PropertyRef Name="TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profile_aspnet_Users">
+          <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="Profile" Type="TraCuuThuatNguModel.Store.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -223,6 +248,11 @@
             <End Role="Topic" EntitySet="Topics" />
             <End Role="Entry" EntitySet="Entries" />
           </AssociationSet>
+          <EntitySet Name="Profiles" EntityType="TraCuuThuatNguModel.Profile" />
+          <AssociationSet Name="FK_Profile_aspnet_Users" Association="TraCuuThuatNguModel.FK_Profile_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="aspnet_Users">
           <Key>
@@ -238,6 +268,7 @@
           <NavigationProperty Name="Comments" Relationship="TraCuuThuatNguModel.FK_BinhLuan_aspnet_Users" FromRole="aspnet_Users" ToRole="Comment" />
           <NavigationProperty Name="UserHistories" Relationship="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users" FromRole="aspnet_Users" ToRole="UserHistory" />
           <NavigationProperty Name="Favorites" Relationship="TraCuuThuatNguModel.FK_YeuThich_aspnet_Users" FromRole="aspnet_Users" ToRole="Favorite" />
+          <NavigationProperty Name="Profile" Relationship="TraCuuThuatNguModel.FK_Profile_aspnet_Users" FromRole="aspnet_Users" ToRole="Profile" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -383,6 +414,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Guid" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Fullname" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Birthday" />
+          <NavigationProperty Name="aspnet_Users" Relationship="TraCuuThuatNguModel.FK_Profile_aspnet_Users" FromRole="Profile" ToRole="aspnet_Users" />
+        </EntityType>
+        <Association Name="FK_Profile_aspnet_Users">
+          <End Type="TraCuuThuatNguModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
+          <End Type="TraCuuThuatNguModel.Profile" Role="Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -470,6 +522,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Profiles">
+            <EntityTypeMapping TypeName="TraCuuThuatNguModel.Profile">
+              <MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -492,7 +553,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Model1">
-        <EntityTypeShape EntityType="TraCuuThuatNguModel.aspnet_Users" Width="1.5" PointX="2.125" PointY="0.625" Height="2.5783902994791674" />
+        <EntityTypeShape EntityType="TraCuuThuatNguModel.aspnet_Users" Width="1.5" PointX="2.75" PointY="0.625" Height="2.7427376302083339" />
         <EntityTypeShape EntityType="TraCuuThuatNguModel.Comment" Width="1.5" PointX="6.125" PointY="3.375" Height="2.0853483072916674" />
         <EntityTypeShape EntityType="TraCuuThuatNguModel.Entry" Width="1.5" PointX="3.625" PointY="4" Height="2.2496956380208317" />
         <EntityTypeShape EntityType="TraCuuThuatNguModel.Favorite" Width="1.5" PointX="5.125" PointY="1" Height="1.7566536458333353" />
@@ -500,33 +561,43 @@
         <EntityTypeShape EntityType="TraCuuThuatNguModel.Test" Width="1.5" PointX="8" PointY="3.5" Height="1.2636116536458388" />
         <EntityTypeShape EntityType="TraCuuThuatNguModel.UserHistory" Width="1.5" PointX="1.375" PointY="3.75" Height="1.5923063151041674" />
         <AssociationConnector Association="TraCuuThuatNguModel.FK_BinhLuan_aspnet_Users" >
-          <ConnectorPoint PointX="3.25" PointY="3.2033902994791674" />
-          <ConnectorPoint PointX="3.25" PointY="3.53125" />
-          <ConnectorPoint PointX="4.291666666666667" PointY="3.5312499999999996" />
-          <ConnectorPoint PointX="4.458333333333333" PointY="3.53125" />
-          <ConnectorPoint PointX="6.125" PointY="3.53125" />
+          <ConnectorPoint PointX="4.25" PointY="3.0934456380208344" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="3.0934456380208339" />
+          <ConnectorPoint PointX="5.708333333333333" PointY="3.0934456380208344" />
+          <ConnectorPoint PointX="7.15625" PointY="3.0934456380208344" />
+          <ConnectorPoint PointX="7.15625" PointY="3.375" />
         </AssociationConnector>
         <AssociationConnector Association="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users" >
-          <ConnectorPoint PointX="2.5" PointY="3.2033902994791674" />
-          <ConnectorPoint PointX="2.5" PointY="3.75" />
+          <ConnectorPoint PointX="2.75" PointY="1.9963688151041668" />
+          <ConnectorPoint PointX="2.375" PointY="1.9963688151041668" />
+          <ConnectorPoint PointX="2.375" PointY="3.375" />
+          <ConnectorPoint PointX="2.125" PointY="3.375" />
+          <ConnectorPoint PointX="2.125" PointY="3.75" />
         </AssociationConnector>
         <AssociationConnector Association="TraCuuThuatNguModel.FK_YeuThich_aspnet_Users" >
-          <ConnectorPoint PointX="3.625" PointY="1.8783268229166676" />
+          <ConnectorPoint PointX="4.25" PointY="1.8783268229166676" />
           <ConnectorPoint PointX="5.125" PointY="1.8783268229166676" />
         </AssociationConnector>
         <AssociationConnector Association="TraCuuThuatNguModel.FK_BinhLuan_ThuatNgu" >
           <ConnectorPoint PointX="5.125" PointY="4.7301741536458337" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="4.7301741536458328" />
+          <ConnectorPoint PointX="5.708333333333333" PointY="4.7301741536458337" />
           <ConnectorPoint PointX="6.125" PointY="4.7301741536458337" />
         </AssociationConnector>
         <AssociationConnector Association="TraCuuThuatNguModel.FK_YeuThich_ThuatNgu" >
-          <ConnectorPoint PointX="4.375" PointY="4" />
-          <ConnectorPoint PointX="4.375" PointY="2.3487427343750023" />
-          <ConnectorPoint PointX="5.125" PointY="2.3487427343750023" />
+          <ConnectorPoint PointX="5.125" PointY="6.0506193033854174" />
+          <ConnectorPoint PointX="5.625" PointY="6.0506193033854174" />
+          <ConnectorPoint PointX="5.625" PointY="2.7566536458333353" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TraCuuThuatNguModel.Topic" Width="1.5" PointX="1.5" PointY="5.875" Height="1.4279589843749996" />
         <AssociationConnector Association="TraCuuThuatNguModel.FK_Entry_Topic" >
           <ConnectorPoint PointX="3" PointY="6.2266951497395837" />
           <ConnectorPoint PointX="3.625" PointY="6.2266951497395837" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TraCuuThuatNguModel.Profile" Width="1.5" PointX="0.5" PointY="1.125" Height="1.5923063151041674" />
+        <AssociationConnector Association="TraCuuThuatNguModel.FK_Profile_aspnet_Users" >
+          <ConnectorPoint PointX="2.75" PointY="1.4981844075520834" />
+          <ConnectorPoint PointX="2" PointY="1.4981844075520834" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

@@ -32,5 +32,6 @@ namespace TraCuuThuatNgu.Models
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<UserHistory> UserHistories { get; set; }
         public virtual ICollection<Favorite> Favorites { get; set; }
+        public virtual Profile Profile { get; set; }
     }
 }
