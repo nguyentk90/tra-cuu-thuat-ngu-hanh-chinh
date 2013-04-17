@@ -25,19 +25,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Entries">
-      <EntityTypeMapping TypeName="TraCuuThuatNguModel.Entry">
-        <MappingFragment StoreEntitySet="Entry">
-          <ScalarProperty Name="TopicId" ColumnName="TopicId" />
-          <ScalarProperty Name="Exa" ColumnName="Exa" />
-          <ScalarProperty Name="Def" ColumnName="Def" />
-          <ScalarProperty Name="Synonym" ColumnName="Synonym" />
-          <ScalarProperty Name="Category" ColumnName="Category" />
-          <ScalarProperty Name="WordType" ColumnName="WordType" />
-          <ScalarProperty Name="HeadWord" ColumnName="HeadWord" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Favorites">
       <EntityTypeMapping TypeName="TraCuuThuatNguModel.Favorite">
         <MappingFragment StoreEntitySet="Favorite">
@@ -91,5 +78,31 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Synsets">
+      <EntityTypeMapping TypeName="TraCuuThuatNguModel.Synset">
+        <MappingFragment StoreEntitySet="Synset">
+          <ScalarProperty Name="Exa" ColumnName="Exa" />
+          <ScalarProperty Name="Def" ColumnName="Def" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="SynsetId" ColumnName="SynsetId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entries">
+      <EntityTypeMapping TypeName="TraCuuThuatNguModel.Entry">
+        <MappingFragment StoreEntitySet="Entry">
+          <ScalarProperty Name="WordType" ColumnName="WordType" />
+          <ScalarProperty Name="HeadWord" ColumnName="HeadWord" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Relation" TypeName="TraCuuThuatNguModel.Relation" StoreEntitySet="Relation">
+      <EndProperty Name="Synset">
+        <ScalarProperty Name="SynsetId" ColumnName="SynsetId" />
+      </EndProperty>
+      <EndProperty Name="Entry">
+        <ScalarProperty Name="HeadWord" ColumnName="HeadWord" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

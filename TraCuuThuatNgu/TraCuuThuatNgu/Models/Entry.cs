@@ -18,18 +18,14 @@ namespace TraCuuThuatNgu.Models
         {
             this.Comments = new HashSet<Comment>();
             this.Favorites = new HashSet<Favorite>();
+            this.Synsets = new HashSet<Synset>();
         }
     
         public string HeadWord { get; set; }
         public string WordType { get; set; }
-        public string Category { get; set; }
-        public string Synonym { get; set; }
-        public string Def { get; set; }
-        public string Exa { get; set; }
-        public string TopicId { get; set; }
     
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Favorite> Favorites { get; set; }
-        public virtual Topic Topic { get; set; }
+        public virtual ICollection<Synset> Synsets { get; set; }
     }
 }

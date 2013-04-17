@@ -809,6 +809,11 @@ div#title
     background: url('img/icons/ws/ic_user.png') center center no-repeat transparent;
 }
 
+.icm-zoom
+{
+    background: url('img/icons/ws/ic_zoom.png') center center no-repeat transparent;
+}
+
 [class*="icm-"]
 {
     margin-left: 10px;

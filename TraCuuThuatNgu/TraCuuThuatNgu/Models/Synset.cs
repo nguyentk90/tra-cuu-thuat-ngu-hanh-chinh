@@ -12,9 +12,18 @@ namespace TraCuuThuatNgu.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Topic
+    public partial class Synset
     {
-        public string TopicId { get; set; }
-        public string Description { get; set; }
+        public Synset()
+        {
+            this.Entries = new HashSet<Entry>();
+        }
+    
+        public int SynsetId { get; set; }
+        public string Category { get; set; }
+        public string Def { get; set; }
+        public string Exa { get; set; }
+    
+        public virtual ICollection<Entry> Entries { get; set; }
     }
 }

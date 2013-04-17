@@ -6,7 +6,9 @@
     <EntitySet Name="Entry" EntityType="TraCuuThuatNguModel.Store.Entry" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Favorite" EntityType="TraCuuThuatNguModel.Store.Favorite" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Profile" EntityType="TraCuuThuatNguModel.Store.Profile" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Relation" EntityType="TraCuuThuatNguModel.Store.Relation" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SearchHistory" EntityType="TraCuuThuatNguModel.Store.SearchHistory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Synset" EntityType="TraCuuThuatNguModel.Store.Synset" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Test" EntityType="TraCuuThuatNguModel.Store.Test" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Topic" EntityType="TraCuuThuatNguModel.Store.Topic" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserHistory" EntityType="TraCuuThuatNguModel.Store.UserHistory" store:Type="Tables" Schema="dbo" />
@@ -18,13 +20,17 @@
       <End Role="Entry" EntitySet="Entry" />
       <End Role="Comment" EntitySet="Comment" />
     </AssociationSet>
-    <AssociationSet Name="FK_Entry_Topic" Association="TraCuuThuatNguModel.Store.FK_Entry_Topic">
-      <End Role="Topic" EntitySet="Topic" />
-      <End Role="Entry" EntitySet="Entry" />
-    </AssociationSet>
     <AssociationSet Name="FK_Profile_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_Profile_aspnet_Users">
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
       <End Role="Profile" EntitySet="Profile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Relation_Entry" Association="TraCuuThuatNguModel.Store.FK_Relation_Entry">
+      <End Role="Entry" EntitySet="Entry" />
+      <End Role="Relation" EntitySet="Relation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Relation_Synset" Association="TraCuuThuatNguModel.Store.FK_Relation_Synset">
+      <End Role="Synset" EntitySet="Synset" />
+      <End Role="Relation" EntitySet="Relation" />
     </AssociationSet>
     <AssociationSet Name="FK_UserHistory_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_UserHistory_aspnet_Users">
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
@@ -67,11 +73,6 @@
     </Key>
     <Property Name="HeadWord" Type="nvarchar" Nullable="false" MaxLength="256" />
     <Property Name="WordType" Type="varchar" Nullable="false" MaxLength="1" />
-    <Property Name="Category" Type="varchar" Nullable="false" MaxLength="1" />
-    <Property Name="Synonym" Type="nvarchar" MaxLength="256" />
-    <Property Name="Def" Type="nvarchar" Nullable="false" MaxLength="512" />
-    <Property Name="Exa" Type="nvarchar" MaxLength="512" />
-    <Property Name="TopicId" Type="varchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="Favorite">
     <Key>
@@ -90,6 +91,14 @@
     <Property Name="Fullname" Type="nvarchar" MaxLength="256" />
     <Property Name="Birthday" Type="date" />
   </EntityType>
+  <EntityType Name="Relation">
+    <Key>
+      <PropertyRef Name="SynsetId" />
+      <PropertyRef Name="HeadWord" />
+    </Key>
+    <Property Name="SynsetId" Type="int" Nullable="false" />
+    <Property Name="HeadWord" Type="nvarchar" Nullable="false" MaxLength="256" />
+  </EntityType>
   <EntityType Name="SearchHistory">
     <Key>
       <PropertyRef Name="Keyword" />
@@ -98,6 +107,15 @@
     <Property Name="IsExist" Type="bit" Nullable="false" />
     <Property Name="Counter" Type="int" Nullable="false" />
     <Property Name="DateModify" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Synset">
+    <Key>
+      <PropertyRef Name="SynsetId" />
+    </Key>
+    <Property Name="SynsetId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Category" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="Def" Type="nvarchar" Nullable="false" MaxLength="512" />
+    <Property Name="Exa" Type="nvarchar" MaxLength="512" />
   </EntityType>
   <EntityType Name="Test">
     <Key>
@@ -146,18 +164,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Entry_Topic">
-    <End Role="Topic" Type="TraCuuThuatNguModel.Store.Topic" Multiplicity="0..1" />
-    <End Role="Entry" Type="TraCuuThuatNguModel.Store.Entry" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Topic">
-        <PropertyRef Name="TopicId" />
-      </Principal>
-      <Dependent Role="Entry">
-        <PropertyRef Name="TopicId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Profile_aspnet_Users">
     <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="1" />
     <End Role="Profile" Type="TraCuuThuatNguModel.Store.Profile" Multiplicity="0..1" />
@@ -167,6 +173,30 @@
       </Principal>
       <Dependent Role="Profile">
         <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Relation_Entry">
+    <End Role="Entry" Type="TraCuuThuatNguModel.Store.Entry" Multiplicity="1" />
+    <End Role="Relation" Type="TraCuuThuatNguModel.Store.Relation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entry">
+        <PropertyRef Name="HeadWord" />
+      </Principal>
+      <Dependent Role="Relation">
+        <PropertyRef Name="HeadWord" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Relation_Synset">
+    <End Role="Synset" Type="TraCuuThuatNguModel.Store.Synset" Multiplicity="1" />
+    <End Role="Relation" Type="TraCuuThuatNguModel.Store.Relation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Synset">
+        <PropertyRef Name="SynsetId" />
+      </Principal>
+      <Dependent Role="Relation">
+        <PropertyRef Name="SynsetId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

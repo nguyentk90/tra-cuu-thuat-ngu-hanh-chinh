@@ -2,7 +2,7 @@
 @{
     Layout = "~/Views/Shared/_Root.cshtml";
     ViewBag.Title = "Result Page";
-}   
+}
 <div class="span span8">
     <div class="head">
         <div class="icm-list">
@@ -17,49 +17,109 @@
             @if (Model.Entry != null)
             {
                 <h1 id="headWord">@Model.Entry.HeadWord</h1>
-                if(User.Identity.IsAuthenticated)
+                if (User.Identity.IsAuthenticated)
                 {
-                    <div id="like-submit" class="like" title="Yêu thích"></div>
+                <div id="like-submit" class="like" title="Yêu thích">
+                </div>
                 }
                 else
                 {
-                    <div id="like-check" class="like" title="Yêu thích"></div>
+                <div id="like-check" class="like" title="Yêu thích">
+                </div>
                 }
                 
                 <div class="count-like">
-                 @Model.Entry.Favorites.Count</div>
+                    @Model.Entry.Favorites.Count</div>
                 
             }
             else
             { 
-                <p style="float:left">Không tìm thấy</p>
-            }            
-            <a style="float:right" href="#" class="btn-link btn-add">Thêm đóng góp</a>
+                <p style="float: left">
+                    Không tìm thấy</p>
+            }
+            <a style="float: right" href="#" class="btn-link btn-add">Thêm đóng góp</a>
             <div class="clear">
-                </div>
+            </div>
         </div>
         <div class="divider">
         </div>
+
+        @* Suggest when keyword not found*@
+        @if (Model.Entry == null)
+        {
         <div class="description-result">
-            <span class="ic-right"></span><span class="description-text">Giải thích</span>
-            <p>
-                Là thuật ngữ dùng để chỉ quá trình cải biến có kế hoạch cụ thể để đạt được mục tiêu
-                hoàn thiện một hay một số nội dung của nền hành chính nhà nước nhằm xây dựng nền
-                hành chính công đáp ứng yêu cầu của nền hành chính hiệu lực, hiệu quả và hiện đại.</p>
+            <span class="ic-cloud"></span><span class="description-text">Gợi ý:</span>
         </div>
-        <div class="divider">
+        }
+
+        <div class="description-result">
+            @*<span class="ic-right"></span><span class="description-text">Giải thích</span>*@
+            @if (ViewBag.Noun != null)
+            {
+                <h3 style="color: #f89406">
+                    Danh từ</h3>
+                foreach (var item in ViewBag.Noun)
+                {
+                <span class="ic-arrow-right"></span>
+                <p>
+                    <span class="synset">
+                        @foreach (var entry in item.Entries)
+                        {
+                            if (entry.HeadWord.Equals(Model.Entry.HeadWord))
+                            {
+                            <span class="synset-item">@entry.HeadWord</span>
+                            }
+                            else
+                            {
+                            <span class="synset-item"><a class="btn-link" href="/Result?keyword=@entry.HeadWord">@entry.HeadWord</a></span>
+                            }
+                        }: </span>
+                    <script>                        $("span span").last().removeClass('synset-item');</script>
+                    <span class="def">@item.Def
+                    </span><span class="exa">@item.Exa</span>
+                </p>
+                }
+            }
+            @if (ViewBag.Verb != null)
+            {
+                <h3 style="color: #f89406">
+                    Động từ</h3>
+                foreach (var item in ViewBag.Verb)
+                {
+                <span class="ic-arrow-right"></span>
+                <p>
+                    <span class="synset">
+                        @foreach (var entry in item.Entries)
+                        {
+                            if (entry.HeadWord.Equals(Model.Entry.HeadWord))
+                            {
+                            <span class="synset-item">@entry.HeadWord</span>
+                            }
+                            else
+                            {
+                            <span class="synset-item"><a class="btn-link" href="/Result?keyword=@entry.HeadWord">@entry.HeadWord</a></span>
+                            }
+                        }: </span>
+                    <script>                        $("span span").last().removeClass('synset-item');</script>
+                    <span class="def">@item.Def</span> <span class="exa">@item.Exa</span>
+                </p>
+                }
+            }
+        </div>
+        @*<div class="divider">
         </div>
         <div class="description-result">
             <span class="ic-right"></span><span class="description-text">Thuật ngữ liên quan:</span>
             <a href="#">Cải cách</a>, <a href="#">Hành chính</a>.
-        </div>
-        <div class="divider">
-        </div>
-        <div class="description-result">
-            <span class="ic-chat"></span><span class="description-text">Thảo luận</span>
-        </div>
+        </div>*@
         @if (Model.Entry != null)
         {
+            <div class="divider">
+            </div>
+            <div class="description-result">
+                <span class="ic-chat"></span><span class="description-text">Thảo luận</span>
+            </div>
+       
             <div class="comments">
                 <div class="comments-head">
                 </div>
@@ -128,6 +188,20 @@
         {
 
         }
+    </div>
+</div>
+<div class="span span9">
+    <div class="head">
+        <div class="icm-zoom">
+        </div>
+        <h1>
+            Tra cứu gần đây</h1>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="block">
+        sdklfhldshf<br />
+        ádasd
     </div>
 </div>
 <div class="span span9">
