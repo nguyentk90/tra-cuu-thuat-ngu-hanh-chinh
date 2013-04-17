@@ -27,12 +27,13 @@ namespace TraCuuThuatNgu.Models
     
         public DbSet<aspnet_Users> aspnet_Users { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<Entry> Entries { get; set; }
         public DbSet<Favorite> Favorites { get; set; }
         public DbSet<SearchHistory> SearchHistories { get; set; }
         public DbSet<Test> Tests { get; set; }
         public DbSet<UserHistory> UserHistories { get; set; }
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Synset> Synsets { get; set; }
+        public DbSet<Entry> Entries { get; set; }
     }
 }

@@ -104,6 +104,9 @@
     <Compile Include="Models\SearchHistory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Synset.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Test.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
