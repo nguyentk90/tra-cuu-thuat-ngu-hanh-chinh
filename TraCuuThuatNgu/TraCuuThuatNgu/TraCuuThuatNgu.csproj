@@ -38,8 +38,11 @@
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.15.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.2.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -78,6 +81,7 @@
     <Compile Include="Controllers\ResultController.cs" />
     <Compile Include="Controllers\SearchHistoryController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\UserHistoryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -140,6 +144,7 @@
     <Compile Include="ViewModels\InfoViewModel.cs" />
     <Compile Include="ViewModels\ManageSearchHistoryViewModel.cs" />
     <Compile Include="ViewModels\ResultViewModel.cs" />
+    <Compile Include="ViewModels\UserHistoryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin.css" />
@@ -159,6 +164,7 @@
     <Content Include="Content\img\backgrounds\menu-item.jpg" />
     <Content Include="Content\img\backgrounds\menu.jpg" />
     <Content Include="Content\img\backgrounds\nav.jpg" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\Root.css" />
     <Content Include="Content\searchbox.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -265,6 +271,7 @@
     <Content Include="Views\ManageEntries\Add.cshtml" />
     <Content Include="Views\ManageSearchHistory\Index.cshtml" />
     <Content Include="Views\Account\Info.cshtml" />
+    <Content Include="Views\UserHistory\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

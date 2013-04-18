@@ -124,7 +124,7 @@
                 <div class="comments-head">
                 </div>
                 <div class="comment-input">
-                    @using (Html.BeginForm("Add", "Comment"))
+                    @using (Html.BeginForm("Add", "Comment", FormMethod.Post, new { id="comment-form" }))
                     {
                         <div class="itemOut">
                             <a href="#" class="image">
@@ -132,7 +132,7 @@
                             @if (User.Identity.IsAuthenticated)
                             {                        
                                 <input name="headWord" type="hidden" value='@Request.Params["keyword"].ToString()' />
-                                <textarea name="content" class="text"></textarea>
+                                <textarea name="content" id="comment-content" class="text"></textarea>
                             }
                             else
                             { 
@@ -200,8 +200,14 @@
         </div>
     </div>
     <div class="block">
-        sdklfhldshf<br />
-        ádasd
+    <div class="recent-words">
+    <ul>
+        @foreach (var item in ViewBag.Recent)
+        { 
+          <li><a href="/Result?keyword=@item">@item</a></li>  
+        }
+     </ul>
+     </div>
     </div>
 </div>
 <div class="span span9">

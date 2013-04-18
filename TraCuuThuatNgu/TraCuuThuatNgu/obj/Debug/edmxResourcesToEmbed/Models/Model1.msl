@@ -52,15 +52,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="UserHistories">
-      <EntityTypeMapping TypeName="TraCuuThuatNguModel.UserHistory">
-        <MappingFragment StoreEntitySet="UserHistory">
-          <ScalarProperty Name="DateModify" ColumnName="DateModify" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="Keyword" ColumnName="Keyword" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Topics">
       <EntityTypeMapping TypeName="TraCuuThuatNguModel.Topic">
         <MappingFragment StoreEntitySet="Topic">
@@ -104,5 +95,15 @@
         <ScalarProperty Name="HeadWord" ColumnName="HeadWord" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="UserHistories">
+      <EntityTypeMapping TypeName="TraCuuThuatNguModel.UserHistory">
+        <MappingFragment StoreEntitySet="UserHistory">
+          <ScalarProperty Name="DateModify" ColumnName="DateModify" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+          <ScalarProperty Name="HistoryId" ColumnName="HistoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

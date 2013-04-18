@@ -6,14 +6,9 @@
     <EntitySet Name="Favorites" EntityType="TraCuuThuatNguModel.Favorite" />
     <EntitySet Name="SearchHistories" EntityType="TraCuuThuatNguModel.SearchHistory" />
     <EntitySet Name="Tests" EntityType="TraCuuThuatNguModel.Test" />
-    <EntitySet Name="UserHistories" EntityType="TraCuuThuatNguModel.UserHistory" />
     <AssociationSet Name="FK_BinhLuan_aspnet_Users" Association="TraCuuThuatNguModel.FK_BinhLuan_aspnet_Users">
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
       <End Role="Comment" EntitySet="Comments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UserHistory_aspnet_Users" Association="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users">
-      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-      <End Role="UserHistory" EntitySet="UserHistories" />
     </AssociationSet>
     <AssociationSet Name="FK_YeuThich_aspnet_Users" Association="TraCuuThuatNguModel.FK_YeuThich_aspnet_Users">
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
@@ -39,6 +34,11 @@
       <End Role="Entry" EntitySet="Entries" />
       <End Role="Synset" EntitySet="Synsets" />
     </AssociationSet>
+    <EntitySet Name="UserHistories" EntityType="TraCuuThuatNguModel.UserHistory" />
+    <AssociationSet Name="FK_UserHistory_aspnet_Users1" Association="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users1">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="UserHistory" EntitySet="UserHistories" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="aspnet_Users">
     <Key>
@@ -52,9 +52,9 @@
     <Property Type="Boolean" Name="IsAnonymous" Nullable="false" />
     <Property Type="DateTime" Name="LastActivityDate" Nullable="false" />
     <NavigationProperty Name="Comments" Relationship="TraCuuThuatNguModel.FK_BinhLuan_aspnet_Users" FromRole="aspnet_Users" ToRole="Comment" />
-    <NavigationProperty Name="UserHistories" Relationship="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users" FromRole="aspnet_Users" ToRole="UserHistory" />
     <NavigationProperty Name="Favorites" Relationship="TraCuuThuatNguModel.FK_YeuThich_aspnet_Users" FromRole="aspnet_Users" ToRole="Favorite" />
     <NavigationProperty Name="Profile" Relationship="TraCuuThuatNguModel.FK_Profile_aspnet_Users" FromRole="aspnet_Users" ToRole="Profile" />
+    <NavigationProperty Name="UserHistories" Relationship="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users1" FromRole="aspnet_Users" ToRole="UserHistory" />
   </EntityType>
   <EntityType Name="Comment">
     <Key>
@@ -95,16 +95,6 @@
     <Property Type="Int32" Name="TestId" Nullable="false" />
     <Property Type="String" Name="TestName" MaxLength="250" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="UserHistory">
-    <Key>
-      <PropertyRef Name="Keyword" />
-      <PropertyRef Name="UserId" />
-    </Key>
-    <Property Type="String" Name="Keyword" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-    <Property Type="Guid" Name="UserId" Nullable="false" />
-    <Property Type="DateTime" Name="DateModify" />
-    <NavigationProperty Name="aspnet_Users" Relationship="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users" FromRole="UserHistory" ToRole="aspnet_Users" />
-  </EntityType>
   <Association Name="FK_BinhLuan_aspnet_Users">
     <End Type="TraCuuThuatNguModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
     <End Type="TraCuuThuatNguModel.Comment" Role="Comment" Multiplicity="*" />
@@ -113,18 +103,6 @@
         <PropertyRef Name="UserId" />
       </Principal>
       <Dependent Role="Comment">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_UserHistory_aspnet_Users">
-    <End Type="TraCuuThuatNguModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
-    <End Type="TraCuuThuatNguModel.UserHistory" Role="UserHistory" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="aspnet_Users">
-        <PropertyRef Name="UserId" />
-      </Principal>
-      <Dependent Role="UserHistory">
         <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
@@ -216,5 +194,27 @@
   <Association Name="Relation">
     <End Type="TraCuuThuatNguModel.Entry" Role="Entry" Multiplicity="*" />
     <End Type="TraCuuThuatNguModel.Synset" Role="Synset" Multiplicity="*" />
+  </Association>
+  <EntityType Name="UserHistory">
+    <Key>
+      <PropertyRef Name="HistoryId" />
+    </Key>
+    <Property Type="Int32" Name="HistoryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Keyword" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="UserId" Nullable="false" />
+    <Property Type="DateTime" Name="DateModify" />
+    <NavigationProperty Name="aspnet_Users" Relationship="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users1" FromRole="UserHistory" ToRole="aspnet_Users" />
+  </EntityType>
+  <Association Name="FK_UserHistory_aspnet_Users1">
+    <End Type="TraCuuThuatNguModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
+    <End Type="TraCuuThuatNguModel.UserHistory" Role="UserHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserHistory">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
 </Schema>
