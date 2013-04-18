@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
 
+    /*LOGIN*/
+    //------------------------------------------------
     //dropdown-menu user login
     $('#user-login').click(function () {
         $('.dropdown-menu').slideToggle('slow');
@@ -24,6 +26,8 @@
     $('#close-popup').click(popUpLogonClose);
 
 
+    /*LIKE*/
+    //-----------------------------------------------
     //like button
     $('#like-check').click(function () {
         var checkLogOn = confirm('Hãy đăng nhập dùng chức năng này.');
@@ -60,6 +64,8 @@
     });
 
 
+    /*VALIDATE*/
+    //----------------------------------------------------
     //check space and special characters
     $("#search-form").submit(function () {
         if ($.trim($("#search-input").val()) == "") {
@@ -74,6 +80,45 @@
             }
             return true;                       
         }
+    });
+
+    //check space comment form
+    $("#comment-form").submit(function () {
+        if ($.trim($("#comment-content").val()) == "") {
+            alert("Bạn chưa nhập nhận xét");
+            return false;            
+        } else {             
+            return true;                       
+        }
+    });
+
+
+
+    /*DELETE USER HISTORY*/
+    $(".btn-delete").click(function(){
+            
+        var checkDelete = confirm('Bạn có chắc muốn xóa không?');
+
+        var row = $(this).parent().parent();
+
+        if (checkDelete) {        
+            $.ajax({
+                url: '/UserHistory/Delete',
+                type: 'POST',
+                data: "{ 'historyId': '" + $(this).children().val() + "'}",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data.message == 'SUCCESS') {                        
+                        row.slideUp('slow');
+                    } else {
+                        alert("Lỗi");
+                    } 
+                },
+                error: function () {
+                    alert("error");
+                }
+            });            
+        }           
     });
 
 

@@ -14,6 +14,7 @@ namespace TraCuuThuatNgu.Models
     
     public partial class UserHistory
     {
+        public int HistoryId { get; set; }
         public string Keyword { get; set; }
         public System.Guid UserId { get; set; }
         public Nullable<System.DateTime> DateModify { get; set; }

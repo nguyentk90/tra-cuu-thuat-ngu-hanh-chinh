@@ -20,7 +20,7 @@
     </div>
     <div id="input-search-root">
     
-        <form class="form-wrapper-mini cf" action="/Result">
+        <form class="form-wrapper-mini cf" id="search-form" action="/Result">
         @if (Request.Params["keyword"].IsEmpty())
         {
             <input type="text" name="keyword" id="search-input" placeholder="Nhập thuật ngữ..."/>

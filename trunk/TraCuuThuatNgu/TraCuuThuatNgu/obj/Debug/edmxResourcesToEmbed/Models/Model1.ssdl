@@ -32,7 +32,7 @@
       <End Role="Synset" EntitySet="Synset" />
       <End Role="Relation" EntitySet="Relation" />
     </AssociationSet>
-    <AssociationSet Name="FK_UserHistory_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_UserHistory_aspnet_Users">
+    <AssociationSet Name="FK_UserHistory_aspnet_Users1" Association="TraCuuThuatNguModel.Store.FK_UserHistory_aspnet_Users1">
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
       <End Role="UserHistory" EntitySet="UserHistory" />
     </AssociationSet>
@@ -133,9 +133,9 @@
   </EntityType>
   <EntityType Name="UserHistory">
     <Key>
-      <PropertyRef Name="Keyword" />
-      <PropertyRef Name="UserId" />
+      <PropertyRef Name="HistoryId" />
     </Key>
+    <Property Name="HistoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Keyword" Type="nvarchar" Nullable="false" MaxLength="256" />
     <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="DateModify" Type="datetime" />
@@ -200,7 +200,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_UserHistory_aspnet_Users">
+  <Association Name="FK_UserHistory_aspnet_Users1">
     <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="1" />
     <End Role="UserHistory" Type="TraCuuThuatNguModel.Store.UserHistory" Multiplicity="*" />
     <ReferentialConstraint>

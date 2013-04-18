@@ -295,3 +295,22 @@ img
     -ms-interpolation-mode: bicubic;
 }
 
+/*Recent keyword*/
+.recent-words
+{
+    padding:10px 15px;
+}
+
+.recent-words ul
+{
+    margin-top:0px;
+    margin-bottom:0px;
+    list-style:none;
+    padding-left:15px;    
+}
+.recent-words ul li a
+{
+    font-size:13px;
+    font-weight:bold;
+    color:#2C83EF;    
+}
