@@ -8,7 +8,7 @@ namespace TraCuuThuatNgu.ViewModels
 {
     public class ManageSearchHistoryViewModel
     {
-        public IQueryable<SearchHistory> GetAllSearchHistory { get; set; }
+        public IEnumerable<SearchHistory> GetAllSearchHistory { get; set; }
 
         public SummarySearchHistoryModel SummarySearchHistoryModel { get; set; }
     }

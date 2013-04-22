@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using TraCuuThuatNgu.Models;
 using TraCuuThuatNgu.ViewModels;
-
 using PagedList;
 
 namespace TraCuuThuatNgu.Controllers
@@ -18,20 +17,9 @@ namespace TraCuuThuatNgu.Controllers
         public ActionResult Index(int? page)
         {
             UserHistoryModel userHistoryModel = new UserHistoryModel();
-
             UserHistoryViewModel viewModel = new UserHistoryViewModel();
-
-            //viewModel.AllUserHistory = userHistoryModel.GetAllUserHistory();
-
-            var products = userHistoryModel.GetAllUserHistory(); //returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
-
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 5); // will only contain 25 products max because of the pageSize
-
-            viewModel.AllUserHistory = products.ToPagedList(pageNumber, 3);
-
-            ViewBag.OnePageOfProducts = onePageOfProducts;
-
+            viewModel.AllUserHistoryPaged = userHistoryModel.GetAllUserHistoryPaged(pageNumber, 10); 
             return View(viewModel);
         }
 

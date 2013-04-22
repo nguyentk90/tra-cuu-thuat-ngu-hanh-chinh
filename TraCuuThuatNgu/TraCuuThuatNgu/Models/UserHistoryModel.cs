@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
+using PagedList;
 
 namespace TraCuuThuatNgu.Models
 {
@@ -27,6 +28,14 @@ namespace TraCuuThuatNgu.Models
             Guid userId = (Guid)Membership.GetUser().ProviderUserKey;
 
             return context.UserHistories.Where(x => x.UserId == userId).OrderByDescending(x => x.DateModify);
+        }
+
+
+        //get all history by userid and paged
+        public IPagedList<UserHistory> GetAllUserHistoryPaged(int page,int pageSize)
+        {
+            Guid userId = (Guid)Membership.GetUser().ProviderUserKey;
+            return context.UserHistories.Where(x => x.UserId == userId).OrderByDescending(x => x.DateModify).ToPagedList(page,pageSize);
         }
 
 

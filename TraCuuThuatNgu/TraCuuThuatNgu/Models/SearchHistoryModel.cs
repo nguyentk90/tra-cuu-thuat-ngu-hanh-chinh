@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
+using PagedList;
 
 namespace TraCuuThuatNgu.Models
 {
@@ -16,6 +17,7 @@ namespace TraCuuThuatNgu.Models
             GetSearchHistoryIsExist = context.SearchHistories.Where(x => x.IsExist == true).Count();
             GetSearchHistoryIsNotExist = GetSearchHistoryCountKeyword - GetSearchHistoryIsExist;
         }
+
         public int GetSearchHistoryCountTime { get; set; }
         public int GetSearchHistoryCountKeyword { get; set; }
         public int GetSearchHistoryIsExist { get; set; }
@@ -32,10 +34,10 @@ namespace TraCuuThuatNgu.Models
             context = new TraCuuThuatNguEntities();
         }
 
-        //get all history lastest
-        public IQueryable<SearchHistory> GetAllSearchHistory()
+        //get all history lastest paged x size
+        public IPagedList<SearchHistory> GetAllSearchHistory(int page,int size)
         {
-            return context.SearchHistories.OrderByDescending(x => x.DateModify);
+            return context.SearchHistories.OrderByDescending(x => x.DateModify).ToPagedList(page,size);
         }
 
         //get top % history lastest

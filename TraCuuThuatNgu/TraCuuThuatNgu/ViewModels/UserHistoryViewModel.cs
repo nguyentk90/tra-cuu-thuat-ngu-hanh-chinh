@@ -9,5 +9,6 @@ namespace TraCuuThuatNgu.ViewModels
     public class UserHistoryViewModel
     {
         public IEnumerable<UserHistory> AllUserHistory { get; set; }
+        public IEnumerable<UserHistory> AllUserHistoryPaged { get; set; }
     }
 }
