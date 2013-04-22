@@ -95,7 +95,7 @@
 
 
     /*DELETE USER HISTORY*/
-    $(".btn-delete").click(function(){
+    $(".btn-history").click(function(){
             
         var checkDelete = confirm('Bạn có chắc muốn xóa không?');
 
@@ -120,6 +120,35 @@
             });            
         }           
     });
+
+
+    /*DELETE USER FAVORITES*/
+    $(".btn-like").click(function(){
+            
+        var checkDelete = confirm('Bạn có chắc muốn xóa không?');
+
+        var row = $(this).parent().parent();
+
+        if (checkDelete) {        
+            $.ajax({
+                url: '/Like/Delete',
+                type: 'POST',
+                data: "{ 'headWord': '" + $(this).children().val() + "'}",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data.message == 'SUCCESS') {                        
+                        row.slideUp('slow');
+                    } else {
+                        alert("Lỗi");
+                    } 
+                },
+                error: function () {
+                    alert("error");
+                }
+            });            
+        }           
+    });
+
 
 
 });

@@ -964,3 +964,15 @@ table
 {
     float: left;
 }
+
+/*--------------*/
+.keyword-history
+{
+     
+}
+.btn-delete
+{
+   background: url('img/delete-icon.png') left center no-repeat transparent;  
+   padding-left:18px;
+   font-size:16px;
+}

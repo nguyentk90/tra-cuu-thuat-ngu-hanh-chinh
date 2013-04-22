@@ -16,13 +16,18 @@ namespace TraCuuThuatNgu.Controllers
         //
         // GET: /ManageSearch/
 
-        public ActionResult Index()
+        public ActionResult Index(int? page, string orderBy)
         {
             //view models for search history
             ManageSearchHistoryViewModel managesearchHistoryModel = new ManageSearchHistoryViewModel();
+
+
+            var pageNumber = page ?? 1;
+
             
+
             //search history list
-            managesearchHistoryModel.GetAllSearchHistory = searchHistoryModel.GetAllSearchHistory();
+            managesearchHistoryModel.GetAllSearchHistory = searchHistoryModel.GetAllSearchHistory(pageNumber,15);
             
             //summary search history 
             managesearchHistoryModel.SummarySearchHistoryModel = new SummarySearchHistoryModel();

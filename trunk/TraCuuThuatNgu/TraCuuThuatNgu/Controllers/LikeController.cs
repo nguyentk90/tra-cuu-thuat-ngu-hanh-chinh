@@ -15,8 +15,13 @@ namespace TraCuuThuatNgu.Controllers
         //
         // GET: /Like/
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+
+            var pageNumber = page ?? 1;
+
+            ViewBag.FavoriteList = likeModel.GetPagedFavorite(pageNumber, 10);
+
             return View();
         }
 
@@ -29,13 +34,29 @@ namespace TraCuuThuatNgu.Controllers
 
             if (result == LikeModel.SUCCESS)
             {
-                return Json(new { message = "SUCCESS" }); 
+                return Json(new { message = "SUCCESS" });
             }
             else if (result == LikeModel.EXISTED)
             {
-                return Json(new { message = "EXISTED" }); 
+                return Json(new { message = "EXISTED" });
             }
-            else {
+            else
+            {
+                return Json(new { message = "FAIL" });
+            }
+        }
+
+
+        // Delete a favotite
+        [HttpPost]
+        public ActionResult Delete(string headWord)
+        {
+            if (likeModel.Delete(headWord) > 0)
+            {
+                return Json(new { message = "SUCCESS" });
+            }
+            else
+            { 
                 return Json(new { message = "FAIL" }); 
             }
         }

@@ -246,3 +246,10 @@ footer, #footer
     color: #3399FF;
     width:150px;
 }
+
+.sort-control
+{
+    padding:2px 20px 2px 0px;
+    float:right;   
+    color:#fff; 
+}
