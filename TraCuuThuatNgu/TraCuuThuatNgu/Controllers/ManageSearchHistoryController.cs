@@ -16,7 +16,7 @@ namespace TraCuuThuatNgu.Controllers
         //
         // GET: /ManageSearch/
 
-        public ActionResult Index(int? page, string orderBy)
+        public ActionResult Index(int? page, int? orderBy)
         {
             //view models for search history
             ManageSearchHistoryViewModel managesearchHistoryModel = new ManageSearchHistoryViewModel();
@@ -24,10 +24,12 @@ namespace TraCuuThuatNgu.Controllers
 
             var pageNumber = page ?? 1;
 
-            
+            var order = orderBy ?? 0;
+
+            ViewBag.OrderBy = order;
 
             //search history list
-            managesearchHistoryModel.GetAllSearchHistory = searchHistoryModel.GetAllSearchHistory(pageNumber,15);
+            managesearchHistoryModel.GetAllSearchHistory = searchHistoryModel.GetAllSearchHistory(pageNumber,15,order);
             
             //summary search history 
             managesearchHistoryModel.SummarySearchHistoryModel = new SummarySearchHistoryModel();

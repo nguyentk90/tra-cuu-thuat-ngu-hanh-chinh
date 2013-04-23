@@ -27,6 +27,12 @@ namespace TraCuuThuatNgu.Models
     //search history model
     public class SearchHistoryModel
     {
+
+        public static int ORDERBYDATE = 0;
+        public static int ORDERBYSTATUS = 1;
+        public static int ORDERBYCOUNT = 2;
+
+
         TraCuuThuatNguEntities context = null;
 
         public SearchHistoryModel()
@@ -35,9 +41,20 @@ namespace TraCuuThuatNgu.Models
         }
 
         //get all history lastest paged x size
-        public IPagedList<SearchHistory> GetAllSearchHistory(int page,int size)
+        public IPagedList<SearchHistory> GetAllSearchHistory(int page,int size,int orderby)
         {
-            return context.SearchHistories.OrderByDescending(x => x.DateModify).ToPagedList(page,size);
+            if (orderby == ORDERBYDATE)
+            {
+                return context.SearchHistories.OrderByDescending(x => x.DateModify).ToPagedList(page, size);
+            }
+            else if (orderby == ORDERBYSTATUS)
+            {
+                return context.SearchHistories.OrderBy(x => x.IsExist).ToPagedList(page, size);
+            }
+            else
+            {
+                return context.SearchHistories.OrderByDescending(x => x.Counter).ToPagedList(page, size);
+            }            
         }
 
         //get top % history lastest

@@ -58,18 +58,23 @@
             </div>
             <h1>
                 Danh sách tra cứu</h1>
-                <span class="sort-control">
-            Sắp xếp theo <select>
-                <option>Thời gian</option>                
-                <option>Trạng thái</option>
-                <option>Lượt tra</option>               
-            </select>
-        </span>
+            <span class="sort-control">
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#order-search-history option[value='@ViewBag.OrderBy']").attr('selected', 'selected');
+                    });
+                </script>
+                Sắp xếp theo
+                <select id="order-search-history">
+                    <option value="0">Thời gian</option>
+                    <option value="1">Trạng thái</option>
+                    <option value="2">Lượt tra</option>
+                </select>
+            </span>
             <div class="clear">
             </div>
         </div>
         <div class="block">
-        
             <table cellpadding="0" cellspacing="0" width="100%" class="table">
                 <thead>
                     <tr>
