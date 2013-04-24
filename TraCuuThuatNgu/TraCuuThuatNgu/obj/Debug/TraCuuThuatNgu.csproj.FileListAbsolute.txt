@@ -23,7 +23,6 @@ C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu
 E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\TraCuuThuatNgu.dll
 E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\TraCuuThuatNgu.pdb
 E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\EntityFramework.dll
-E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\PagedList.dll
 E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\PagedList.Mvc.dll
 E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\EntityFramework.xml
 E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\PagedList.xml
