@@ -49,7 +49,7 @@ namespace TraCuuThuatNgu.Models
             }
             else if (orderby == ORDERBYSTATUS)
             {
-                return context.SearchHistories.OrderBy(x => x.IsExist).ToPagedList(page, size);
+                return context.SearchHistories.OrderBy(x => x.IsExist).ThenByDescending(x=>x.Counter).ToPagedList(page, size);
             }
             else
             {

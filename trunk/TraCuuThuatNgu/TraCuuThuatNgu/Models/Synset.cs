@@ -23,6 +23,7 @@ namespace TraCuuThuatNgu.Models
         public string Category { get; set; }
         public string Def { get; set; }
         public string Exa { get; set; }
+        public string Words { get; set; }
     
         public virtual ICollection<Entry> Entries { get; set; }
     }

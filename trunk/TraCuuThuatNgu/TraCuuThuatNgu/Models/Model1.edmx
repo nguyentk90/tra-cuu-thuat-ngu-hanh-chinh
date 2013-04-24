@@ -119,6 +119,7 @@
           </Key>
           <Property Name="SynsetId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Category" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="Words" Type="nvarchar" MaxLength="512" />
           <Property Name="Def" Type="nvarchar" Nullable="false" MaxLength="512" />
           <Property Name="Exa" Type="nvarchar" MaxLength="512" />
         </EntityType>
@@ -401,6 +402,7 @@
           <Property Type="String" Name="Def" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Exa" MaxLength="512" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Entries" Relationship="TraCuuThuatNguModel.Relation" FromRole="Synset" ToRole="Entry" />
+          <Property Type="String" Name="Words" MaxLength="512" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Entry">
           <Key>
@@ -539,6 +541,7 @@
           <EntitySetMapping Name="Synsets">
             <EntityTypeMapping TypeName="TraCuuThuatNguModel.Synset">
               <MappingFragment StoreEntitySet="Synset">
+                <ScalarProperty Name="Words" ColumnName="Words" />
                 <ScalarProperty Name="Exa" ColumnName="Exa" />
                 <ScalarProperty Name="Def" ColumnName="Def" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
