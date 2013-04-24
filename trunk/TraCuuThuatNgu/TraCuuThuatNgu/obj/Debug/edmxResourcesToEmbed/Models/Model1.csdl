@@ -156,6 +156,7 @@
     <Property Type="String" Name="Def" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="Exa" MaxLength="512" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Entries" Relationship="TraCuuThuatNguModel.Relation" FromRole="Synset" ToRole="Entry" />
+    <Property Type="String" Name="Words" MaxLength="512" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Entry">
     <Key>

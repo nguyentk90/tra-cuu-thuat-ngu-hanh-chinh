@@ -114,6 +114,7 @@
     </Key>
     <Property Name="SynsetId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Category" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="Words" Type="nvarchar" MaxLength="512" />
     <Property Name="Def" Type="nvarchar" Nullable="false" MaxLength="512" />
     <Property Name="Exa" Type="nvarchar" MaxLength="512" />
   </EntityType>
