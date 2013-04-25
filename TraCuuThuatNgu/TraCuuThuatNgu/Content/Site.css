@@ -672,6 +672,7 @@ div#title
 /*Logon Form*/
 .logon-wapper
 {
+    float:right;
     width: 400px;
     margin: 20px auto;
     padding: 20px;
@@ -991,4 +992,15 @@ table
     background: url('img/delete-icon.png') left center no-repeat transparent;
     padding-left: 18px;
     font-size: 16px;
+}
+
+
+/*Login info*/
+.logon-info
+{
+    float:left;
+}
+.logon-info p, h1
+{
+    padding-left:13px;    
 }
