@@ -164,10 +164,21 @@ namespace TraCuuThuatNgu.Controllers
             {
                 // Attempt to register the user
                 MembershipCreateStatus createStatus;
-                Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
+                MembershipUser newUser = Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
+                    // User profile
+                    Guid userId = (Guid)newUser.ProviderUserKey;
+                    Profile profile = new Profile();
+                    profile.UserId = userId;
+                    profile.Fullname = model.FullName;
+
+                    TraCuuThuatNguEntities context = new TraCuuThuatNguEntities();
+                    context.Profiles.Add(profile);
+                    context.SaveChanges();
+                    // --
+
                     FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
                     return RedirectToAction("Index", "Home");
                 }

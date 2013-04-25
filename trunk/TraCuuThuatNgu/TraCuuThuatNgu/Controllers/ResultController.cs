@@ -93,6 +93,9 @@ namespace TraCuuThuatNgu.Controllers
             ((List<string>)Session["Recent"]).Reverse();
             //---------------------------------------
 
+            //ViewBag.Title
+            ViewBag.Title = "Kết quả tra cứu cho '"+keyword+"'";
+
             return View(resultViewModel);
         }
     }

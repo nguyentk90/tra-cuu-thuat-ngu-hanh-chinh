@@ -44,24 +44,28 @@ namespace TraCuuThuatNgu.Models
 
     public class RegisterModel
     {
-        [Required]
+        [Required(ErrorMessage = "Bạn chưa nhập họ tên.")]
+        [Display(Name = "Full name")]
+        public string FullName { get; set; }
+
+        [Required(ErrorMessage = "Bạn chưa nhập tên đăng nhập.")]
         [Display(Name = "User name")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Bạn chưa nhập địa chỉ mail.")]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email address")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Bạn chưa nhập mật khẩu.")]
+        [StringLength(100, ErrorMessage = "Mật khẩu phải nhiều hơn 6 kí tự.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "Không trùng với mật khẩu nhập ở trên.")]
         public string ConfirmPassword { get; set; }
     }
 }
