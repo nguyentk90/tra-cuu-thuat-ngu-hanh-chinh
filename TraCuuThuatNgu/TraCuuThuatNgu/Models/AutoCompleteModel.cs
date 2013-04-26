@@ -14,7 +14,7 @@ namespace TraCuuThuatNgu.Models
             List<string> listSuggest = new List<string>();
 
             //Get suggest from Search History Order by Counter DESC
-            var suggestWordsFromSearchHistories = context.SearchHistories.Where(x => x.Keyword.Contains(prefix))
+            var suggestWordsFromSearchHistories = context.SearchHistories.Where(x => x.Keyword.Contains(prefix)&& x.IsExist==true)
                 .OrderByDescending(x => x.Counter)
                 .Select(x => x.Keyword).Take(8);
 
