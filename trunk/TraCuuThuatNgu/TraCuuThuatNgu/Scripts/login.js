@@ -23,7 +23,15 @@
     $('.popUpLogon').click(popUpLogonOpen);
 
     //Close logon popup
-    $('#close-popup').click(popUpLogonClose);
+    $('.close-popup').click(popUpLogonClose);
+
+    //-----------------------------------------------------------
+    
+     //Open Add Content popup
+    $('#add-content-btn').click(popUpAddContentOpen);
+
+    //Close Add Content popup
+    $('.close-popup').click(popUpAddContentClose);
 
 
     /*LIKE*/
@@ -154,7 +162,8 @@
 });
 
 
-
+/*LOGIN POPUP FUNCTION*/
+//-------------------------------
 function popUpLogonOpen() {
     //over-lay
     var windowWidth = $(window).width();
@@ -166,16 +175,39 @@ function popUpLogonOpen() {
     //popup div
     var top = windowHeight / 2 - $('.ui-dialog').height() / 2;
     var left = windowWidth / 2 - $('.ui-dialog').width() / 2;
-    console.log(top + "-" + left)
-    $('.ui-dialog').css("top", top + "px");
-    $('.ui-dialog').css("left", left + "px");
-    $('.ui-dialog').slideDown('slow');
-
-    //focus to input field
-    //$('#UserName').focus();
+    //console.log(top + "-" + left)
+    $('#logon-popup').css("top", top + "px");
+    $('#logon-popup').css("left", left + "px");
+    $('#logon-popup').slideDown('slow'); 
 }
 
 function popUpLogonClose() {
     $('.ui-widget-overlay').hide();
-    $('.ui-dialog').hide();
+    $('#logon-popup').hide();
 }
+//-------------------------------------
+
+/*ADD CONTENT POPUP FUNCTION*/
+//-------------------------------
+function popUpAddContentOpen() {
+    //over-lay
+    var windowWidth = $(window).width();
+    var windowHeight = $(window).height();
+    $('.ui-widget-overlay').css("width", windowWidth + "px");
+    $('.ui-widget-overlay').css("height", windowHeight + "px");
+    $('.ui-widget-overlay').css("opacity", 0.25);
+    $('.ui-widget-overlay').show();
+
+    //popup div
+    var position =  $('#add-content-btn').position();    
+
+    $('#add-content-popup').css("top", position.top + 15 + "px");
+    $('#add-content-popup').css("left", position.left - 484 + 113 + "px");
+    $('#add-content-popup').slideDown('slow');
+}
+
+function popUpAddContentClose() {
+    $('.ui-widget-overlay').hide();
+    $('#add-content-popup').hide();
+}
+//-------------------------------------
