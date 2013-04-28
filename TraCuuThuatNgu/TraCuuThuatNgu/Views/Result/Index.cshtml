@@ -37,7 +37,7 @@
                 <p style="float: left">
                     Không tìm thấy</p>
             }
-            <a style="float: right" href="#" class="btn-link btn-add">Thêm đóng góp</a>
+            <a style="float: right" href="#" id="add-content-btn" class="btn-link btn-add">Thêm đóng góp</a>
             <div class="clear">
             </div>
         </div>
@@ -227,3 +227,4 @@
 <div class="clear">
 </div>
 @Html.Partial("_LogOnPopUp", Model.LogOnModel)
+@Html.Partial("_AddContent", Model.LogOnModel)

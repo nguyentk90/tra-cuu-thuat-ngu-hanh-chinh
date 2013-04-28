@@ -22,6 +22,7 @@ namespace TraCuuThuatNgu.Models
 
             // Count words in suggest Search History
             int count = suggestWordsFromSearchHistories.Count();
+           
 
             // Check count
             if (count >= 8)
