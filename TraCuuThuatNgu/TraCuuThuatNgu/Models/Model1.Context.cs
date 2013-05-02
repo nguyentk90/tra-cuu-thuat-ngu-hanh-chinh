@@ -35,5 +35,6 @@ namespace TraCuuThuatNgu.Models
         public DbSet<Synset> Synsets { get; set; }
         public DbSet<Entry> Entries { get; set; }
         public DbSet<UserHistory> UserHistories { get; set; }
+        public DbSet<RawData> RawDatas { get; set; }
     }
 }

@@ -835,6 +835,12 @@ div#title
 	background: url('img/icons/ws/ic_zoom.png') center center no-repeat transparent;
 }
 
+.icm-favorite
+{
+   background: url('img/icons/ws/ic_favorite.png') center center no-repeat transparent; 
+}
+
+
 [class*="icm-"]
 {
 	margin-left: 10px;
@@ -997,7 +1003,12 @@ table
 	font-size: 16px;
 }
 
-
+.btn-edit
+{
+	background: url('img/edit-icon.png') left center no-repeat transparent;
+	padding-left: 18px;
+	font-size: 16px;
+}
 /*Login info*/
 .logon-info
 {
@@ -1043,5 +1054,12 @@ table
 
 .add-content
 {
-	
+	width:442px;
+}
+.add-content-form
+{
+    padding:0px;
+}
+.add-content-form .editor-label {
+    width: 85px;
 }

@@ -106,5 +106,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="RawDatas">
+      <EntityTypeMapping TypeName="TraCuuThuatNguModel.RawData">
+        <MappingFragment StoreEntitySet="RawData">
+          <ScalarProperty Name="DateAdd" ColumnName="DateAdd" />
+          <ScalarProperty Name="Exa" ColumnName="Exa" />
+          <ScalarProperty Name="Def" ColumnName="Def" />
+          <ScalarProperty Name="Catagory" ColumnName="Catagory" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+          <ScalarProperty Name="RawDataID" ColumnName="RawDataID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
