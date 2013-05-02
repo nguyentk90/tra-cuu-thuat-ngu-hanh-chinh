@@ -6,6 +6,7 @@
     <EntitySet Name="Entry" EntityType="TraCuuThuatNguModel.Store.Entry" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Favorite" EntityType="TraCuuThuatNguModel.Store.Favorite" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Profile" EntityType="TraCuuThuatNguModel.Store.Profile" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RawData" EntityType="TraCuuThuatNguModel.Store.RawData" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Relation" EntityType="TraCuuThuatNguModel.Store.Relation" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SearchHistory" EntityType="TraCuuThuatNguModel.Store.SearchHistory" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Synset" EntityType="TraCuuThuatNguModel.Store.Synset" store:Type="Tables" Schema="dbo" />
@@ -23,6 +24,10 @@
     <AssociationSet Name="FK_Profile_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_Profile_aspnet_Users">
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
       <End Role="Profile" EntitySet="Profile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RawData_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_RawData_aspnet_Users">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="RawData" EntitySet="RawData" />
     </AssociationSet>
     <AssociationSet Name="FK_Relation_Entry" Association="TraCuuThuatNguModel.Store.FK_Relation_Entry">
       <End Role="Entry" EntitySet="Entry" />
@@ -91,13 +96,25 @@
     <Property Name="Fullname" Type="nvarchar" MaxLength="256" />
     <Property Name="Birthday" Type="date" />
   </EntityType>
+  <EntityType Name="RawData">
+    <Key>
+      <PropertyRef Name="RawDataID" />
+    </Key>
+    <Property Name="RawDataID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Keyword" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Catagory" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="Def" Type="nvarchar" Nullable="false" MaxLength="512" />
+    <Property Name="Exa" Type="nvarchar" MaxLength="512" />
+    <Property Name="DateAdd" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="Relation">
     <Key>
-      <PropertyRef Name="SynsetId" />
       <PropertyRef Name="HeadWord" />
+      <PropertyRef Name="SynsetId" />
     </Key>
-    <Property Name="SynsetId" Type="int" Nullable="false" />
     <Property Name="HeadWord" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="SynsetId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SearchHistory">
     <Key>
@@ -173,6 +190,18 @@
         <PropertyRef Name="UserId" />
       </Principal>
       <Dependent Role="Profile">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RawData_aspnet_Users">
+    <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="1" />
+    <End Role="RawData" Type="TraCuuThuatNguModel.Store.RawData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="RawData">
         <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>

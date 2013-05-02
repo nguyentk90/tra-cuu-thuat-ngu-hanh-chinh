@@ -19,6 +19,7 @@ namespace TraCuuThuatNgu.Models
             this.Comments = new HashSet<Comment>();
             this.Favorites = new HashSet<Favorite>();
             this.UserHistories = new HashSet<UserHistory>();
+            this.RawDatas = new HashSet<RawData>();
         }
     
         public System.Guid ApplicationId { get; set; }
@@ -33,5 +34,6 @@ namespace TraCuuThuatNgu.Models
         public virtual ICollection<Favorite> Favorites { get; set; }
         public virtual Profile Profile { get; set; }
         public virtual ICollection<UserHistory> UserHistories { get; set; }
+        public virtual ICollection<RawData> RawDatas { get; set; }
     }
 }

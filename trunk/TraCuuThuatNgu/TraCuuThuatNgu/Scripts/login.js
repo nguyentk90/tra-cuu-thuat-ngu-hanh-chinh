@@ -157,6 +157,62 @@
         }           
     });
 
+    /*DELETE USER ADD CONTENT*/
+    $(".btn-add-content").click(function(){
+            
+        var checkDelete = confirm('Bạn có chắc muốn xóa không?');
+
+        var row = $(this).parent().parent();
+
+        if (checkDelete) {        
+            $.ajax({
+                url: '/AddContent/Delete',
+                type: 'POST',
+                data: "{ 'rawDataID': '" + $(this).children().val() + "'}",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data.message == 'SUCCESS') {                        
+                        row.slideUp('slow');
+                    } else {
+                        alert("Lỗi");
+                    } 
+                },
+                error: function () {
+                    alert("error");
+                }
+            });            
+        }           
+    });
+
+
+    /*ADD CONTENT*/
+    $("#add-content-submit").click(function () {
+        if ($.trim($("#def").val()) == "") {
+            alert("Bạn chưa nhập nội dung."); 
+            $("#def").focus();           
+        } else {             
+           $.ajax({
+                url: '/AddContent/Add',
+                type: 'POST',
+                data: "{ 'def': '" + $("#def").val() + "','catagory': '" + $("#catagory").val() + "','keyword': '" + $("#keyword").text() + "',"
+                + "'exa': '" + $("#exa").val() + "'}",                
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data.message == 'SUCCESS') {                        
+                         alert('Cảm ơn bạn đã đóng góp nội dung!');
+                    } else {
+                        alert("Lỗi");
+                    } 
+                },
+                error: function () {
+                    alert("error");
+                }
+            });                           
+        }
+    });
+
+    //close add content form
+    $("#add-content-close").click(popUpAddContentClose);
 
 
 });
@@ -204,6 +260,10 @@ function popUpAddContentOpen() {
     $('#add-content-popup').css("top", position.top + 15 + "px");
     $('#add-content-popup').css("left", position.left - 484 + 113 + "px");
     $('#add-content-popup').slideDown('slow');
+
+    //clear form
+    $("#def").val("");
+    $("#exa").val("");
 }
 
 function popUpAddContentClose() {
@@ -211,3 +271,15 @@ function popUpAddContentClose() {
     $('#add-content-popup').hide();
 }
 //-------------------------------------
+
+//validate function
+function validateRequired(id)
+{
+    var element = $("'#"+id+"'");
+    if ($.trim(element.val()) == "") {
+            alert("Bạn chưa nhập từ");
+            return false;            
+        } else {             
+            return true;                       
+        }
+}

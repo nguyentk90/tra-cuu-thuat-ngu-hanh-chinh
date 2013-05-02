@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TraCuuThuatNgu.Models;
+using TraCuuThuatNgu.ViewModels;
 
 namespace TraCuuThuatNgu.Controllers
 {
@@ -12,9 +13,31 @@ namespace TraCuuThuatNgu.Controllers
         //
         // GET: /ManageEntries/
 
-        public ActionResult Index()
+        public ActionResult Index(int? page, string startWith)
         {
-            return View();
+            EntriesModel entriesModel = new EntriesModel();
+            EntriesViewModel viewModel = new EntriesViewModel();
+
+            int size = 5;
+
+            var pageNumber = page ?? 1;
+
+            var startW = String.IsNullOrEmpty(startWith) ? "none" : startWith;
+
+
+            if (startW.Equals("none"))
+            {
+                viewModel.AllEntries = entriesModel.GetEntriesPaged(pageNumber, size);
+            }
+            else
+            {
+                viewModel.AllEntries = entriesModel.GetEntriesByStartWithPaged(pageNumber, size, startW);
+            }
+
+
+            ViewBag.Size = size;
+
+            return View(viewModel);
         }
 
 
@@ -22,8 +45,6 @@ namespace TraCuuThuatNgu.Controllers
         // GET: /ManageEntries/Add        
         public ActionResult Add()
         {
-
-
             return View();
         }
 
@@ -31,11 +52,32 @@ namespace TraCuuThuatNgu.Controllers
         //
         // POST: /ManageEntries/Add
         [HttpPost]
-        public ActionResult Add(Entry entry)
+        public ActionResult Add(AddTermViewModel term)
         {
+            EntriesModel entriesModel = new EntriesModel();
+            entriesModel.AddNewTermOrSynset(term);
+            return View();
+        }
 
+        //delete synset
+        [Authorize]
+        public ActionResult Delete(int synsetId,string headWord)
+        {
+            EntriesModel entriesModel = new EntriesModel();
+
+            entriesModel.DeleteSynsetBySynsetId(synsetId, headWord);
 
             return View();
+        }
+
+        //edit synset
+        [HttpGet]
+        public ActionResult Edit(int synsetId, string headWord)
+        {
+            
+            EntriesModel entriesModel = new EntriesModel();
+            AddTermViewModel editSynset = entriesModel.ViewEditSynset(synsetId, headWord);           
+            return View(editSynset);
         }
 
     }

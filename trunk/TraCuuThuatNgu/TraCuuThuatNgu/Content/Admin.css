@@ -253,3 +253,16 @@ footer, #footer
     float:right;   
     color:#fff; 
 }
+
+/* aphab-list */
+.aphab-list a
+{
+    margin-right:10px;
+    text-decoration:underline;    
+}
+
+.synset-item:after
+{
+    content: ",";
+    
+}

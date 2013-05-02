@@ -11,6 +11,7 @@
           <EntitySet Name="Entry" EntityType="TraCuuThuatNguModel.Store.Entry" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Favorite" EntityType="TraCuuThuatNguModel.Store.Favorite" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Profile" EntityType="TraCuuThuatNguModel.Store.Profile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RawData" EntityType="TraCuuThuatNguModel.Store.RawData" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Relation" EntityType="TraCuuThuatNguModel.Store.Relation" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SearchHistory" EntityType="TraCuuThuatNguModel.Store.SearchHistory" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Synset" EntityType="TraCuuThuatNguModel.Store.Synset" store:Type="Tables" Schema="dbo" />
@@ -28,6 +29,10 @@
           <AssociationSet Name="FK_Profile_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_Profile_aspnet_Users">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Profile" EntitySet="Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RawData_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_RawData_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="RawData" EntitySet="RawData" />
           </AssociationSet>
           <AssociationSet Name="FK_Relation_Entry" Association="TraCuuThuatNguModel.Store.FK_Relation_Entry">
             <End Role="Entry" EntitySet="Entry" />
@@ -96,13 +101,25 @@
           <Property Name="Fullname" Type="nvarchar" MaxLength="256" />
           <Property Name="Birthday" Type="date" />
         </EntityType>
+        <EntityType Name="RawData">
+          <Key>
+            <PropertyRef Name="RawDataID" />
+          </Key>
+          <Property Name="RawDataID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Keyword" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Catagory" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="Def" Type="nvarchar" Nullable="false" MaxLength="512" />
+          <Property Name="Exa" Type="nvarchar" MaxLength="512" />
+          <Property Name="DateAdd" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Relation">
           <Key>
-            <PropertyRef Name="SynsetId" />
             <PropertyRef Name="HeadWord" />
+            <PropertyRef Name="SynsetId" />
           </Key>
-          <Property Name="SynsetId" Type="int" Nullable="false" />
           <Property Name="HeadWord" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="SynsetId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="SearchHistory">
           <Key>
@@ -178,6 +195,18 @@
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Profile">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RawData_aspnet_Users">
+          <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="RawData" Type="TraCuuThuatNguModel.Store.RawData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="RawData">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -285,6 +314,11 @@
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="UserHistory" EntitySet="UserHistories" />
           </AssociationSet>
+          <EntitySet Name="RawDatas" EntityType="TraCuuThuatNguModel.RawData" />
+          <AssociationSet Name="FK_RawData_aspnet_Users" Association="TraCuuThuatNguModel.FK_RawData_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="RawData" EntitySet="RawDatas" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="aspnet_Users">
           <Key>
@@ -301,6 +335,7 @@
           <NavigationProperty Name="Favorites" Relationship="TraCuuThuatNguModel.FK_YeuThich_aspnet_Users" FromRole="aspnet_Users" ToRole="Favorite" />
           <NavigationProperty Name="Profile" Relationship="TraCuuThuatNguModel.FK_Profile_aspnet_Users" FromRole="aspnet_Users" ToRole="Profile" />
           <NavigationProperty Name="UserHistories" Relationship="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users1" FromRole="aspnet_Users" ToRole="UserHistory" />
+          <NavigationProperty Name="RawDatas" Relationship="TraCuuThuatNguModel.FK_RawData_aspnet_Users" FromRole="aspnet_Users" ToRole="RawData" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -464,6 +499,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="RawData">
+          <Key>
+            <PropertyRef Name="RawDataID" />
+          </Key>
+          <Property Type="Int32" Name="RawDataID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Keyword" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Catagory" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Def" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Exa" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateAdd" Nullable="false" />
+          <NavigationProperty Name="aspnet_Users" Relationship="TraCuuThuatNguModel.FK_RawData_aspnet_Users" FromRole="RawData" ToRole="aspnet_Users" />
+        </EntityType>
+        <Association Name="FK_RawData_aspnet_Users">
+          <End Type="TraCuuThuatNguModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
+          <End Type="TraCuuThuatNguModel.RawData" Role="RawData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="RawData">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -575,6 +635,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="RawDatas">
+            <EntityTypeMapping TypeName="TraCuuThuatNguModel.RawData">
+              <MappingFragment StoreEntitySet="RawData">
+                <ScalarProperty Name="DateAdd" ColumnName="DateAdd" />
+                <ScalarProperty Name="Exa" ColumnName="Exa" />
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="Catagory" ColumnName="Catagory" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+                <ScalarProperty Name="RawDataID" ColumnName="RawDataID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -601,12 +674,12 @@
         <EntityTypeShape EntityType="TraCuuThuatNguModel.Comment" Width="1.5" PointX="6.125" PointY="3.375" Height="2.0853483072916674" />
         <EntityTypeShape EntityType="TraCuuThuatNguModel.Favorite" Width="1.5" PointX="5.125" PointY="1" Height="1.7566536458333353" />
         <EntityTypeShape EntityType="TraCuuThuatNguModel.SearchHistory" Width="1.5" PointX="7.625" PointY="1.25" Height="1.5923063151041674" />
-        <EntityTypeShape EntityType="TraCuuThuatNguModel.Test" Width="1.5" PointX="8" PointY="3.5" Height="1.2636116536458388" />
+        <EntityTypeShape EntityType="TraCuuThuatNguModel.Test" Width="1.5" PointX="1.5" PointY="7.25" Height="1.2636116536458388" />
         <AssociationConnector Association="TraCuuThuatNguModel.FK_BinhLuan_aspnet_Users" >
-          <ConnectorPoint PointX="4.25" PointY="3.0934456380208344" />
-          <ConnectorPoint PointX="5.229166666666667" PointY="3.0934456380208339" />
-          <ConnectorPoint PointX="5.395833333333333" PointY="3.0934456380208344" />
-          <ConnectorPoint PointX="7.125" PointY="3.0934456380208344" />
+          <ConnectorPoint PointX="4.25" PointY="3.0970763229166676" />
+          <ConnectorPoint PointX="5.354166666666667" PointY="3.0970763229166671" />
+          <ConnectorPoint PointX="5.520833333333333" PointY="3.0970763229166676" />
+          <ConnectorPoint PointX="7.125" PointY="3.0970763229166676" />
           <ConnectorPoint PointX="7.125" PointY="3.375" />
         </AssociationConnector>
         <AssociationConnector Association="TraCuuThuatNguModel.FK_YeuThich_aspnet_Users" >
@@ -620,23 +693,30 @@
           <ConnectorPoint PointX="2" PointY="1.9211531575520837" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TraCuuThuatNguModel.Synset" Width="1.5" PointX="6.75" PointY="5.875" Height="1.7566536458333335" />
-        <EntityTypeShape EntityType="TraCuuThuatNguModel.Entry" Width="1.5" PointX="4" PointY="4.75" Height="1.7566536458333353" />
+        <EntityTypeShape EntityType="TraCuuThuatNguModel.Entry" Width="1.5" PointX="4.25" PointY="4.125" Height="1.7566536458333353" />
         <AssociationConnector Association="TraCuuThuatNguModel.FK_BinhLuan_ThuatNgu" >
-          <ConnectorPoint PointX="5.5" PointY="5.1051741536458337" />
-          <ConnectorPoint PointX="6.125" PointY="5.1051741536458337" />
+          <ConnectorPoint PointX="5.75" PointY="4.7926741536458337" />
+          <ConnectorPoint PointX="6.125" PointY="4.7926741536458337" />
         </AssociationConnector>
         <AssociationConnector Association="TraCuuThuatNguModel.FK_YeuThich_ThuatNgu" >
-          <ConnectorPoint PointX="5.3125" PointY="4.75" />
-          <ConnectorPoint PointX="5.3125" PointY="2.7566536458333353" />
+          <ConnectorPoint PointX="5.4375" PointY="4.125" />
+          <ConnectorPoint PointX="5.4375" PointY="2.7566536458333353" />
         </AssociationConnector>
         <AssociationConnector Association="TraCuuThuatNguModel.Relation" >
-          <ConnectorPoint PointX="5.5" PointY="6.1908268229166676" />
-          <ConnectorPoint PointX="6.75" PointY="6.1908268229166676" />
+          <ConnectorPoint PointX="5" PointY="5.8816536458333353" />
+          <ConnectorPoint PointX="5" PointY="6.83550048828125" />
+          <ConnectorPoint PointX="6.75" PointY="6.83550048828125" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TraCuuThuatNguModel.UserHistory" Width="1.5" PointX="1.75" PointY="3.75" Height="1.7566536458333353" />
         <AssociationConnector Association="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users1" >
-          <ConnectorPoint PointX="3" PointY="3.3677376302083339" />
+          <ConnectorPoint PointX="3" PointY="3.5320849609375" />
           <ConnectorPoint PointX="3" PointY="3.75" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TraCuuThuatNguModel.RawData" Width="1.5" PointX="4.25" PointY="7" Height="2.2496956380208317" />
+        <AssociationConnector Association="TraCuuThuatNguModel.FK_RawData_aspnet_Users" >
+          <ConnectorPoint PointX="3.75" PointY="3.5320849609375" />
+          <ConnectorPoint PointX="3.75" PointY="8.9129036458333353" />
+          <ConnectorPoint PointX="4.25" PointY="8.9129036458333353" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
