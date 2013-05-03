@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TraCuuThuatNgu.ViewModels;
+using TraCuuThuatNgu.Models;
 
 namespace TraCuuThuatNgu.Controllers
 {
@@ -14,6 +15,9 @@ namespace TraCuuThuatNgu.Controllers
 
         public ActionResult Index()
         {
+            //3-5-2013
+            //EntriesModel entriesModel = new EntriesModel();
+            //ViewBag.ListWords = entriesModel.SuggestTerm("a");
             
             return View(new CommonViewModel());
         }

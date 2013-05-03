@@ -72,7 +72,6 @@
     <EntitySetMapping Name="Synsets">
       <EntityTypeMapping TypeName="TraCuuThuatNguModel.Synset">
         <MappingFragment StoreEntitySet="Synset">
-          <ScalarProperty Name="Words" ColumnName="Words" />
           <ScalarProperty Name="Exa" ColumnName="Exa" />
           <ScalarProperty Name="Def" ColumnName="Def" />
           <ScalarProperty Name="Category" ColumnName="Category" />
