@@ -266,3 +266,28 @@ footer, #footer
     content: ",";
     
 }
+
+/*LIST SYNONYM*/
+#list-synonyms
+{
+    list-style:none; 
+    padding:0;   
+    margin:0;
+    
+}
+#list-synonyms li
+{  
+    display:inline-block;
+    margin-right:6px;
+}
+#list-synonyms a
+{
+    color:#cccccc;
+    margin-left:2px;    
+}
+
+#list-synonyms .label
+{
+    padding-top:3px;    
+    padding-bottom:3px;
+}

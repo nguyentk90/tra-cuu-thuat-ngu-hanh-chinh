@@ -161,7 +161,6 @@
     <Property Type="String" Name="Category" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Def" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="Exa" MaxLength="512" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="Words" MaxLength="512" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Entries" Relationship="TraCuuThuatNguModel.Relation" FromRole="Synset" ToRole="Entry" />
   </EntityType>
   <EntityType Name="UserHistory">

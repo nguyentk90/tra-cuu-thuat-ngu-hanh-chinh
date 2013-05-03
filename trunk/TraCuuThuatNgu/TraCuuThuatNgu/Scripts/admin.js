@@ -11,14 +11,32 @@ $(document).ready(function () {
 
         if (indexOfPage != -1) {
             if (indexOfOrderBy != -1) {
-                url = url.substr(0, indexOfOrderBy) + "orderby=" + $("#order-search-history").val();                
+                url = url.substr(0, indexOfOrderBy) + "orderby=" + $("#order-search-history").val();
             } else {
                 url = window.location + "&orderby=" + $("#order-search-history").val();
             }
         } else {
-            url = window.location + "?orderby=" + $("#order-search-history").val();           
+            url = window.location + "?orderby=" + $("#order-search-history").val();
         }
         window.location.href = url;
 
+    });
+
+
+    //add synonym
+    $("#add-synonym").click(function () {
+        //check contains in list li
+        if ($.trim($("#input-synonym").val()) == "") {
+            alert("Chưa nhập từ!");
+        } else {
+            if (!$('#list-synonyms li:contains("' + $("#input-synonym").val() + '")').length) {
+                $("#list-synonyms").append("<li><span class='label label-success'>" + $("#input-synonym").val() + " <a title='xóa' class='delete-synonym' href='javascript:'>x</a></span></li>")
+                $("#input-synonym").val("");
+            }
+        }
+    });
+
+    $(".delete-synonym").live('click', function () {
+        $(this).parent().parent().remove();
     });
 });

@@ -136,7 +136,6 @@
           </Key>
           <Property Name="SynsetId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Category" Type="varchar" Nullable="false" MaxLength="1" />
-          <Property Name="Words" Type="nvarchar" MaxLength="512" />
           <Property Name="Def" Type="nvarchar" Nullable="false" MaxLength="512" />
           <Property Name="Exa" Type="nvarchar" MaxLength="512" />
         </EntityType>
@@ -436,7 +435,6 @@
           <Property Type="String" Name="Category" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Def" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Exa" MaxLength="512" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Words" MaxLength="512" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Entries" Relationship="TraCuuThuatNguModel.Relation" FromRole="Synset" ToRole="Entry" />
         </EntityType>
         <EntityType Name="UserHistory">
@@ -601,7 +599,6 @@
           <EntitySetMapping Name="Synsets">
             <EntityTypeMapping TypeName="TraCuuThuatNguModel.Synset">
               <MappingFragment StoreEntitySet="Synset">
-                <ScalarProperty Name="Words" ColumnName="Words" />
                 <ScalarProperty Name="Exa" ColumnName="Exa" />
                 <ScalarProperty Name="Def" ColumnName="Def" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
@@ -714,9 +711,9 @@
           <ConnectorPoint PointX="5.375" PointY="2.9802864583333331" />
         </AssociationConnector>
         <AssociationConnector Association="TraCuuThuatNguModel.Relation" >
-          <ConnectorPoint PointX="4.15625" PointY="6.1052864583333326" />
-          <ConnectorPoint PointX="4.15625" PointY="6.5213937291666664" />
-          <ConnectorPoint PointX="6.75" PointY="6.5213937291666664" />
+          <ConnectorPoint PointX="4.15625" PointY="5.8816536458333326" />
+          <ConnectorPoint PointX="4.15625" PointY="6.4095773229166664" />
+          <ConnectorPoint PointX="6.75" PointY="6.4095773229166664" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

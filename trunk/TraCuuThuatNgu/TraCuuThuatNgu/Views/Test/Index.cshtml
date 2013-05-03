@@ -17,10 +17,13 @@
 <body>
     <a href="#" id="popUpLogon">Pop up</a>
     <div class="div1">
-        <b>aaaa</b>
+        <b>div1</b>
     </div>
     <div>
-        dfkjsdhfkj
+       @* @foreach(var item in ViewBag.ListWords)
+        {
+            <p>@item.HeadWord - @item.WordType</p>
+        }*@
     </div>
     <div class="logon-wapper">
         <h2>

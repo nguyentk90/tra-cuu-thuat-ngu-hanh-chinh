@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using PagedList;
 using TraCuuThuatNgu.ViewModels;
+using System.Data.SqlClient;
 
 namespace TraCuuThuatNgu.Models
 {
@@ -94,18 +95,16 @@ namespace TraCuuThuatNgu.Models
             editSynset.Exa = synset.Exa;
             editSynset.HeadWord = headWord;
 
-            return editSynset;        
+            return editSynset;
         }
 
 
         //suggest freetext
-        public List<string> SuggestTerm(string keyword)
+        public IEnumerable<Entry> SuggestTerm(string keyword)
         {
-            List<string> listSuggest = new List<string>();
-
-            return context.Database.SqlQuery<string>("dbo.fts_termSearch", "bao").ToList();
-
-            //return listSuggest;
+            //IEnumerable<Entry> listSuggest = new IEnumerable<Entry>();
+            return context.Database.SqlQuery<Entry>(
+                "SELECT * FROM udf_termSearch(@param1)", new SqlParameter("param1", "th"));
         }
 
     }
