@@ -296,6 +296,16 @@
             <End Role="Profile" EntitySet="Profiles" />
           </AssociationSet>
           <EntitySet Name="Synsets" EntityType="TraCuuThuatNguModel.Synset" />
+          <EntitySet Name="UserHistories" EntityType="TraCuuThuatNguModel.UserHistory" />
+          <AssociationSet Name="FK_UserHistory_aspnet_Users1" Association="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users1">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="UserHistory" EntitySet="UserHistories" />
+          </AssociationSet>
+          <EntitySet Name="RawDatas" EntityType="TraCuuThuatNguModel.RawData" />
+          <AssociationSet Name="FK_RawData_aspnet_Users" Association="TraCuuThuatNguModel.FK_RawData_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="RawData" EntitySet="RawDatas" />
+          </AssociationSet>
           <EntitySet Name="Entries" EntityType="TraCuuThuatNguModel.Entry" />
           <AssociationSet Name="FK_BinhLuan_ThuatNgu" Association="TraCuuThuatNguModel.FK_BinhLuan_ThuatNgu">
             <End Role="Entry" EntitySet="Entries" />
@@ -308,16 +318,6 @@
           <AssociationSet Name="Relation" Association="TraCuuThuatNguModel.Relation">
             <End Role="Entry" EntitySet="Entries" />
             <End Role="Synset" EntitySet="Synsets" />
-          </AssociationSet>
-          <EntitySet Name="UserHistories" EntityType="TraCuuThuatNguModel.UserHistory" />
-          <AssociationSet Name="FK_UserHistory_aspnet_Users1" Association="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users1">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="UserHistory" EntitySet="UserHistories" />
-          </AssociationSet>
-          <EntitySet Name="RawDatas" EntityType="TraCuuThuatNguModel.RawData" />
-          <AssociationSet Name="FK_RawData_aspnet_Users" Association="TraCuuThuatNguModel.FK_RawData_aspnet_Users">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="RawData" EntitySet="RawDatas" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="aspnet_Users">
@@ -436,47 +436,9 @@
           <Property Type="String" Name="Category" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Def" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Exa" MaxLength="512" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Entries" Relationship="TraCuuThuatNguModel.Relation" FromRole="Synset" ToRole="Entry" />
           <Property Type="String" Name="Words" MaxLength="512" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Entries" Relationship="TraCuuThuatNguModel.Relation" FromRole="Synset" ToRole="Entry" />
         </EntityType>
-        <EntityType Name="Entry">
-          <Key>
-            <PropertyRef Name="HeadWord" />
-          </Key>
-          <Property Type="String" Name="HeadWord" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="WordType" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Comments" Relationship="TraCuuThuatNguModel.FK_BinhLuan_ThuatNgu" FromRole="Entry" ToRole="Comment" />
-          <NavigationProperty Name="Favorites" Relationship="TraCuuThuatNguModel.FK_YeuThich_ThuatNgu" FromRole="Entry" ToRole="Favorite" />
-          <NavigationProperty Name="Synsets" Relationship="TraCuuThuatNguModel.Relation" FromRole="Entry" ToRole="Synset" />
-        </EntityType>
-        <Association Name="FK_BinhLuan_ThuatNgu">
-          <End Type="TraCuuThuatNguModel.Entry" Role="Entry" Multiplicity="1" />
-          <End Type="TraCuuThuatNguModel.Comment" Role="Comment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Entry">
-              <PropertyRef Name="HeadWord" />
-            </Principal>
-            <Dependent Role="Comment">
-              <PropertyRef Name="HeadWord" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_YeuThich_ThuatNgu">
-          <End Type="TraCuuThuatNguModel.Entry" Role="Entry" Multiplicity="1" />
-          <End Type="TraCuuThuatNguModel.Favorite" Role="Favorite" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Entry">
-              <PropertyRef Name="HeadWord" />
-            </Principal>
-            <Dependent Role="Favorite">
-              <PropertyRef Name="HeadWord" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Relation">
-          <End Type="TraCuuThuatNguModel.Entry" Role="Entry" Multiplicity="*" />
-          <End Type="TraCuuThuatNguModel.Synset" Role="Synset" Multiplicity="*" />
-        </Association>
         <EntityType Name="UserHistory">
           <Key>
             <PropertyRef Name="HistoryId" />
@@ -523,6 +485,44 @@
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Entry">
+          <Key>
+            <PropertyRef Name="HeadWord" />
+          </Key>
+          <Property Type="String" Name="HeadWord" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="WordType" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Comments" Relationship="TraCuuThuatNguModel.FK_BinhLuan_ThuatNgu" FromRole="Entry" ToRole="Comment" />
+          <NavigationProperty Name="Favorites" Relationship="TraCuuThuatNguModel.FK_YeuThich_ThuatNgu" FromRole="Entry" ToRole="Favorite" />
+          <NavigationProperty Name="Synsets" Relationship="TraCuuThuatNguModel.Relation" FromRole="Entry" ToRole="Synset" />
+        </EntityType>
+        <Association Name="FK_BinhLuan_ThuatNgu">
+          <End Type="TraCuuThuatNguModel.Entry" Role="Entry" Multiplicity="1" />
+          <End Type="TraCuuThuatNguModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entry">
+              <PropertyRef Name="HeadWord" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="HeadWord" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YeuThich_ThuatNgu">
+          <End Type="TraCuuThuatNguModel.Entry" Role="Entry" Multiplicity="1" />
+          <End Type="TraCuuThuatNguModel.Favorite" Role="Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entry">
+              <PropertyRef Name="HeadWord" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="HeadWord" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relation">
+          <End Type="TraCuuThuatNguModel.Entry" Role="Entry" Multiplicity="*" />
+          <End Type="TraCuuThuatNguModel.Synset" Role="Synset" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -609,22 +609,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Entries">
-            <EntityTypeMapping TypeName="TraCuuThuatNguModel.Entry">
-              <MappingFragment StoreEntitySet="Entry">
-                <ScalarProperty Name="WordType" ColumnName="WordType" />
-                <ScalarProperty Name="HeadWord" ColumnName="HeadWord" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="Relation" TypeName="TraCuuThuatNguModel.Relation" StoreEntitySet="Relation">
-            <EndProperty Name="Synset">
-              <ScalarProperty Name="SynsetId" ColumnName="SynsetId" />
-            </EndProperty>
-            <EndProperty Name="Entry">
-              <ScalarProperty Name="HeadWord" ColumnName="HeadWord" />
-            </EndProperty>
-          </AssociationSetMapping>
           <EntitySetMapping Name="UserHistories">
             <EntityTypeMapping TypeName="TraCuuThuatNguModel.UserHistory">
               <MappingFragment StoreEntitySet="UserHistory">
@@ -648,6 +632,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Entries">
+            <EntityTypeMapping TypeName="TraCuuThuatNguModel.Entry">
+              <MappingFragment StoreEntitySet="Entry">
+                <ScalarProperty Name="WordType" ColumnName="WordType" />
+                <ScalarProperty Name="HeadWord" ColumnName="HeadWord" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Relation" TypeName="TraCuuThuatNguModel.Relation" StoreEntitySet="Relation">
+            <EndProperty Name="Synset">
+              <ScalarProperty Name="SynsetId" ColumnName="SynsetId" />
+            </EndProperty>
+            <EndProperty Name="Entry">
+              <ScalarProperty Name="HeadWord" ColumnName="HeadWord" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -674,49 +674,49 @@
         <EntityTypeShape EntityType="TraCuuThuatNguModel.Comment" Width="1.5" PointX="6.125" PointY="3.375" Height="2.0853483072916674" />
         <EntityTypeShape EntityType="TraCuuThuatNguModel.Favorite" Width="1.5" PointX="5.125" PointY="1" Height="1.7566536458333353" />
         <EntityTypeShape EntityType="TraCuuThuatNguModel.SearchHistory" Width="1.5" PointX="7.625" PointY="1.25" Height="1.5923063151041674" />
-        <EntityTypeShape EntityType="TraCuuThuatNguModel.Test" Width="1.5" PointX="1.5" PointY="7.25" Height="1.2636116536458388" />
+        <EntityTypeShape EntityType="TraCuuThuatNguModel.Test" Width="1.5" PointX="1.625" PointY="8.125" Height="1.4033821614583335" />
         <AssociationConnector Association="TraCuuThuatNguModel.FK_BinhLuan_aspnet_Users" >
-          <ConnectorPoint PointX="4.25" PointY="3.0970763229166676" />
-          <ConnectorPoint PointX="5.354166666666667" PointY="3.0970763229166671" />
-          <ConnectorPoint PointX="5.520833333333333" PointY="3.0970763229166676" />
-          <ConnectorPoint PointX="7.125" PointY="3.0970763229166676" />
-          <ConnectorPoint PointX="7.125" PointY="3.375" />
+          <ConnectorPoint PointX="4.25" PointY="3.6631982421875" />
+          <ConnectorPoint PointX="5.291666666666667" PointY="3.6631982421874993" />
+          <ConnectorPoint PointX="5.458333333333333" PointY="3.6631982421875" />
+          <ConnectorPoint PointX="6.125" PointY="3.6631982421875" />
         </AssociationConnector>
         <AssociationConnector Association="TraCuuThuatNguModel.FK_YeuThich_aspnet_Users" >
-          <ConnectorPoint PointX="4.25" PointY="1.8783268229166676" />
-          <ConnectorPoint PointX="5.125" PointY="1.8783268229166676" />
+          <ConnectorPoint PointX="4.25" PointY="1.9901432291666665" />
+          <ConnectorPoint PointX="5.125" PointY="1.9901432291666665" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="TraCuuThuatNguModel.Topic" Width="1.5" PointX="1.5" PointY="5.875" Height="1.4279589843749996" />
+        <EntityTypeShape EntityType="TraCuuThuatNguModel.Topic" Width="1.5" PointX="1.625" PointY="6.25" Height="1.4033821614583326" />
         <EntityTypeShape EntityType="TraCuuThuatNguModel.Profile" Width="1.5" PointX="0.5" PointY="1.125" Height="1.5923063151041674" />
         <AssociationConnector Association="TraCuuThuatNguModel.FK_Profile_aspnet_Users" >
           <ConnectorPoint PointX="2.75" PointY="1.9211531575520837" />
           <ConnectorPoint PointX="2" PointY="1.9211531575520837" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TraCuuThuatNguModel.Synset" Width="1.5" PointX="6.75" PointY="5.875" Height="1.7566536458333335" />
-        <EntityTypeShape EntityType="TraCuuThuatNguModel.Entry" Width="1.5" PointX="4.25" PointY="4.125" Height="1.7566536458333353" />
-        <AssociationConnector Association="TraCuuThuatNguModel.FK_BinhLuan_ThuatNgu" >
-          <ConnectorPoint PointX="5.75" PointY="4.7926741536458337" />
-          <ConnectorPoint PointX="6.125" PointY="4.7926741536458337" />
-        </AssociationConnector>
-        <AssociationConnector Association="TraCuuThuatNguModel.FK_YeuThich_ThuatNgu" >
-          <ConnectorPoint PointX="5.4375" PointY="4.125" />
-          <ConnectorPoint PointX="5.4375" PointY="2.7566536458333353" />
-        </AssociationConnector>
-        <AssociationConnector Association="TraCuuThuatNguModel.Relation" >
-          <ConnectorPoint PointX="5" PointY="5.8816536458333353" />
-          <ConnectorPoint PointX="5" PointY="6.83550048828125" />
-          <ConnectorPoint PointX="6.75" PointY="6.83550048828125" />
-        </AssociationConnector>
         <EntityTypeShape EntityType="TraCuuThuatNguModel.UserHistory" Width="1.5" PointX="1.75" PointY="3.75" Height="1.7566536458333353" />
         <AssociationConnector Association="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users1" >
-          <ConnectorPoint PointX="3" PointY="3.5320849609375" />
-          <ConnectorPoint PointX="3" PointY="3.75" />
+          <ConnectorPoint PointX="2.75" PointY="3.3627420130208336" />
+          <ConnectorPoint PointX="2.3749975" PointY="3.3627420130208336" />
+          <ConnectorPoint PointX="2.3749975" PointY="3.75" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TraCuuThuatNguModel.RawData" Width="1.5" PointX="4.25" PointY="7" Height="2.2496956380208317" />
         <AssociationConnector Association="TraCuuThuatNguModel.FK_RawData_aspnet_Users" >
-          <ConnectorPoint PointX="3.75" PointY="3.5320849609375" />
-          <ConnectorPoint PointX="3.75" PointY="8.9129036458333353" />
-          <ConnectorPoint PointX="4.25" PointY="8.9129036458333353" />
+          <ConnectorPoint PointX="3.6875" PointY="3.951396484375" />
+          <ConnectorPoint PointX="3.6875" PointY="7.8891910807291659" />
+          <ConnectorPoint PointX="4.25" PointY="7.8891910807291659" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TraCuuThuatNguModel.Entry" Width="1.5" PointX="4.125" PointY="4.125" Height="1.9802864583333326" IsExpanded="true" />
+        <AssociationConnector Association="TraCuuThuatNguModel.FK_BinhLuan_ThuatNgu" >
+          <ConnectorPoint PointX="5.625" PointY="4.9324446614583319" />
+          <ConnectorPoint PointX="6.125" PointY="4.9324446614583319" />
+        </AssociationConnector>
+        <AssociationConnector Association="TraCuuThuatNguModel.FK_YeuThich_ThuatNgu" >
+          <ConnectorPoint PointX="5.375" PointY="4.125" />
+          <ConnectorPoint PointX="5.375" PointY="2.9802864583333331" />
+        </AssociationConnector>
+        <AssociationConnector Association="TraCuuThuatNguModel.Relation" >
+          <ConnectorPoint PointX="4.15625" PointY="6.1052864583333326" />
+          <ConnectorPoint PointX="4.15625" PointY="6.5213937291666664" />
+          <ConnectorPoint PointX="6.75" PointY="6.5213937291666664" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

@@ -21,6 +21,16 @@
       <End Role="Profile" EntitySet="Profiles" />
     </AssociationSet>
     <EntitySet Name="Synsets" EntityType="TraCuuThuatNguModel.Synset" />
+    <EntitySet Name="UserHistories" EntityType="TraCuuThuatNguModel.UserHistory" />
+    <AssociationSet Name="FK_UserHistory_aspnet_Users1" Association="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users1">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="UserHistory" EntitySet="UserHistories" />
+    </AssociationSet>
+    <EntitySet Name="RawDatas" EntityType="TraCuuThuatNguModel.RawData" />
+    <AssociationSet Name="FK_RawData_aspnet_Users" Association="TraCuuThuatNguModel.FK_RawData_aspnet_Users">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="RawData" EntitySet="RawDatas" />
+    </AssociationSet>
     <EntitySet Name="Entries" EntityType="TraCuuThuatNguModel.Entry" />
     <AssociationSet Name="FK_BinhLuan_ThuatNgu" Association="TraCuuThuatNguModel.FK_BinhLuan_ThuatNgu">
       <End Role="Entry" EntitySet="Entries" />
@@ -33,16 +43,6 @@
     <AssociationSet Name="Relation" Association="TraCuuThuatNguModel.Relation">
       <End Role="Entry" EntitySet="Entries" />
       <End Role="Synset" EntitySet="Synsets" />
-    </AssociationSet>
-    <EntitySet Name="UserHistories" EntityType="TraCuuThuatNguModel.UserHistory" />
-    <AssociationSet Name="FK_UserHistory_aspnet_Users1" Association="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users1">
-      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-      <End Role="UserHistory" EntitySet="UserHistories" />
-    </AssociationSet>
-    <EntitySet Name="RawDatas" EntityType="TraCuuThuatNguModel.RawData" />
-    <AssociationSet Name="FK_RawData_aspnet_Users" Association="TraCuuThuatNguModel.FK_RawData_aspnet_Users">
-      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-      <End Role="RawData" EntitySet="RawDatas" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="aspnet_Users">
@@ -161,47 +161,9 @@
     <Property Type="String" Name="Category" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Def" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="Exa" MaxLength="512" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Entries" Relationship="TraCuuThuatNguModel.Relation" FromRole="Synset" ToRole="Entry" />
     <Property Type="String" Name="Words" MaxLength="512" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Entries" Relationship="TraCuuThuatNguModel.Relation" FromRole="Synset" ToRole="Entry" />
   </EntityType>
-  <EntityType Name="Entry">
-    <Key>
-      <PropertyRef Name="HeadWord" />
-    </Key>
-    <Property Type="String" Name="HeadWord" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="WordType" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Comments" Relationship="TraCuuThuatNguModel.FK_BinhLuan_ThuatNgu" FromRole="Entry" ToRole="Comment" />
-    <NavigationProperty Name="Favorites" Relationship="TraCuuThuatNguModel.FK_YeuThich_ThuatNgu" FromRole="Entry" ToRole="Favorite" />
-    <NavigationProperty Name="Synsets" Relationship="TraCuuThuatNguModel.Relation" FromRole="Entry" ToRole="Synset" />
-  </EntityType>
-  <Association Name="FK_BinhLuan_ThuatNgu">
-    <End Type="TraCuuThuatNguModel.Entry" Role="Entry" Multiplicity="1" />
-    <End Type="TraCuuThuatNguModel.Comment" Role="Comment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Entry">
-        <PropertyRef Name="HeadWord" />
-      </Principal>
-      <Dependent Role="Comment">
-        <PropertyRef Name="HeadWord" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_YeuThich_ThuatNgu">
-    <End Type="TraCuuThuatNguModel.Entry" Role="Entry" Multiplicity="1" />
-    <End Type="TraCuuThuatNguModel.Favorite" Role="Favorite" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Entry">
-        <PropertyRef Name="HeadWord" />
-      </Principal>
-      <Dependent Role="Favorite">
-        <PropertyRef Name="HeadWord" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="Relation">
-    <End Type="TraCuuThuatNguModel.Entry" Role="Entry" Multiplicity="*" />
-    <End Type="TraCuuThuatNguModel.Synset" Role="Synset" Multiplicity="*" />
-  </Association>
   <EntityType Name="UserHistory">
     <Key>
       <PropertyRef Name="HistoryId" />
@@ -248,5 +210,43 @@
         <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Entry">
+    <Key>
+      <PropertyRef Name="HeadWord" />
+    </Key>
+    <Property Type="String" Name="HeadWord" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="WordType" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Comments" Relationship="TraCuuThuatNguModel.FK_BinhLuan_ThuatNgu" FromRole="Entry" ToRole="Comment" />
+    <NavigationProperty Name="Favorites" Relationship="TraCuuThuatNguModel.FK_YeuThich_ThuatNgu" FromRole="Entry" ToRole="Favorite" />
+    <NavigationProperty Name="Synsets" Relationship="TraCuuThuatNguModel.Relation" FromRole="Entry" ToRole="Synset" />
+  </EntityType>
+  <Association Name="FK_BinhLuan_ThuatNgu">
+    <End Type="TraCuuThuatNguModel.Entry" Role="Entry" Multiplicity="1" />
+    <End Type="TraCuuThuatNguModel.Comment" Role="Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entry">
+        <PropertyRef Name="HeadWord" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="HeadWord" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_YeuThich_ThuatNgu">
+    <End Type="TraCuuThuatNguModel.Entry" Role="Entry" Multiplicity="1" />
+    <End Type="TraCuuThuatNguModel.Favorite" Role="Favorite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entry">
+        <PropertyRef Name="HeadWord" />
+      </Principal>
+      <Dependent Role="Favorite">
+        <PropertyRef Name="HeadWord" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Relation">
+    <End Type="TraCuuThuatNguModel.Entry" Role="Entry" Multiplicity="*" />
+    <End Type="TraCuuThuatNguModel.Synset" Role="Synset" Multiplicity="*" />
   </Association>
 </Schema>

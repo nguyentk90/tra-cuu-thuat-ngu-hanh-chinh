@@ -47,7 +47,7 @@ namespace TraCuuThuatNgu.Models
 
                 //synset
                 Synset synset = new Synset();
-                synset.Category = "n";
+                synset.Category = term.Catagory;
                 synset.Def = term.Def;
                 synset.Exa = term.Exa;
 
@@ -95,6 +95,17 @@ namespace TraCuuThuatNgu.Models
             editSynset.HeadWord = headWord;
 
             return editSynset;        
+        }
+
+
+        //suggest freetext
+        public List<string> SuggestTerm(string keyword)
+        {
+            List<string> listSuggest = new List<string>();
+
+            return context.Database.SqlQuery<string>("dbo.fts_termSearch", "bao").ToList();
+
+            //return listSuggest;
         }
 
     }

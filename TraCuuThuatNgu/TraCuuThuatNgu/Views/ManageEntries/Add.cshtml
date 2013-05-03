@@ -35,11 +35,12 @@
                             Loại từ
                         </div>
                         <div class="editor-field">
-                            <select>
-                                <option value="n">Danh từ</option>
-                                <option value="v">Động từ</option>
-                                <option value="a">Tính từ</option>
-                            </select>
+                       @Html.DropDownListFor(m => m.Catagory, new[] {
+new SelectListItem() {Text = "Danh từ", Value = "n",Selected = true},
+new SelectListItem() {Text = "Động từ", Value = "v"},
+new SelectListItem() {Text = "Tính từ", Value = "a"}
+})
+                          
                         </div>
                         <div class="clear">
                         </div>
@@ -80,7 +81,7 @@
                     </div>
                     <div class="editor">
                         <div class="editor-label">
-                            Tập đồng nghĩa
+                            Từ đồng nghĩa
                         </div>
                         <div class="editor-field">
                             @Html.TextBoxFor(m => m.Synonyms)

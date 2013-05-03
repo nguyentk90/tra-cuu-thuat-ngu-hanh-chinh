@@ -15,7 +15,8 @@
 <div class="row-fluid">
     <h2>
         Danh sách thuật ngữ</h2>
-        <a style="float: right;margin-left: 20px;margin-top: -25px;" href="/ManageEntries/Add" id="add-content-btn" class="btn-link btn-add">Thêm thuật ngữ</a>
+    <a style="float: right; margin-left: 20px; margin-top: -25px;" href="/ManageEntries/Add"
+        id="add-content-btn" class="btn-link btn-add">Thêm thuật ngữ</a>
     <div class="dr">
         <span></span>
     </div>
@@ -91,13 +92,14 @@
                             Giải thích
                         </th>
                         <th width="18%">
-                            Tập đồng nghĩa
+                            Từ đồng nghĩa
                         </th>
                         <th width="20%">
                             Ví dụ
                         </th>
                         <th width="10%">
-                            <center>Thao tác</center>
+                            <center>
+                                Thao tác</center>
                         </th>
                     </tr>
                 </thead>
@@ -136,7 +138,10 @@
                             <td>
                                 @foreach (var str in t.Entries)
                                 {
-                                    <span class="synset-item">@str.HeadWord</span>
+                                    if (!str.HeadWord.Equals(item.HeadWord))
+                                    {                                        
+                                        <span class="synset-item">@str.HeadWord</span>                                    
+                                    }
                                 }
                                 <script>$("span").last().removeClass('synset-item');</script>
                             </td>
@@ -144,9 +149,10 @@
                                 @t.Exa
                             </td>
                             <td align="center">
-                               <a style="margin-right:5px" class="btn-edit" title="Sửa" href="/ManageEntries/Edit?synsetId=@t.SynsetId&headWord=@item.HeadWord"></a> <a class="btn-delete synset-delete" href="/ManageEntries/Delete?synsetId=@t.SynsetId&headWord=@item.HeadWord" title="Xóa"> 
-                               <input type="hidden" value="173"/>
-                               </a>
+                                <a style="margin-right:5px" class="btn-edit" title="Sửa" href="/ManageEntries/Edit?synsetId=@t.SynsetId&headWord=@item.HeadWord">
+                                </a><a class="btn-delete synset-delete" href="/ManageEntries/Delete?synsetId=@t.SynsetId&headWord=@item.HeadWord" title="Xóa">
+                                    <input type="hidden" value="173" />
+                                </a>
                             </td>
                         </tr>
                           
