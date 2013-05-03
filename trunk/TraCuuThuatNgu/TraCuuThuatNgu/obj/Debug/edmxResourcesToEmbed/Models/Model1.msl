@@ -80,22 +80,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Entries">
-      <EntityTypeMapping TypeName="TraCuuThuatNguModel.Entry">
-        <MappingFragment StoreEntitySet="Entry">
-          <ScalarProperty Name="WordType" ColumnName="WordType" />
-          <ScalarProperty Name="HeadWord" ColumnName="HeadWord" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="Relation" TypeName="TraCuuThuatNguModel.Relation" StoreEntitySet="Relation">
-      <EndProperty Name="Synset">
-        <ScalarProperty Name="SynsetId" ColumnName="SynsetId" />
-      </EndProperty>
-      <EndProperty Name="Entry">
-        <ScalarProperty Name="HeadWord" ColumnName="HeadWord" />
-      </EndProperty>
-    </AssociationSetMapping>
     <EntitySetMapping Name="UserHistories">
       <EntityTypeMapping TypeName="TraCuuThuatNguModel.UserHistory">
         <MappingFragment StoreEntitySet="UserHistory">
@@ -119,5 +103,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Entries">
+      <EntityTypeMapping TypeName="TraCuuThuatNguModel.Entry">
+        <MappingFragment StoreEntitySet="Entry">
+          <ScalarProperty Name="WordType" ColumnName="WordType" />
+          <ScalarProperty Name="HeadWord" ColumnName="HeadWord" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Relation" TypeName="TraCuuThuatNguModel.Relation" StoreEntitySet="Relation">
+      <EndProperty Name="Synset">
+        <ScalarProperty Name="SynsetId" ColumnName="SynsetId" />
+      </EndProperty>
+      <EndProperty Name="Entry">
+        <ScalarProperty Name="HeadWord" ColumnName="HeadWord" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>
