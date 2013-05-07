@@ -4,8 +4,15 @@
 <style type="text/css">
     .contain_box
     {
-        width: 400px;
+        width: 300px;
         border: 1px solid #ccc;
+        padding:4px 4px;
+    }
+    
+    #discussion
+    {
+        margin-left:0px;   
+        
     }
     
     .question_input
@@ -13,11 +20,21 @@
     }
     .question_item
     {
-        border: 1px solid #3399FF;
+        /*border: 1px solid #3399FF;*/
+        list-style:none;
+        margin-bottom:5px; 
     }
-    .question_item content
+    
+    .question_item .content
     {
         color: #3399FF;
+        border: 1px solid #ccc;
+        padding:5px;
+    }
+    
+    .question_item input
+    {
+       width:100px;
     }
     
     .answer_item
@@ -32,8 +49,8 @@
     <input type="text" id="message" />
     <input type="button" id="sendmessage" value="Send" />
     <input type="hidden" id="displayname" value="@User.Identity.Name" />
-    <div id="discussion">
-        @*<div class="question_item">
+    <ul id="discussion">
+        @*<li class="question_item">
             <div class="content">
                 question
             </div>
@@ -43,8 +60,8 @@
                     <input type="button" id="sendanswer" value="Answer" />
                 </li>
             </ul>
-        </div>*@
-    </div>
+        </li>*@
+    </ul>
 </div>
 <!--Script references. -->
 <!--Reference the SignalR library. -->
@@ -54,22 +71,37 @@
 <!--Add script to update the page and send messages.-->
 <script type="text/javascript">
     $(function () {
+
+        $('.showall').live('click', function () {
+            // $('#answers_' + qid + ' li').hide();
+            
+            var qid = $(this).attr("data-value");
+            $('#answers_' + qid + ' li').show();
+        });
+
         // Declare a proxy to reference the hub. 
         var chat = $.connection.chatHub;
         // Create a function that the hub can call to broadcast messages.
         chat.client.broadcastMessage = function (name, message, type, qid) {
 
             if (type != 'Q') {
-                $('#answers_' + qid).append('<li>' + message + '</li>');
+                var count = $('#answers_' + qid + ' li').size();
+                if (count > 3)
+                    var myvar = count-4 ;
+                //$('#answers_' + qid + ' li').hide();
+                $('#answers_' + qid + ' li').filter(':lt(' + myvar + ')').hide();
+                $('#answers_' + qid).append('<li>' + message + $('#answers_' + qid + ' li').size() + '</li>');
+
             } else {
                 // Html encode display name and message. 
                 var encodedName = $('<div />').text(name).html();
                 var encodedMsg = $('<div />').text(message).html();
                 // Add the message to the page. 
-                $('#discussion').prepend('<div id="' + qid + '" class="question_item">'
+                $('#discussion').prepend('<li id="' + qid + '" class="question_item">'
                 + '<div class="content">'
                     + message
                 + '</div>'
+                + '<p><a class="showall" data-value="' + qid + '" href="javascript:">show all</a></p>'
                 + '<ul id="answers_' + qid + '">'
 
                 + '</ul>'
@@ -78,12 +110,10 @@
                         + '<input type="hidden" value="' + qid + '" />'
                         + '<input type="button" class="sendanswer" value="Answer" name="' + qid + '" />'
                 + '</div>'
-            + '</div>'
+            + '</li>'
 
             );
-
             }
-
         };
         // Get the user name and store it to prepend to messages.
         //$('#displayname').val(prompt('Enter your name:', ''));
@@ -103,6 +133,8 @@
                 var qid = $(this).siblings('input:hidden').val();
                 chat.server.send($('#displayname').val(), answer_text, "A", qid);
             });
+
+
         });
     });
 </script>
