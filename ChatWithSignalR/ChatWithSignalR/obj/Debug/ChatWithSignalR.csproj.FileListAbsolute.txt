@@ -17,3 +17,22 @@ C:\Documents and Settings\Forbes\My Documents\Project Source Code\ChatWithSignal
 C:\Documents and Settings\Forbes\My Documents\Project Source Code\ChatWithSignalR\ChatWithSignalR\obj\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\Forbes\My Documents\Project Source Code\ChatWithSignalR\ChatWithSignalR\obj\Debug\ChatWithSignalR.dll
 C:\Documents and Settings\Forbes\My Documents\Project Source Code\ChatWithSignalR\ChatWithSignalR\obj\Debug\ChatWithSignalR.pdb
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\bin\ChatWithSignalR.dll
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\bin\ChatWithSignalR.pdb
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\bin\EntityFramework.dll
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\bin\Microsoft.AspNet.SignalR.Core.dll
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\bin\Microsoft.AspNet.SignalR.Owin.dll
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\bin\Microsoft.Web.Infrastructure.dll
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\bin\Newtonsoft.Json.dll
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\bin\Owin.dll
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\bin\EntityFramework.xml
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\bin\Microsoft.AspNet.SignalR.Core.xml
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\bin\Microsoft.AspNet.SignalR.Owin.xml
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\bin\Newtonsoft.Json.xml
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\obj\Debug\ResolveAssemblyReference.cache
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\obj\Debug\ChatWithSignalR.dll
+E:\Senior Project\ChatWithSignalR\ChatWithSignalR\obj\Debug\ChatWithSignalR.pdb
