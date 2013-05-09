@@ -28,6 +28,7 @@
 
 .pagination ul > li {
   display: inline;
+  font-weight:bold;
 }
 
 .pagination ul > li > a,
