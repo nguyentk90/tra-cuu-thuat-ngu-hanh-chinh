@@ -17,6 +17,7 @@
     <EntitySetMapping Name="Comments">
       <EntityTypeMapping TypeName="TraCuuThuatNguModel.Comment">
         <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="Reported" ColumnName="Reported" />
           <ScalarProperty Name="DateAdd" ColumnName="DateAdd" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="CmContent" ColumnName="CmContent" />
@@ -79,44 +80,68 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="UserHistories">
-      <EntityTypeMapping TypeName="TraCuuThuatNguModel.UserHistory">
-        <MappingFragment StoreEntitySet="UserHistory">
-          <ScalarProperty Name="DateModify" ColumnName="DateModify" />
+    <EntitySetMapping Name="Answers">
+      <EntityTypeMapping TypeName="TraCuuThuatNguModel.Answer">
+        <MappingFragment StoreEntitySet="Answer">
+          <ScalarProperty Name="Reported" ColumnName="Reported" />
+          <ScalarProperty Name="DateAdd" ColumnName="DateAdd" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="Keyword" ColumnName="Keyword" />
-          <ScalarProperty Name="HistoryId" ColumnName="HistoryId" />
+          <ScalarProperty Name="AContent" ColumnName="AContent" />
+          <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="RawDatas">
-      <EntityTypeMapping TypeName="TraCuuThuatNguModel.RawData">
-        <MappingFragment StoreEntitySet="RawData">
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="TraCuuThuatNguModel.Question">
+        <MappingFragment StoreEntitySet="Question">
+          <ScalarProperty Name="Reported" ColumnName="Reported" />
+          <ScalarProperty Name="DateModify" ColumnName="DateModify" />
+          <ScalarProperty Name="DateAdd" ColumnName="DateAdd" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="QContent" ColumnName="QContent" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserContents">
+      <EntityTypeMapping TypeName="TraCuuThuatNguModel.UserContent">
+        <MappingFragment StoreEntitySet="UserContent">
           <ScalarProperty Name="DateAdd" ColumnName="DateAdd" />
           <ScalarProperty Name="Exa" ColumnName="Exa" />
           <ScalarProperty Name="Def" ColumnName="Def" />
           <ScalarProperty Name="Catagory" ColumnName="Catagory" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Keyword" ColumnName="Keyword" />
-          <ScalarProperty Name="RawDataID" ColumnName="RawDataID" />
+          <ScalarProperty Name="UserContentId" ColumnName="UserContentId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Entries">
-      <EntityTypeMapping TypeName="TraCuuThuatNguModel.Entry">
-        <MappingFragment StoreEntitySet="Entry">
+    <EntitySetMapping Name="WordIndexes">
+      <EntityTypeMapping TypeName="TraCuuThuatNguModel.WordIndex">
+        <MappingFragment StoreEntitySet="WordIndex">
           <ScalarProperty Name="WordType" ColumnName="WordType" />
           <ScalarProperty Name="HeadWord" ColumnName="HeadWord" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="Relation" TypeName="TraCuuThuatNguModel.Relation" StoreEntitySet="Relation">
+    <AssociationSetMapping Name="Relation1" TypeName="TraCuuThuatNguModel.Relation1" StoreEntitySet="Relation">
       <EndProperty Name="Synset">
         <ScalarProperty Name="SynsetId" ColumnName="SynsetId" />
       </EndProperty>
-      <EndProperty Name="Entry">
+      <EndProperty Name="WordIndex">
         <ScalarProperty Name="HeadWord" ColumnName="HeadWord" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="UserHistories">
+      <EntityTypeMapping TypeName="TraCuuThuatNguModel.UserHistory">
+        <MappingFragment StoreEntitySet="UserHistory">
+          <ScalarProperty Name="DateAdd" ColumnName="DateAdd" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+          <ScalarProperty Name="HistoryId" ColumnName="HistoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

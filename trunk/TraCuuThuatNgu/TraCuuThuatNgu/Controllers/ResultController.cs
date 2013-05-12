@@ -27,7 +27,7 @@ namespace TraCuuThuatNgu.Controllers
             ResultViewModel resultViewModel = new ResultViewModel();
 
             // Get entry by keyword
-            Entry entry = resultModel.GetEntryByKeyword(keyword);
+            WordIndex entry = resultModel.GetEntryByKeyword(keyword);
 
             // Property of search history
             bool isExistData = true;

@@ -32,7 +32,7 @@ namespace TraCuuThuatNgu.Models
             else
             {
                 // Get suggest from Entries
-                suggestWordsFromEntries = context.Entries.Where(x => x.HeadWord.Contains(prefix))
+                suggestWordsFromEntries = context.WordIndexes.Where(x => x.HeadWord.Contains(prefix))
               .Select(x => x.HeadWord).Take(8 - count);
 
                 // Add to list

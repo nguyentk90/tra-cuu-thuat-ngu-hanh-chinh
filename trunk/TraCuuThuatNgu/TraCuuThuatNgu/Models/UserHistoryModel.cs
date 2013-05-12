@@ -17,7 +17,7 @@ namespace TraCuuThuatNgu.Models
             UserHistory userHistory = new UserHistory();
             userHistory.Keyword = keyword;
             userHistory.UserId = userId;
-            userHistory.DateModify = DateTime.Now;
+            userHistory.DateAdd = DateTime.Now;
             context.UserHistories.Add(userHistory);
             return context.SaveChanges();
         }
@@ -27,7 +27,7 @@ namespace TraCuuThuatNgu.Models
         {
             Guid userId = (Guid)Membership.GetUser().ProviderUserKey;
 
-            return context.UserHistories.Where(x => x.UserId == userId).OrderByDescending(x => x.DateModify);
+            return context.UserHistories.Where(x => x.UserId == userId).OrderByDescending(x => x.DateAdd);
         }
 
 
@@ -35,7 +35,7 @@ namespace TraCuuThuatNgu.Models
         public IPagedList<UserHistory> GetAllUserHistoryPaged(int page,int pageSize)
         {
             Guid userId = (Guid)Membership.GetUser().ProviderUserKey;
-            return context.UserHistories.Where(x => x.UserId == userId).OrderByDescending(x => x.DateModify).ToPagedList(page,pageSize);
+            return context.UserHistories.Where(x => x.UserId == userId).OrderByDescending(x => x.DateAdd).ToPagedList(page, pageSize);
         }
 
 

@@ -15,7 +15,7 @@ namespace TraCuuThuatNgu.Controllers
         [HttpPost]
         public ActionResult Add(string def, string catagory, string exa, string keyword)
         {
-            RawData rawdata = new RawData();
+            UserContent rawdata = new UserContent();
             rawdata.UserId = (Guid)Membership.GetUser().ProviderUserKey;
             rawdata.Catagory = !String.IsNullOrEmpty(catagory) ? catagory : "";
             rawdata.Keyword = !String.IsNullOrEmpty(keyword) ? keyword : "";

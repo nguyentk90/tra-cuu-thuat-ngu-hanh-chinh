@@ -10,11 +10,11 @@ namespace TraCuuThuatNgu.Models
     public class AddContentModel:CommonModel
     {
         //add new rawdata
-        public int Add(RawData rawdata)
+        public int Add(UserContent rawdata)
         {
             try
             {
-                context.RawDatas.Add(rawdata);
+                context.UserContents.Add(rawdata);
                 return context.SaveChanges();
             }
             catch
@@ -24,17 +24,17 @@ namespace TraCuuThuatNgu.Models
         }
 
         //get all history by userid and paged
-        public IPagedList<RawData> GetAllAddContent(int page, int pageSize)
+        public IPagedList<UserContent> GetAllAddContent(int page, int pageSize)
         {
             Guid userId = (Guid)Membership.GetUser().ProviderUserKey;
-            return context.RawDatas.Where(x => x.UserId == userId).OrderByDescending(x => x.DateAdd ).ToPagedList(page, pageSize);
+            return context.UserContents.Where(x => x.UserId == userId).OrderByDescending(x => x.DateAdd).ToPagedList(page, pageSize);
         }
 
 
         //delete history by historyId       
         public int DeleteAddContent(int rawDataId)
         {
-            context.RawDatas.Remove(context.RawDatas.Find(rawDataId));
+            context.UserContents.Remove(context.UserContents.Find(rawDataId));
             return context.SaveChanges();
         }
 
