@@ -1,36 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="TraCuuThuatNguModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="TraCuuThuatNguModelStoreContainer">
+    <EntitySet Name="Answer" EntityType="TraCuuThuatNguModel.Store.Answer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="aspnet_Users" EntityType="TraCuuThuatNguModel.Store.aspnet_Users" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Comment" EntityType="TraCuuThuatNguModel.Store.Comment" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Entry" EntityType="TraCuuThuatNguModel.Store.Entry" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Favorite" EntityType="TraCuuThuatNguModel.Store.Favorite" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Profile" EntityType="TraCuuThuatNguModel.Store.Profile" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="RawData" EntityType="TraCuuThuatNguModel.Store.RawData" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Question" EntityType="TraCuuThuatNguModel.Store.Question" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Relation" EntityType="TraCuuThuatNguModel.Store.Relation" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SearchHistory" EntityType="TraCuuThuatNguModel.Store.SearchHistory" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Synset" EntityType="TraCuuThuatNguModel.Store.Synset" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Test" EntityType="TraCuuThuatNguModel.Store.Test" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Topic" EntityType="TraCuuThuatNguModel.Store.Topic" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserContent" EntityType="TraCuuThuatNguModel.Store.UserContent" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserHistory" EntityType="TraCuuThuatNguModel.Store.UserHistory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WordIndex" EntityType="TraCuuThuatNguModel.Store.WordIndex" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Answer_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_Answer_aspnet_Users">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Question" Association="TraCuuThuatNguModel.Store.FK_Answer_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
     <AssociationSet Name="FK_BinhLuan_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_BinhLuan_aspnet_Users">
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
       <End Role="Comment" EntitySet="Comment" />
     </AssociationSet>
     <AssociationSet Name="FK_BinhLuan_ThuatNgu" Association="TraCuuThuatNguModel.Store.FK_BinhLuan_ThuatNgu">
-      <End Role="Entry" EntitySet="Entry" />
+      <End Role="WordIndex" EntitySet="WordIndex" />
       <End Role="Comment" EntitySet="Comment" />
     </AssociationSet>
     <AssociationSet Name="FK_Profile_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_Profile_aspnet_Users">
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
       <End Role="Profile" EntitySet="Profile" />
     </AssociationSet>
+    <AssociationSet Name="FK_Question_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_Question_aspnet_Users">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
     <AssociationSet Name="FK_RawData_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_RawData_aspnet_Users">
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-      <End Role="RawData" EntitySet="RawData" />
+      <End Role="UserContent" EntitySet="UserContent" />
     </AssociationSet>
     <AssociationSet Name="FK_Relation_Entry" Association="TraCuuThuatNguModel.Store.FK_Relation_Entry">
-      <End Role="Entry" EntitySet="Entry" />
+      <End Role="WordIndex" EntitySet="WordIndex" />
       <End Role="Relation" EntitySet="Relation" />
     </AssociationSet>
     <AssociationSet Name="FK_Relation_Synset" Association="TraCuuThuatNguModel.Store.FK_Relation_Synset">
@@ -46,10 +60,21 @@
       <End Role="Favorite" EntitySet="Favorite" />
     </AssociationSet>
     <AssociationSet Name="FK_YeuThich_ThuatNgu" Association="TraCuuThuatNguModel.Store.FK_YeuThich_ThuatNgu">
-      <End Role="Entry" EntitySet="Entry" />
+      <End Role="WordIndex" EntitySet="WordIndex" />
       <End Role="Favorite" EntitySet="Favorite" />
     </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="AnswerId" />
+    </Key>
+    <Property Name="AnswerId" Type="int" Nullable="false" />
+    <Property Name="AContent" Type="nvarchar" Nullable="false" MaxLength="1000" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="QuestionId" Type="int" Nullable="false" />
+    <Property Name="DateAdd" Type="datetime" Nullable="false" />
+    <Property Name="Reported" Type="int" />
+  </EntityType>
   <EntityType Name="aspnet_Users">
     <Key>
       <PropertyRef Name="UserId" />
@@ -71,13 +96,7 @@
     <Property Name="CmContent" Type="nvarchar" Nullable="false" MaxLength="500" />
     <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="DateAdd" Type="datetime" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Entry">
-    <Key>
-      <PropertyRef Name="HeadWord" />
-    </Key>
-    <Property Name="HeadWord" Type="nvarchar" Nullable="false" MaxLength="256" />
-    <Property Name="WordType" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="Reported" Type="int" />
   </EntityType>
   <EntityType Name="Favorite">
     <Key>
@@ -96,17 +115,16 @@
     <Property Name="Fullname" Type="nvarchar" MaxLength="256" />
     <Property Name="Birthday" Type="date" />
   </EntityType>
-  <EntityType Name="RawData">
+  <EntityType Name="Question">
     <Key>
-      <PropertyRef Name="RawDataID" />
+      <PropertyRef Name="QuestionId" />
     </Key>
-    <Property Name="RawDataID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Keyword" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="QuestionId" Type="int" Nullable="false" />
+    <Property Name="QContent" Type="nvarchar" Nullable="false" MaxLength="1000" />
     <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="Catagory" Type="varchar" Nullable="false" MaxLength="1" />
-    <Property Name="Def" Type="nvarchar" Nullable="false" MaxLength="512" />
-    <Property Name="Exa" Type="nvarchar" MaxLength="512" />
     <Property Name="DateAdd" Type="datetime" Nullable="false" />
+    <Property Name="DateModify" Type="datetime" Nullable="false" />
+    <Property Name="Reported" Type="int" />
   </EntityType>
   <EntityType Name="Relation">
     <Key>
@@ -122,7 +140,7 @@
     </Key>
     <Property Name="Keyword" Type="nvarchar" Nullable="false" MaxLength="256" />
     <Property Name="IsExist" Type="bit" Nullable="false" />
-    <Property Name="Counter" Type="int" Nullable="false" />
+    <Property Name="Counter" Type="bigint" Nullable="false" />
     <Property Name="DateModify" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Synset">
@@ -131,7 +149,7 @@
     </Key>
     <Property Name="SynsetId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Category" Type="varchar" Nullable="false" MaxLength="1" />
-    <Property Name="Def" Type="nvarchar" Nullable="false" MaxLength="512" />
+    <Property Name="Def" Type="ntext" Nullable="false" />
     <Property Name="Exa" Type="nvarchar" MaxLength="512" />
   </EntityType>
   <EntityType Name="Test">
@@ -148,6 +166,18 @@
     <Property Name="TopicId" Type="varchar" Nullable="false" MaxLength="10" />
     <Property Name="Description" Type="nvarchar" MaxLength="500" />
   </EntityType>
+  <EntityType Name="UserContent">
+    <Key>
+      <PropertyRef Name="UserContentId" />
+    </Key>
+    <Property Name="UserContentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Keyword" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Catagory" Type="varchar" Nullable="false" MaxLength="1" />
+    <Property Name="Def" Type="ntext" Nullable="false" />
+    <Property Name="Exa" Type="nvarchar" MaxLength="512" />
+    <Property Name="DateAdd" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="UserHistory">
     <Key>
       <PropertyRef Name="HistoryId" />
@@ -155,8 +185,39 @@
     <Property Name="HistoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Keyword" Type="nvarchar" Nullable="false" MaxLength="256" />
     <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="DateModify" Type="datetime" />
+    <Property Name="DateAdd" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="WordIndex">
+    <Key>
+      <PropertyRef Name="HeadWord" />
+    </Key>
+    <Property Name="HeadWord" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="WordType" Type="varchar" Nullable="false" MaxLength="1" />
+  </EntityType>
+  <Association Name="FK_Answer_aspnet_Users">
+    <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="1" />
+    <End Role="Answer" Type="TraCuuThuatNguModel.Store.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Question">
+    <End Role="Question" Type="TraCuuThuatNguModel.Store.Question" Multiplicity="1" />
+    <End Role="Answer" Type="TraCuuThuatNguModel.Store.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="QuestionId" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="QuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_BinhLuan_aspnet_Users">
     <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="1" />
     <End Role="Comment" Type="TraCuuThuatNguModel.Store.Comment" Multiplicity="*" />
@@ -170,10 +231,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_BinhLuan_ThuatNgu">
-    <End Role="Entry" Type="TraCuuThuatNguModel.Store.Entry" Multiplicity="1" />
+    <End Role="WordIndex" Type="TraCuuThuatNguModel.Store.WordIndex" Multiplicity="1" />
     <End Role="Comment" Type="TraCuuThuatNguModel.Store.Comment" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Entry">
+      <Principal Role="WordIndex">
         <PropertyRef Name="HeadWord" />
       </Principal>
       <Dependent Role="Comment">
@@ -193,23 +254,35 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_RawData_aspnet_Users">
+  <Association Name="FK_Question_aspnet_Users">
     <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="1" />
-    <End Role="RawData" Type="TraCuuThuatNguModel.Store.RawData" Multiplicity="*" />
+    <End Role="Question" Type="TraCuuThuatNguModel.Store.Question" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="aspnet_Users">
         <PropertyRef Name="UserId" />
       </Principal>
-      <Dependent Role="RawData">
+      <Dependent Role="Question">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RawData_aspnet_Users">
+    <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="1" />
+    <End Role="UserContent" Type="TraCuuThuatNguModel.Store.UserContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserContent">
         <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Relation_Entry">
-    <End Role="Entry" Type="TraCuuThuatNguModel.Store.Entry" Multiplicity="1" />
+    <End Role="WordIndex" Type="TraCuuThuatNguModel.Store.WordIndex" Multiplicity="1" />
     <End Role="Relation" Type="TraCuuThuatNguModel.Store.Relation" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Entry">
+      <Principal Role="WordIndex">
         <PropertyRef Name="HeadWord" />
       </Principal>
       <Dependent Role="Relation">
@@ -254,10 +327,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_YeuThich_ThuatNgu">
-    <End Role="Entry" Type="TraCuuThuatNguModel.Store.Entry" Multiplicity="1" />
+    <End Role="WordIndex" Type="TraCuuThuatNguModel.Store.WordIndex" Multiplicity="1" />
     <End Role="Favorite" Type="TraCuuThuatNguModel.Store.Favorite" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Entry">
+      <Principal Role="WordIndex">
         <PropertyRef Name="HeadWord" />
       </Principal>
       <Dependent Role="Favorite">

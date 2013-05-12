@@ -16,7 +16,7 @@ namespace TraCuuThuatNgu.Models
     {
         public Synset()
         {
-            this.Entries = new HashSet<Entry>();
+            this.WordIndexes = new HashSet<WordIndex>();
         }
     
         public int SynsetId { get; set; }
@@ -24,6 +24,6 @@ namespace TraCuuThuatNgu.Models
         public string Def { get; set; }
         public string Exa { get; set; }
     
-        public virtual ICollection<Entry> Entries { get; set; }
+        public virtual ICollection<WordIndex> WordIndexes { get; set; }
     }
 }

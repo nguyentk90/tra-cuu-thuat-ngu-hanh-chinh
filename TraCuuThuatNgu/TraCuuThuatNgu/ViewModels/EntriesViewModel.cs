@@ -9,6 +9,6 @@ namespace TraCuuThuatNgu.ViewModels
 {
     public class EntriesViewModel
     {
-        public IPagedList<Entry> AllEntries { get; set; }
+        public IPagedList<WordIndex> AllEntries { get; set; }
     }
 }

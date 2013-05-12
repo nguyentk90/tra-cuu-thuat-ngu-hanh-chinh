@@ -11,15 +11,15 @@ namespace TraCuuThuatNgu.Models
     public class EntriesModel : CommonModel
     {
         //get all terms paged x size
-        public IPagedList<Entry> GetEntriesPaged(int page, int size)
+        public IPagedList<WordIndex> GetEntriesPaged(int page, int size)
         {
-            return context.Entries.OrderBy(x => x.HeadWord).ToPagedList(page, size);
+            return context.WordIndexes.OrderBy(x => x.HeadWord).ToPagedList(page, size);
         }
 
         //get terms by startWith paged x size
-        public IPagedList<Entry> GetEntriesByStartWithPaged(int page, int size, string startWith)
+        public IPagedList<WordIndex> GetEntriesByStartWithPaged(int page, int size, string startWith)
         {
-            return context.Entries.Where(x => x.HeadWord.StartsWith(startWith)).OrderBy(x => x.HeadWord).ToPagedList(page, size);
+            return context.WordIndexes.Where(x => x.HeadWord.StartsWith(startWith)).OrderBy(x => x.HeadWord).ToPagedList(page, size);
         }
 
 
@@ -28,12 +28,12 @@ namespace TraCuuThuatNgu.Models
         {
 
             //check isExist term
-            Entry checkTerm = context.Entries.Find(term.HeadWord);
+            WordIndex checkTerm = context.WordIndexes.Find(term.HeadWord);
 
             if (checkTerm == null)
             {
                 //entry
-                Entry newTerm = new Entry();
+                WordIndex newTerm = new WordIndex();
                 newTerm.HeadWord = term.HeadWord;
                 string[] word = term.HeadWord.Split(' ');
 
@@ -53,7 +53,7 @@ namespace TraCuuThuatNgu.Models
                 synset.Exa = term.Exa;
 
                 newTerm.Synsets.Add(synset);
-                context.Entries.Add(newTerm);
+                context.WordIndexes.Add(newTerm);
 
                 int result = context.SaveChanges();
             }
@@ -74,7 +74,7 @@ namespace TraCuuThuatNgu.Models
         {
             Synset synset = context.Synsets.Find(synsetId);
 
-            Entry term = context.Entries.Find(headWord);
+            WordIndex term = context.WordIndexes.Find(headWord);
 
             term.Synsets.Remove(synset);
             context.Synsets.Remove(synset);
@@ -100,10 +100,10 @@ namespace TraCuuThuatNgu.Models
 
 
         //suggest freetext
-        public IEnumerable<Entry> SuggestTerm(string keyword)
+        public IEnumerable<WordIndex> SuggestTerm(string keyword)
         {
             //IEnumerable<Entry> listSuggest = new IEnumerable<Entry>();
-            return context.Database.SqlQuery<Entry>(
+            return context.Database.SqlQuery<WordIndex>(
                 "SELECT * FROM udf_termSearch(@param1)", new SqlParameter("param1", "th"));
         }
 

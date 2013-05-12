@@ -8,9 +8,9 @@ namespace TraCuuThuatNgu.Models
     public class ResultModel : CommonModel
     {
         //get entry by keyword
-        public Entry GetEntryByKeyword(string keyword)
-        {            
-            return context.Entries.Find(keyword);           
+        public WordIndex GetEntryByKeyword(string keyword)
+        {
+            return context.WordIndexes.Find(keyword);           
         }
     }
 }

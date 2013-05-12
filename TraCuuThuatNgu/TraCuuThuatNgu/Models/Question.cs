@@ -12,13 +12,21 @@ namespace TraCuuThuatNgu.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class UserHistory
+    public partial class Question
     {
-        public int HistoryId { get; set; }
-        public string Keyword { get; set; }
+        public Question()
+        {
+            this.Answers = new HashSet<Answer>();
+        }
+    
+        public int QuestionId { get; set; }
+        public string QContent { get; set; }
         public System.Guid UserId { get; set; }
         public System.DateTime DateAdd { get; set; }
+        public System.DateTime DateModify { get; set; }
+        public Nullable<int> Reported { get; set; }
     
+        public virtual ICollection<Answer> Answers { get; set; }
         public virtual aspnet_Users aspnet_Users { get; set; }
     }
 }

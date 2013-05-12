@@ -12,9 +12,9 @@ namespace TraCuuThuatNgu.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Entry
+    public partial class WordIndex
     {
-        public Entry()
+        public WordIndex()
         {
             this.Comments = new HashSet<Comment>();
             this.Favorites = new HashSet<Favorite>();

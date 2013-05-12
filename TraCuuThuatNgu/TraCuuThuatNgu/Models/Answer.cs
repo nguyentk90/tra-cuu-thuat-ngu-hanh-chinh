@@ -12,16 +12,16 @@ namespace TraCuuThuatNgu.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class RawData
+    public partial class Answer
     {
-        public int RawDataID { get; set; }
-        public string Keyword { get; set; }
+        public int AnswerId { get; set; }
+        public string AContent { get; set; }
         public System.Guid UserId { get; set; }
-        public string Catagory { get; set; }
-        public string Def { get; set; }
-        public string Exa { get; set; }
+        public int QuestionId { get; set; }
         public System.DateTime DateAdd { get; set; }
+        public Nullable<int> Reported { get; set; }
     
         public virtual aspnet_Users aspnet_Users { get; set; }
+        public virtual Question Question { get; set; }
     }
 }

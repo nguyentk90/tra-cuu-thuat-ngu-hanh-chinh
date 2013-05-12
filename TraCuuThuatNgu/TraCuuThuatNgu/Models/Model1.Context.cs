@@ -33,8 +33,10 @@ namespace TraCuuThuatNgu.Models
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Synset> Synsets { get; set; }
+        public DbSet<Answer> Answers { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<UserContent> UserContents { get; set; }
+        public DbSet<WordIndex> WordIndexes { get; set; }
         public DbSet<UserHistory> UserHistories { get; set; }
-        public DbSet<RawData> RawDatas { get; set; }
-        public DbSet<Entry> Entries { get; set; }
     }
 }

@@ -8,6 +8,6 @@ namespace TraCuuThuatNgu.ViewModels
 {
     public class ResultViewModel : CommonViewModel
     {
-        public Entry Entry { get; set; }
+        public WordIndex Entry { get; set; }
     }
 }
