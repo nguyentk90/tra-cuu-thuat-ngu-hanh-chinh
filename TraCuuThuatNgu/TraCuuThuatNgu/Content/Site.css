@@ -1000,9 +1000,15 @@ table
 {
 	background: url('img/delete-icon.png') left center no-repeat transparent;
 	padding-left: 18px;
-	font-size: 16px;
+	font-size: 16px;	
 }
-
+.btn-report
+{
+	background: url('img/icons/caution.png') left center no-repeat transparent;	
+	font-size: 16px;
+	width:16px;
+	height:16px;		
+}
 .btn-edit
 {
 	background: url('img/edit-icon.png') left center no-repeat transparent;

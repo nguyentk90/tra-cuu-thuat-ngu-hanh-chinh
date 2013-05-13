@@ -1,43 +1,28 @@
 ﻿@model TraCuuThuatNgu.ViewModels.EntriesViewModel
 @{
-    ViewBag.Title = "Quản lý thuật ngữ";
-    Layout = "~/Views/Shared/_Admin.cshtml";
+    Layout = "~/Views/Shared/_Root.cshtml";
+                    //ViewBag.Title = "Kết quả tra cứu";
 }
 @using PagedList.Mvc;
 @using PagedList;
-<style type="text/css">
-    #ManageEntries
-    {
-        border-color: #143D6B;
-        background: url("/Content/img/backgrounds/menu-item-active.jpg") left top repeat-x;
-    }
-</style>
-<div class="row-fluid">
-    <h2>
-        Danh sách thuật ngữ</h2>
-    <a style="float: right; margin-left: 20px; margin-top: -25px;" href="/ManageEntries/Add"
-        id="add-content-btn" class="btn-link btn-add">Thêm thuật ngữ</a>
-    <div class="dr">
-        <span></span>
-    </div>
-    <div class="span span12">
+<div style="float: left; width: 651px">
+    <div class="span span8">
         <div class="block block-sumary">
             <div class="sumary aphab-list">
-                <a id="all" href="/ManageEntries">Tất cả</a> <a id="A" href="/ManageEntries?startWith=A">
-                    A</a> <a id="B" href="/ManageEntries?startWith=B">B</a> <a id="C" href="/ManageEntries?startWith=C">
-                        C</a> <a id="D" href="/ManageEntries?startWith=D">D</a> <a id="Đ" href="/ManageEntries?startWith=Đ">
-                            Đ</a> <a id="E" href="/ManageEntries?startWith=E">E</a> <a id="G" href="/ManageEntries?startWith=G">
-                                G</a> <a id="H" href="/ManageEntries?startWith=H">H</a> <a id="I" href="/ManageEntries?startWith=I">
-                                    I</a> <a id="J" href="/ManageEntries?startWith=J">J</a> <a id="K" href="/ManageEntries?startWith=K">
-                                        K</a> <a id="L" href="/ManageEntries?startWith=L">L</a>
-                <a id="M" href="/ManageEntries?startWith=M">M</a> <a id="N" href="/ManageEntries?startWith=N">
-                    N</a> <a id="O" href="/ManageEntries?startWith=O">O</a> <a id="P" href="/ManageEntries?startWith=P">
-                        P</a> <a id="Q" href="/ManageEntries?startWith=Q">Q</a> <a id="R" href="/ManageEntries?startWith=R">
-                            R</a> <a id="S" href="/ManageEntries?startWith=S">S</a> <a id="T" href="/ManageEntries?startWith=T">
-                                T</a> <a id="U" href="/ManageEntries?startWith=U">U</a> <a id="V" href="/ManageEntries?startWith=V">
-                                    V</a> <a id="W" href="/ManageEntries?startWith=W">W</a> <a id="X" href="/ManageEntries?startWith=X">
-                                        X</a> <a id="Y" href="/ManageEntries?startWith=Y">Y</a>
-                <a id="Z" href="/ManageEntries?startWith=Z">Z</a>
+                <a id="all" href="/Aphabet">Tất cả</a> <a id="A" href="/Aphabet?startWith=A">A</a>
+                <a id="B" href="/Aphabet?startWith=B">B</a> <a id="C" href="/Aphabet?startWith=C">C</a>
+                <a id="D" href="/Aphabet?startWith=D">D</a> <a id="Đ" href="/Aphabet?startWith=Đ">Đ</a>
+                <a id="E" href="/Aphabet?startWith=E">E</a> <a id="G" href="/Aphabet?startWith=G">G</a>
+                <a id="H" href="/Aphabet?startWith=H">H</a> <a id="I" href="/Aphabet?startWith=I">I</a>
+                <a id="J" href="/Aphabet?startWith=J">J</a> <a id="K" href="/Aphabet?startWith=K">K</a>
+                <a id="L" href="/Aphabet?startWith=L">L</a> <a id="M" href="/Aphabet?startWith=M">M</a>
+                <a id="N" href="/Aphabet?startWith=N">N</a> <a id="O" href="/Aphabet?startWith=O">O</a>
+                <a id="P" href="/Aphabet?startWith=P">P</a> <a id="Q" href="/Aphabet?startWith=Q">Q</a>
+                <a id="R" href="/Aphabet?startWith=R">R</a> <a id="S" href="/Aphabet?startWith=S">S</a>
+                <a id="T" href="/Aphabet?startWith=T">T</a> <a id="U" href="/Aphabet?startWith=U">U</a>
+                <a id="V" href="/Aphabet?startWith=V">V</a> <a id="W" href="/Aphabet?startWith=W">W</a>
+                <a id="X" href="/Aphabet?startWith=X">X</a> <a id="Y" href="/Aphabet?startWith=Y">Y</a>
+                <a id="Z" href="/Aphabet?startWith=Z">Z</a>
                 @if (Request.QueryString["startWith"] != null)
                 {
                     <script type="text/javascript">
@@ -58,7 +43,7 @@
             </div>
         </div>
     </div>
-    <div class="span span12">
+    <div class="span span8">
         <div class="head">
             <div class="icm-list">
             </div>
@@ -85,22 +70,22 @@
                         <th width="15%">
                             Thuật ngữ
                         </th>
-                        <th width="7%">
+                        <th width="10%">
                             Loại từ
                         </th>
-                        <th width="25%">
+                        <th width="35%">
                             Giải thích
                         </th>
-                        <th width="18%">
+                        @*<th width="18%">
                             Từ đồng nghĩa
-                        </th>
-                        <th width="20%">
+                        </th>*@
+                        <th width="30%">
                             Ví dụ
                         </th>
-                        <th width="10%">
+                        @*<th width="10%">
                             <center>
                                 Thao tác</center>
-                        </th>
+                        </th>*@
                     </tr>
                 </thead>
                 <tbody>
@@ -122,7 +107,7 @@
                                 @count
                             </td>
                             <td>
-                                <b>@item.HeadWord</b>
+                                <a href="/Result?keyword=@item.HeadWord"><b>@item.HeadWord</b></a>
                             </td>
                             <td>
                                 @if (t.Category.Equals("n"))
@@ -135,25 +120,25 @@
                             <td>
                                 @t.Def
                             </td>
-                            <td>
+                            @*<td>
                                 @foreach (var str in t.WordIndexes)
                                 {
                                     if (!str.HeadWord.Equals(item.HeadWord))
                                     {                                        
-                                        <span class="synset-item">@str.HeadWord</span>                                    
+                                    <span class="synset-item">@str.HeadWord</span>                                    
                                     }
                                 }
-                                <script>$("span").last().removeClass('synset-item');</script>
-                            </td>
+                                <script>                                    $("span").last().removeClass('synset-item');</script>
+                            </td>*@
                             <td>
                                 @t.Exa
                             </td>
-                            <td align="center">
+                            @*<td align="center">
                                 <a style="margin-right:5px" class="btn-edit" title="Sửa" href="/ManageEntries/Edit?synsetId=@t.SynsetId&headWord=@item.HeadWord">
                                 </a><a class="btn-delete synset-delete" href="/ManageEntries/Delete?synsetId=@t.SynsetId&headWord=@item.HeadWord" title="Xóa">
                                     <input type="hidden" value="173" />
                                 </a>
-                            </td>
+                            </td>*@
                         </tr>
                           
                         }
@@ -167,4 +152,47 @@
             </div>
         </div>
     </div>
+    <div class="clear">
+    </div>
+</div>
+<div class="span span9">
+    <div class="head">
+        <div class="icm-zoom">
+        </div>
+        <h1>
+            Tra cứu gần đây</h1>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="block">
+        <div class="recent-words">
+            <ul>
+                @if (Session["Recent"] != null)
+                {
+                    ((List<string>)Session["Recent"]).Reverse();
+                    foreach (var item in (List<string>)Session["Recent"])
+                    { 
+                    <li><a href="/Result?keyword=@item">@item</a></li>  
+                    }
+                    ((List<string>)Session["Recent"]).Reverse();
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="span span9">
+    <div class="head">
+        <div class="icm-chats">
+        </div>
+        <h1>
+            Hỏi đáp</h1>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="block">
+        @*sdklfhldshf<br />
+        ádasd*@
+    </div>
+</div>
+<div class="clear">
 </div>
