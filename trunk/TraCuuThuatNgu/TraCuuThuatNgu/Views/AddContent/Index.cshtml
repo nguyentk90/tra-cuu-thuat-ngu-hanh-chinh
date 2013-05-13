@@ -17,6 +17,7 @@
     <div class="block">
         <ul class="simple-menu">
             <li><a href="/Account/Info">Thông tin tài khoản</a> </li>
+            <li><a href="/Account/ChangePassword">Đổi mật khẩu</a> </li>
             <li class="active"><a class="active"  href="/AddContent">Đóng góp của tôi</a> </li>
             <li><a href="">Bình luận của tôi</a> </li>
             <li><a href="/UserHistory">Lịch sử tra cứu</a> </li>
@@ -72,7 +73,7 @@
                         </td>
                         <td align="center">
                             <a class="btn-delete btn-add-content" title="Xóa" href="#">
-                                <input type="hidden" value="@item.RawDataID" /></a>
+                                <input type="hidden" value="@item.UserContentId" /></a>
                         </td>
                     </tr>
                 }

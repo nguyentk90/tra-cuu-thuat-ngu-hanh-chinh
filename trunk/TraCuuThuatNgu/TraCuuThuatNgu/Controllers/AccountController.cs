@@ -8,11 +8,68 @@ using System.Web.Security;
 using TraCuuThuatNgu.Models;
 using TraCuuThuatNgu.ViewModels;
 using System.Globalization;
+using System.Net.Mail;
+using System.Text;
 
 namespace TraCuuThuatNgu.Controllers
 {
     public class AccountController : Controller
     {
+
+
+        // Forgot Password
+        // GET: /Account/ForgotPassword
+        public ActionResult ForgotPassword()
+        {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("LogOn");
+            return View();
+        }
+
+        // Forgot Password
+        // POST: /Account/ForgotPassword
+        [HttpPost]
+        public ActionResult ForgotPassword(string email)
+        {
+            string username = Membership.GetUserNameByEmail(email);
+
+            if (String.IsNullOrEmpty(username))
+            {
+                ViewBag.Fail = "Email này không tồn tại trong hệ thống";
+            }
+            else
+            {
+                try
+                {
+                    MembershipUser currentUser = Membership.GetUser(username);
+                    string newpass = currentUser.ResetPassword();
+
+                    MailMessage message = new MailMessage();
+
+                    message.From = new System.Net.Mail.MailAddress("khanhsnguyen@gmail.com");
+                    message.To.Add(new System.Net.Mail.MailAddress(email));
+
+                    message.IsBodyHtml = true;
+                    message.BodyEncoding = Encoding.UTF8;
+                    message.Subject = "Lấy lại mật khẩu";
+                    message.Body = "Chào <b>" + username + "</b>,<br />Mật khẩu mới: " + newpass
+                    + "<br/><br/>Hệ thống tra cứu thuật ngữ hành chính văn phòng và hoạt động xã hội.";
+
+                    SmtpClient client = new SmtpClient();
+                    client.Send(message);
+                    ViewBag.Success = "Mật khẩu mới đã được gửi về email của bạn!";
+
+                }
+                catch
+                {
+
+                    ViewBag.Fail = "Lấy lại mật khẩu không thành công, email không hợp lệ!";
+                }
+            }
+
+            return View();
+
+        }
 
         // Account Informations
         // GET: /Account/AccountInformation
@@ -226,11 +283,13 @@ namespace TraCuuThuatNgu.Controllers
 
                 if (changePasswordSucceeded)
                 {
-                    return RedirectToAction("ChangePasswordSuccess");
+                    //return RedirectToAction("ChangePasswordSuccess");
+                    ViewBag.Success = "Thay đổi mật khẩu thành công";
+                    return View();
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
+                    ModelState.AddModelError("", "Mật khẩu hiện tại không đúng hoặc mật khẩu mới không hợp lệ.");
                 }
             }
 

@@ -8,22 +8,30 @@ using System.Web.Security;
 namespace TraCuuThuatNgu.Models
 {
 
+    public class ForgotPasswordModel
+    {
+        [Required(ErrorMessage = "Chưa nhập email.")]
+        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,4}\.[0-9]{1,4}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Email không hợp lệ.")]
+        [Display(Name = "Email")]
+        public string Email { get; set; }    
+    }
+
     public class ChangePasswordModel
     {
-        [Required]
+        [Required(ErrorMessage = "Nhập mật khẩu cũ.")]     
         [DataType(DataType.Password)]
         [Display(Name = "Current password")]
         public string OldPassword { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Nhập mật khẩu mới.")]     
+        [StringLength(100, ErrorMessage = "Độ dài mật khẩu phải lớn hơn 6 kí tự.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "New password")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Compare("NewPassword", ErrorMessage = "Nhập lại không trùng với mật khẩu mới.")]
         public string ConfirmPassword { get; set; }
     }
 

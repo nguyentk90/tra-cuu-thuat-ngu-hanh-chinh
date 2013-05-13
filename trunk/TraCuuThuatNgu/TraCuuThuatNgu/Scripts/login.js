@@ -37,7 +37,7 @@
     /*LIKE*/
     //-----------------------------------------------
     //like button
-    $('#like-check').click(function () {
+    $('.like-check').click(function () {
         var checkLogOn = confirm('Hãy đăng nhập dùng chức năng này.');
         if (checkLogOn) {
             popUpLogonOpen();
@@ -94,6 +94,7 @@
     $("#comment-form").submit(function () {
         if ($.trim($("#comment-content").val()) == "") {
             alert("Bạn chưa nhập nhận xét");
+            $("#comment-content").focus();
             return false;            
         } else {             
             return true;                       
@@ -190,7 +191,8 @@
         if ($.trim($("#def").val()) == "") {
             alert("Bạn chưa nhập nội dung."); 
             $("#def").focus();           
-        } else {             
+        } else {         
+           //$("#add-content-submit").css("background-color","#ccc");
            $.ajax({
                 url: '/AddContent/Add',
                 type: 'POST',
@@ -226,6 +228,7 @@ function popUpLogonOpen() {
     var windowHeight = $(window).height();
     $('.ui-widget-overlay').css("width", windowWidth + "px");
     $('.ui-widget-overlay').css("height", windowHeight + "px");
+    $('.ui-widget-overlay').css("opacity", 0.5);
     $('.ui-widget-overlay').show();
 
     //popup div

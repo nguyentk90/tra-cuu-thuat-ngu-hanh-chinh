@@ -84,13 +84,11 @@ namespace TraCuuThuatNgu.Controllers
             }
             ((List<string>)Session["Recent"]).Add(keyword);
 
-
-
-            ((List<string>)Session["Recent"]).Reverse();
-            string[] arraySuggest = new string[((List<string>)Session["Recent"]).Count];
-            ((List<string>)Session["Recent"]).CopyTo(arraySuggest);
-            ViewBag.Recent = arraySuggest;
-            ((List<string>)Session["Recent"]).Reverse();
+            //((List<string>)Session["Recent"]).Reverse();
+            //string[] arraySuggest = new string[((List<string>)Session["Recent"]).Count];
+            //((List<string>)Session["Recent"]).CopyTo(arraySuggest);
+            //ViewBag.Recent = arraySuggest;
+            //((List<string>)Session["Recent"]).Reverse();
             //---------------------------------------
 
             //ViewBag.Title
