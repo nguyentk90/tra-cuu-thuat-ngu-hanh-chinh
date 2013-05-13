@@ -16,8 +16,8 @@ namespace TraCuuThuatNgu.Controllers
         public ActionResult Index()
         {
             //3-5-2013
-            //EntriesModel entriesModel = new EntriesModel();
-            //ViewBag.ListWords = entriesModel.SuggestTerm("a");
+            EntriesModel entriesModel = new EntriesModel();
+            ViewBag.ListWords = entriesModel.SuggestTerm("chinh phu");
             
             return View(new CommonViewModel());
         }

@@ -101,10 +101,9 @@ namespace TraCuuThuatNgu.Models
 
         //suggest freetext
         public IEnumerable<WordIndex> SuggestTerm(string keyword)
-        {
-            //IEnumerable<Entry> listSuggest = new IEnumerable<Entry>();
+        {            
             return context.Database.SqlQuery<WordIndex>(
-                "SELECT * FROM udf_termSearch(@param1)", new SqlParameter("param1", "th"));
+                "SELECT * FROM fts_termSearch(@param)", new SqlParameter("param", keyword));
         }
 
     }
