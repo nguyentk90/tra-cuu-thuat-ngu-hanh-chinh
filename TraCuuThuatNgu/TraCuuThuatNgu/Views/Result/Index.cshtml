@@ -39,26 +39,19 @@
             }
             @if (User.Identity.IsAuthenticated)
             {
-            <a style="float: right" href="#" id="add-content-btn" class="btn-link btn-add">Thêm
-                đóng góp</a>
+                <a style="float: right" href="#" id="add-content-btn" class="btn-link btn-add">Thêm
+                    đóng góp</a>
             }
             else
             { 
-                <a style="float: right" href="#" id="add-content-check" class="btn-link btn-add like-check">Thêm
-                đóng góp</a>
+                <a style="float: right" href="#" id="add-content-check" class="btn-link btn-add like-check">
+                    Thêm đóng góp</a>
             }
             <div class="clear">
             </div>
         </div>
         <div class="divider">
         </div>
-        @* Suggest when keyword not found*@
-        @if (Model.Entry == null)
-        {
-            <div class="description-result">
-                <span class="ic-cloud"></span><span class="description-text">Gợi ý:</span>
-            </div>
-        }
         <div class="description-result">
             @*<span class="ic-right"></span><span class="description-text">Giải thích</span>*@
             @if (ViewBag.Noun != null)
@@ -113,7 +106,26 @@
                 }
             }
         </div>
-        @*<div class="divider">
+        @if (Model.Entry != null)
+        {
+        <div class="divider">
+        </div>}
+        @* Suggest when keyword not found*@ @*
+        {*@
+        <div class="description-result">
+            <span class="ic-cloud"></span>
+            @if (Model.Entry == null)
+            {
+                <span class="description-text">Gợi ý:</span>
+            }else{
+             <span class="description-text">Thuật ngữ liên quan:</span>
+            }
+            @foreach (var item in Model.SuggestTerm)
+            { 
+                <a class="suggest-term" href="#">@item.HeadWord</a>
+            }
+        </div>
+        @* }*@ @*<div class="divider">
         </div>
         <div class="description-result">
             <span class="ic-right"></span><span class="description-text">Thuật ngữ liên quan:</span>
@@ -176,10 +188,8 @@
                                 <img src="../Content/img/users/alexander.jpg" class="img-polaroid"></a>
                             <div class="text">
                                 <div class="info">
-                                    <span class="name">@item.aspnet_Users.UserName</span> 
-                                     <a style="float:right;margin-left:10px" title="Báo cáo sai phạm" class="btn-report mark-report" data-val="@item.CommentId"  href=""></a>
-                                    <span class="date">@item.DateAdd</span>
-                                   
+                                    <span class="name">@item.aspnet_Users.UserName</span> <a style="float:right;margin-left:10px" title="Báo cáo sai phạm" class="btn-report mark-report" data-val="@item.CommentId"  href="">
+                                    </a><span class="date">@item.DateAdd</span>
                                     <div class="clear">
                                     </div>
                                 </div>

@@ -94,6 +94,10 @@ namespace TraCuuThuatNgu.Controllers
             //ViewBag.Title
             ViewBag.Title = "Kết quả tra cứu cho '"+keyword+"'";
 
+            //add suggest terms
+            EntriesModel entryModel = new EntriesModel();
+            resultViewModel.SuggestTerm = entryModel.SuggestTerm(keyword);
+
             return View(resultViewModel);
         }
     }

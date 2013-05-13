@@ -158,8 +158,14 @@ footer
     font-size: 11pt;
     font-weight: bold;
     line-height: 20px;
-    margin: 0 20px;
+    margin: 0px 5px 0px 20px;
 }
+
+.description-result .suggest-term
+{
+	margin-right:4px;
+}
+
 .description-result p
 {
     margin-left: 20px;
