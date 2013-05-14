@@ -63,13 +63,9 @@ namespace TraCuuThuatNgu.Models
 
             }
 
-
-
-
-
         }
 
-        //delete synset by synsetId
+        // delete synset by synsetId
         public int DeleteSynsetBySynsetId(int synsetId, string headWord)
         {
             Synset synset = context.Synsets.Find(synsetId);
@@ -78,6 +74,22 @@ namespace TraCuuThuatNgu.Models
 
             term.Synsets.Remove(synset);
             context.Synsets.Remove(synset);
+
+            return context.SaveChanges();
+        }
+
+
+        // edit synset by synsetId
+        public int EditSynsetBySynsetId(AddTermViewModel editedSynset,int synsetId)
+        {
+            Synset synset = context.Synsets.Find(synsetId);
+
+            synset.Category = editedSynset.Catagory;
+            synset.Def = editedSynset.Def;
+            synset.Exa = editedSynset.Exa;
+            
+
+            
 
             return context.SaveChanges();
         }
@@ -99,9 +111,17 @@ namespace TraCuuThuatNgu.Models
         }
 
 
+        // get another synset of term
+        public IEnumerable<Synset> GetAnotherSynsetOfTerm(string headWord, int synsetId)
+        {
+            var list = context.WordIndexes.Find(headWord).Synsets.Where(x => x.SynsetId != synsetId).ToList();
+            return list;
+        }
+
+
         //suggest freetext
         public IEnumerable<WordIndex> SuggestTerm(string keyword)
-        {            
+        {
             return context.Database.SqlQuery<WordIndex>(
                 "SELECT * FROM fts_termSearch(@param)", new SqlParameter("param", keyword));
         }

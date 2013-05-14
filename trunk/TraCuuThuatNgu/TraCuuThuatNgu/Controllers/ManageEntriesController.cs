@@ -76,7 +76,8 @@ namespace TraCuuThuatNgu.Controllers
         {
             
             EntriesModel entriesModel = new EntriesModel();
-            AddTermViewModel editSynset = entriesModel.ViewEditSynset(synsetId, headWord);           
+            AddTermViewModel editSynset = entriesModel.ViewEditSynset(synsetId, headWord);
+            ViewBag.ListAnotherSynset = entriesModel.GetAnotherSynsetOfTerm(headWord, synsetId);
             return View(editSynset);
         }
 

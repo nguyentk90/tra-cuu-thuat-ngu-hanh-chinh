@@ -109,10 +109,10 @@
         @if (Model.Entry != null)
         {
         <div class="divider">
-        </div>}
-        @* Suggest when keyword not found*@ @*
-        {*@
-        <div class="description-result">
+        </div>
+            }
+        @* Suggest when keyword not found*@ 
+        @*<div class="description-result">
             <span class="ic-cloud"></span>
             @if (Model.Entry == null)
             {
@@ -124,13 +124,9 @@
             { 
                 <a class="suggest-term" href="#">@item.HeadWord</a>
             }
-        </div>
-        @* }*@ @*<div class="divider">
-        </div>
-        <div class="description-result">
-            <span class="ic-right"></span><span class="description-text">Thuật ngữ liên quan:</span>
-            <a href="#">Cải cách</a>, <a href="#">Hành chính</a>.
         </div>*@
+              
+        
         @if (Model.Entry != null)
         {
             <div class="divider">
@@ -207,6 +203,13 @@
 
         }
     </div>
+</div>
+<div class="span span9">
+        <div class="block block-sumary alphabet-work">
+            <div class="sumary aphab-list">
+                <a class="alphabet-link" href="/Alphabet">Tra cứu theo thứ tự bảng chữ cái</a>                 
+            </div>
+        </div>
 </div>
 <div class="span span9">
     <div class="head">
