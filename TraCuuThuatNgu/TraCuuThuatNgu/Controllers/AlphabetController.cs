@@ -8,7 +8,7 @@ using TraCuuThuatNgu.ViewModels;
 
 namespace TraCuuThuatNgu.Controllers
 {
-    public class AphabetController : Controller
+    public class AlphabetController : Controller
     {
         //
         // GET: /Aphabet/
