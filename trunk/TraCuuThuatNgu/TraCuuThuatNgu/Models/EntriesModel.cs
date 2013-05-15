@@ -5,6 +5,7 @@ using System.Web;
 using PagedList;
 using TraCuuThuatNgu.ViewModels;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace TraCuuThuatNgu.Models
 {
@@ -87,10 +88,8 @@ namespace TraCuuThuatNgu.Models
             synset.Category = editedSynset.Catagory;
             synset.Def = editedSynset.Def;
             synset.Exa = editedSynset.Exa;
-            
 
-            
-
+            context.Entry(synset).State = EntityState.Modified;
             return context.SaveChanges();
         }
 

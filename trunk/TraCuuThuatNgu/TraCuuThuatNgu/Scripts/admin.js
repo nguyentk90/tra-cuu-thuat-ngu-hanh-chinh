@@ -35,9 +35,9 @@ $(document).ready(function () {
             alert("Chưa nhập từ!");
             $("#input-synonym").focus();
         } else {
-            if (synonyms.indexOf($("#input-synonym").val())==-1) {
+            if (synonyms.indexOf($("#input-synonym").val()) == -1) {
                 synonyms.push($("#input-synonym").val());
-                $("#list-synonyms").append("<li><span class='label label-success'>" + $("#input-synonym").val() + " <a title='xóa' class='delete-synonym' href='javascript:'>x</a></span></li>")
+                $("#list-synonyms").append("<li><span class='label label-success'><span>" + $("#input-synonym").val() + "</span> <a title='xóa' class='delete-synonym' href='javascript:'>x</a></span></li>")
                 $("#input-synonym").val("");
                 $("#input-synonym").focus();
             }
@@ -46,5 +46,14 @@ $(document).ready(function () {
 
     $(".delete-synonym").live('click', function () {
         $(this).parent().parent().remove();
+        var i = synonyms.indexOf($(this).prev().text());
+        synonyms.splice(i, 1);
+    });
+
+
+    //edit synset form
+    $("#edit-synset-form").submit(function () {
+        $("#synonyms-data").val(synonyms);      
+        return true;
     });
 });

@@ -325,6 +325,12 @@ img
 }
 /*--------------------------------*/
 /**/
+
+.block
+{
+	margin-bottom:10px !important;
+}
+
 .block-sumary
 {
     border: 1px solid #CCC;
