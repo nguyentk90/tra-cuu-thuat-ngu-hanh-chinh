@@ -115,8 +115,37 @@
                     }
                     @foreach (var item in Model.AllEntries)
                     {
-                        foreach (var t in item.Synsets)
+                        if (item.Synsets.Count < 1)
+                        { 
+                        <tr>
+                            <td>
+                                @count
+                            </td>
+                            <td>
+                                <b>@item.HeadWord</b>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td align="center">
+                                <a style="margin-right:5px" class="btn-edit" title="Sửa" href="#">
+                                </a><a class="btn-delete synset-delete" href="#" title="Xóa">
+                                    <input type="hidden" value="173" />
+                                </a>
+                            </td>
+                        </tr>
+                          
+                        }
+                        else
                         {
+                            foreach (var t in item.Synsets)
+                            {
+                                
                         <tr>
                             <td>
                                 @count
@@ -140,10 +169,10 @@
                                 {
                                     if (!str.HeadWord.Equals(item.HeadWord))
                                     {                                        
-                                        <span class="synset-item">@str.HeadWord</span>                                    
+                                    <span class="synset-item">@str.HeadWord</span>                                    
                                     }
                                 }
-                                <script>$("span").last().removeClass('synset-item');</script>
+                                <script>                                    $("span").last().removeClass('synset-item');</script>
                             </td>
                             <td>
                                 @t.Exa
@@ -156,6 +185,7 @@
                             </td>
                         </tr>
                           
+                            }
                         }
                         count++;
                     }

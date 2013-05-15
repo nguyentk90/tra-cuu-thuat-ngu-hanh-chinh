@@ -62,8 +62,6 @@
                 } else {
                     alert("Lỗi thêm yêu thích");
                 }
-
-
             },
             error: function () {
                 alert("error");

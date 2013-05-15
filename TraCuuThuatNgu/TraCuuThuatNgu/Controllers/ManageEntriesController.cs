@@ -54,8 +54,15 @@ namespace TraCuuThuatNgu.Controllers
         [HttpPost]
         public ActionResult Add(AddTermViewModel term)
         {
-            EntriesModel entriesModel = new EntriesModel();
-            entriesModel.AddNewTermOrSynset(term);
+            try
+            {
+                EntriesModel entriesModel = new EntriesModel();
+                entriesModel.AddNewTermOrSynset(term);
+                ViewBag.Success = "Thêm thuật ngữ thành công!";
+            }
+            catch {
+                ViewBag.Fail = "Thêm thuật ngữ không thành công!";
+            }
             return View();
         }
 
@@ -73,24 +80,24 @@ namespace TraCuuThuatNgu.Controllers
         //edit synset
         [HttpGet]
         public ActionResult Edit(int synsetId, string headWord)
-        {
-            
+        {            
             EntriesModel entriesModel = new EntriesModel();
             AddTermViewModel editSynset = entriesModel.ViewEditSynset(synsetId, headWord);
             ViewBag.ListAnotherSynset = entriesModel.GetAnotherSynsetOfTerm(headWord, synsetId);
+            ViewBag.ListSynonyms = entriesModel.GetSynonyms(synsetId, headWord);
             return View(editSynset);
         }
 
 
         // POST: edit synset
         [HttpPost]
-        public ActionResult Edit(int synsetId, string headWord)
+        public ActionResult Edit(AddTermViewModel editedSynset, int synsetId)
         {
-
             EntriesModel entriesModel = new EntriesModel();
-            AddTermViewModel editSynset = entriesModel.ViewEditSynset(synsetId, headWord);
-            ViewBag.ListAnotherSynset = entriesModel.GetAnotherSynsetOfTerm(headWord, synsetId);
-            return View(editSynset);
+            int result = entriesModel.EditSynsetBySynsetId(editedSynset,synsetId);
+            ViewBag.Result = result;
+            return RedirectToAction("Edit", new {synsetId = synsetId, headWord = editedSynset.HeadWord, r="success" });
+            //return View();
         }
     }
 }
