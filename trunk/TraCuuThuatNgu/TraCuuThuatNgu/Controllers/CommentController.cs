@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TraCuuThuatNgu.Models;
 using System.Web.Security;
+using TraCuuThuatNgu.ViewModels;
 
 namespace TraCuuThuatNgu.Controllers
 {
@@ -17,9 +18,18 @@ namespace TraCuuThuatNgu.Controllers
         //
         // GET: /Comment/
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View();
+            var pageNumber = page??1;
+
+            int size = 10;
+
+            CommentModel commentModel = new CommentModel();
+                        
+            CommentsViewModel viewModel = new CommentsViewModel();
+            viewModel.Comments = commentModel.GetCommentPaged(pageNumber, size);
+
+            return View(viewModel);
         }
 
 
@@ -40,6 +50,22 @@ namespace TraCuuThuatNgu.Controllers
             context.Comments.Add(cmt);
             context.SaveChanges();
             return Redirect("/Result?keyword=" + headWord);
+        }
+
+        //
+        // POST: /Delete Comment
+        [HttpPost]
+        public ActionResult Delete(int commentId)
+        {            
+            CommentModel cmModel = new CommentModel();
+            if (cmModel.Delete(commentId) > 0)
+            {
+                return Json(new { message = "SUCCESS" });
+            }
+            else
+            {
+                return Json(new { message = "FAIL" });
+            }
         }
 
     }

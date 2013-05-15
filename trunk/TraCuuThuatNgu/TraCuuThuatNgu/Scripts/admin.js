@@ -2,6 +2,7 @@
 
 $(document).ready(function () {
 
+
     //change order searching history list
     $("#order-search-history").change(function () {
 
@@ -28,6 +29,10 @@ $(document).ready(function () {
     //add synonym
 
     var synonyms = new Array();
+    $("#list-synonyms li").each(function (index) {
+        console.log(index + ": " + $(this).children().children().first().text());
+        synonyms.push($(this).children().children().first().text());
+    });
 
     $("#add-synonym").click(function () {
         //check contains in list li
@@ -53,7 +58,36 @@ $(document).ready(function () {
 
     //edit synset form
     $("#edit-synset-form").submit(function () {
-        $("#synonyms-data").val(synonyms);      
+        $("#synonyms-data").val(synonyms);
         return true;
     });
+
+
+    /*DELETE USER HISTORY*/
+    $(".btn-comment-delete").click(function () {
+
+        var checkDelete = confirm('Bạn có chắc muốn xóa không?');
+
+        var row = $(this).parent().parent();
+
+        if (checkDelete) {
+            $.ajax({
+                url: '/Comment/Delete',
+                type: 'POST',
+                data: "{ 'commentId': '" + $(this).children().val() + "'}",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data.message == 'SUCCESS') {
+                        row.slideUp('slow');
+                    } else {
+                        alert("Lỗi");
+                    }
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+        }
+    });
+
 });

@@ -11,62 +11,96 @@ namespace TraCuuThuatNgu.Models
 {
     public class EntriesModel : CommonModel
     {
-        //get all terms paged x size
+        // Get all terms paged x size
         public IPagedList<WordIndex> GetEntriesPaged(int page, int size)
         {
             return context.WordIndexes.OrderBy(x => x.HeadWord).ToPagedList(page, size);
         }
 
-        //get terms by startWith paged x size
+        // Get terms by startWith paged x size
         public IPagedList<WordIndex> GetEntriesByStartWithPaged(int page, int size, string startWith)
         {
             return context.WordIndexes.Where(x => x.HeadWord.StartsWith(startWith)).OrderBy(x => x.HeadWord).ToPagedList(page, size);
         }
 
 
-        //add new term or new synset
+
+        // Add new term or new synset
         public void AddNewTermOrSynset(AddTermViewModel term)
         {
 
-            //check isExist term
+            // Check isExist term
             WordIndex checkTerm = context.WordIndexes.Find(term.HeadWord);
 
             if (checkTerm == null)
             {
-                //entry
-                WordIndex newTerm = new WordIndex();
-                newTerm.HeadWord = term.HeadWord;
+                // Entry
+                checkTerm = new WordIndex();
+                checkTerm.HeadWord = term.HeadWord;
                 string[] word = term.HeadWord.Split(' ');
 
                 if (word.Count() > 1)
                 {
-                    newTerm.WordType = "c";
+                    checkTerm.WordType = "c";
                 }
                 else
                 {
-                    newTerm.WordType = "s";
+                    checkTerm.WordType = "s";
                 }
-
-                //synset
-                Synset synset = new Synset();
-                synset.Category = term.Catagory;
-                synset.Def = term.Def;
-                synset.Exa = term.Exa;
-
-                newTerm.Synsets.Add(synset);
-                context.WordIndexes.Add(newTerm);
-
-                int result = context.SaveChanges();
             }
             else
             {
+            }            
 
+            // Synset
+            Synset synset = new Synset();
+            synset.Category = term.Catagory;
+            synset.Def = term.Def;
+            synset.Exa = term.Exa;
 
+            // If synset has synonym(s)
+            if (!String.IsNullOrWhiteSpace(term.Synonyms))
+            {
+                string[] synonyms = term.Synonyms.Split(',');
+
+                foreach (string headWord in synonyms)
+                {
+                    // Check headWord exist in database
+                    WordIndex wordIndex = context.WordIndexes.Find(headWord);
+                    if (wordIndex != null)
+                    {
+                        //synset.WordIndexes.Add(wordIndex);
+                    }
+                    else
+                    {
+                        //entry
+                        wordIndex = new WordIndex();
+                        wordIndex.HeadWord = headWord;
+                        string[] words = headWord.Split(' ');
+
+                        if (words.Count() > 1)
+                        {
+                            wordIndex.WordType = "c";
+                        }
+                        else
+                        {
+                            wordIndex.WordType = "s";
+                        }
+                    }
+                    synset.WordIndexes.Add(wordIndex);
+                }
             }
+
+            // 
+            synset.WordIndexes.Add(checkTerm);
+            context.Synsets.Add(synset);
+
+            int result = context.SaveChanges();
+
 
         }
 
-        // delete synset by synsetId
+        // Delete synset by synsetId
         public int DeleteSynsetBySynsetId(int synsetId, string headWord)
         {
             Synset synset = context.Synsets.Find(synsetId);
@@ -80,8 +114,8 @@ namespace TraCuuThuatNgu.Models
         }
 
 
-        // edit synset by synsetId
-        public int EditSynsetBySynsetId(AddTermViewModel editedSynset,int synsetId)
+        // Edit synset by synsetId
+        public int EditSynsetBySynsetId(AddTermViewModel editedSynset, int synsetId)
         {
             Synset synset = context.Synsets.Find(synsetId);
 
@@ -89,12 +123,50 @@ namespace TraCuuThuatNgu.Models
             synset.Def = editedSynset.Def;
             synset.Exa = editedSynset.Exa;
 
+            //delete all synonym relation 
+            synset.WordIndexes.Clear();
+            context.SaveChanges();
+            synset.WordIndexes.Add(context.WordIndexes.Find(editedSynset.HeadWord));
+
+            // If synset has synonym(s)
+            if (!String.IsNullOrWhiteSpace(editedSynset.Synonyms))
+            {
+                string[] synonyms = editedSynset.Synonyms.Split(',');
+
+                foreach (string headWord in synonyms)
+                {
+                    // Check headWord exist in database
+                    WordIndex wordIndex = context.WordIndexes.Find(headWord);
+                    if (wordIndex != null)
+                    {
+                        //synset.WordIndexes.Add(wordIndex);
+                    }
+                    else
+                    {
+                        //entry
+                        wordIndex = new WordIndex();
+                        wordIndex.HeadWord = headWord;
+                        string[] word = headWord.Split(' ');
+
+                        if (word.Count() > 1)
+                        {
+                            wordIndex.WordType = "c";
+                        }
+                        else
+                        {
+                            wordIndex.WordType = "s";
+                        }
+                    }
+                    synset.WordIndexes.Add(wordIndex);
+                }
+            }
+
             context.Entry(synset).State = EntityState.Modified;
             return context.SaveChanges();
         }
 
 
-        //view edit synset
+        // View edit synset
         public AddTermViewModel ViewEditSynset(int synsetId, string headWord)
         {
             AddTermViewModel editSynset = new AddTermViewModel();
@@ -109,16 +181,25 @@ namespace TraCuuThuatNgu.Models
             return editSynset;
         }
 
+        //get synonyms
+        public IEnumerable<string> GetSynonyms(int synsetId, string headWord)
+        {
+            return context.Synsets.Find(synsetId)
+                .WordIndexes.Where(x => x.HeadWord != headWord)
+                .Select(x => x.HeadWord).ToList();
+        }
 
-        // get another synset of term
+
+        // Get another synset of term
         public IEnumerable<Synset> GetAnotherSynsetOfTerm(string headWord, int synsetId)
         {
-            var list = context.WordIndexes.Find(headWord).Synsets.Where(x => x.SynsetId != synsetId).ToList();
+            var list = context.WordIndexes.Find(headWord).Synsets
+                .Where(x => x.SynsetId != synsetId).ToList();
             return list;
         }
 
 
-        //suggest freetext
+        // Suggest freetext
         public IEnumerable<WordIndex> SuggestTerm(string keyword)
         {
             return context.Database.SqlQuery<WordIndex>(
