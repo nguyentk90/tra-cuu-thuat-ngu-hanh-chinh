@@ -81,5 +81,16 @@ namespace TraCuuThuatNgu.Controllers
             return View(editSynset);
         }
 
+
+        // POST: edit synset
+        [HttpPost]
+        public ActionResult Edit(int synsetId, string headWord)
+        {
+
+            EntriesModel entriesModel = new EntriesModel();
+            AddTermViewModel editSynset = entriesModel.ViewEditSynset(synsetId, headWord);
+            ViewBag.ListAnotherSynset = entriesModel.GetAnotherSynsetOfTerm(headWord, synsetId);
+            return View(editSynset);
+        }
     }
 }

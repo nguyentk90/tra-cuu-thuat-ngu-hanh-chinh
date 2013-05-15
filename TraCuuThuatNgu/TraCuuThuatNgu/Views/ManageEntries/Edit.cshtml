@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="block">
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("Edit", "ManageEntries",FormMethod.Post, new { id = "edit-synset-form" }))
             {
                 <div class="entry-form">
                     <div class="editor">
@@ -68,9 +68,22 @@ new SelectListItem() {Text = "Tính từ", Value = "a"}
                     <div class="editor">
                         <div class="editor-label">
                             Từ đồng nghĩa
+                        </div>                        
+                        <div class="editor-field">
+                            <input type="text"  id = "input-synonym" />                            
+                            @Html.HiddenFor(m => m.Synonyms, new { id = "synonyms-data" })
+                            <a style="padding: 5px 26px; margin-left: 5px;" href="javascript://" id="add-synonym"
+                                class="btn-link btn-add">Thêm từ đồng nghĩa</a>
+                        </div>
+                        <div class="clear">
+                        </div>
+                    </div>
+                    <div class="editor">
+                        <div class="editor-label">
                         </div>
                         <div class="editor-field">
-                            @Html.TextBoxFor(m => m.Synonyms)
+                            <ul id="list-synonyms">
+                            </ul>
                         </div>
                         <div class="clear">
                         </div>

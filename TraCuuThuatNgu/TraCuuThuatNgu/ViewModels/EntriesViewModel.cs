@@ -7,7 +7,7 @@ using TraCuuThuatNgu.Models;
 
 namespace TraCuuThuatNgu.ViewModels
 {
-    public class EntriesViewModel
+    public class EntriesViewModel:CommonViewModel
     {
         public IPagedList<WordIndex> AllEntries { get; set; }
     }
