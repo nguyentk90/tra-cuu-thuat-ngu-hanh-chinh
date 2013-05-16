@@ -23,11 +23,17 @@ namespace TraCuuThuatNgu.Models
             }
         }
 
-        //get all history by userid and paged
+        // Get all content by user added and paged
         public IPagedList<UserContent> GetAllAddContent(int page, int pageSize)
         {
-            Guid userId = (Guid)Membership.GetUser().ProviderUserKey;
-            return context.UserContents.Where(x => x.UserId == userId).OrderByDescending(x => x.DateAdd).ToPagedList(page, pageSize);
+            return context.UserContents.OrderByDescending(x => x.DateAdd).ToPagedList(page, pageSize);
+        }
+
+        // Get all content by user added and paged by userId
+        public IPagedList<UserContent> GetAllAddContentByUser(int page, int pageSize, Guid userId)
+        {
+            return context.UserContents.Where(x => x.UserId == userId)
+                .OrderByDescending(x => x.DateAdd).ToPagedList(page, pageSize);
         }
 
 

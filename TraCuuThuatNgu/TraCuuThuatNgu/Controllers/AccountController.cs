@@ -89,7 +89,6 @@ namespace TraCuuThuatNgu.Controllers
             info.UserId = (Guid)user.ProviderUserKey;
 
             ViewBag.Birthday = profile.Birthday;
-
             return View(info);
         }
 

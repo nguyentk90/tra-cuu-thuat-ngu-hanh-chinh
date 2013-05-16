@@ -22,6 +22,7 @@ namespace TraCuuThuatNgu.Models
             this.Questions = new HashSet<Question>();
             this.UserContents = new HashSet<UserContent>();
             this.UserHistories = new HashSet<UserHistory>();
+            this.aspnet_Roles = new HashSet<aspnet_Roles>();
         }
     
         public System.Guid ApplicationId { get; set; }
@@ -39,5 +40,7 @@ namespace TraCuuThuatNgu.Models
         public virtual ICollection<Question> Questions { get; set; }
         public virtual ICollection<UserContent> UserContents { get; set; }
         public virtual ICollection<UserHistory> UserHistories { get; set; }
+        public virtual aspnet_Membership aspnet_Membership { get; set; }
+        public virtual ICollection<aspnet_Roles> aspnet_Roles { get; set; }
     }
 }

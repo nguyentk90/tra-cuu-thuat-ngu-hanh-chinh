@@ -90,4 +90,14 @@ $(document).ready(function () {
         }
     });
 
+
+    $("#btn-delete-user").click(function () {
+
+        var check = confirm("Bạn có chắc muốn xóa thành viên này!");
+        if (check) {
+            
+        } else { }
+
+    });
+
 });

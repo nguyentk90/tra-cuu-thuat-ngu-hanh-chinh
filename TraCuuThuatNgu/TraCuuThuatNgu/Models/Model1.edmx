@@ -7,7 +7,10 @@
     <Schema Namespace="TraCuuThuatNguModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="TraCuuThuatNguModelStoreContainer">
           <EntitySet Name="Answer" EntityType="TraCuuThuatNguModel.Store.Answer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Membership" EntityType="TraCuuThuatNguModel.Store.aspnet_Membership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Roles" EntityType="TraCuuThuatNguModel.Store.aspnet_Roles" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="aspnet_Users" EntityType="TraCuuThuatNguModel.Store.aspnet_Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_UsersInRoles" EntityType="TraCuuThuatNguModel.Store.aspnet_UsersInRoles" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Comment" EntityType="TraCuuThuatNguModel.Store.Comment" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Favorite" EntityType="TraCuuThuatNguModel.Store.Favorite" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Profile" EntityType="TraCuuThuatNguModel.Store.Profile" store:Type="Tables" Schema="dbo" />
@@ -20,6 +23,18 @@
           <EntitySet Name="UserContent" EntityType="TraCuuThuatNguModel.Store.UserContent" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserHistory" EntityType="TraCuuThuatNguModel.Store.UserHistory" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WordIndex" EntityType="TraCuuThuatNguModel.Store.WordIndex" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__aspnet_Me__UserI__22AA2996" Association="TraCuuThuatNguModel.Store.FK__aspnet_Me__UserI__22AA2996">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Us__RoleI__4AB81AF0" Association="TraCuuThuatNguModel.Store.FK__aspnet_Us__RoleI__4AB81AF0">
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+            <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Us__UserI__49C3F6B7" Association="TraCuuThuatNguModel.Store.FK__aspnet_Us__UserI__49C3F6B7">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
+          </AssociationSet>
           <AssociationSet Name="FK_Answer_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_Answer_aspnet_Users">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Answer" EntitySet="Answer" />
@@ -80,6 +95,42 @@
           <Property Name="DateAdd" Type="datetime" Nullable="false" />
           <Property Name="Reported" Type="int" />
         </EntityType>
+        <EntityType Name="aspnet_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordFormat" Type="int" Nullable="false" />
+          <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="MobilePIN" Type="nvarchar" MaxLength="16" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="LoweredEmail" Type="nvarchar" MaxLength="256" />
+          <Property Name="PasswordQuestion" Type="nvarchar" MaxLength="256" />
+          <Property Name="PasswordAnswer" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="IsLockedOut" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
+          <Property Name="LastPasswordChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLockoutDate" Type="datetime" Nullable="false" />
+          <Property Name="FailedPasswordAttemptCount" Type="int" Nullable="false" />
+          <Property Name="FailedPasswordAttemptWindowStart" Type="datetime" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptCount" Type="int" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="datetime" Nullable="false" />
+          <Property Name="Comment" Type="ntext" />
+        </EntityType>
+        <EntityType Name="aspnet_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredRoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="Description" Type="nvarchar" MaxLength="256" />
+        </EntityType>
         <EntityType Name="aspnet_Users">
           <Key>
             <PropertyRef Name="UserId" />
@@ -91,6 +142,14 @@
           <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
           <Property Name="IsAnonymous" Type="bit" Nullable="false" />
           <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -199,6 +258,42 @@
           <Property Name="HeadWord" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="WordType" Type="varchar" Nullable="false" MaxLength="1" />
         </EntityType>
+        <Association Name="FK__aspnet_Me__UserI__22AA2996">
+          <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_Membership" Type="TraCuuThuatNguModel.Store.aspnet_Membership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Membership">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Us__RoleI__4AB81AF0">
+          <End Role="aspnet_Roles" Type="TraCuuThuatNguModel.Store.aspnet_Roles" Multiplicity="1" />
+          <End Role="aspnet_UsersInRoles" Type="TraCuuThuatNguModel.Store.aspnet_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="aspnet_UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Us__UserI__49C3F6B7">
+          <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_UsersInRoles" Type="TraCuuThuatNguModel.Store.aspnet_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Answer_aspnet_Users">
           <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="1" />
           <End Role="Answer" Type="TraCuuThuatNguModel.Store.Answer" Multiplicity="*" />
@@ -405,6 +500,16 @@
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="UserHistory" EntitySet="UserHistories" />
           </AssociationSet>
+          <EntitySet Name="aspnet_Membership" EntityType="TraCuuThuatNguModel.aspnet_Membership" />
+          <AssociationSet Name="FK__aspnet_Me__UserI__22AA2996" Association="TraCuuThuatNguModel.FK__aspnet_Me__UserI__22AA2996">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <EntitySet Name="aspnet_Roles" EntityType="TraCuuThuatNguModel.aspnet_Roles" />
+          <AssociationSet Name="aspnet_UsersInRoles" Association="TraCuuThuatNguModel.aspnet_UsersInRoles">
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="aspnet_Users">
           <Key>
@@ -424,6 +529,8 @@
           <NavigationProperty Name="Questions" Relationship="TraCuuThuatNguModel.FK_Question_aspnet_Users" FromRole="aspnet_Users" ToRole="Question" />
           <NavigationProperty Name="UserContents" Relationship="TraCuuThuatNguModel.FK_RawData_aspnet_Users1" FromRole="aspnet_Users" ToRole="UserContent" />
           <NavigationProperty Name="UserHistories" Relationship="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users1" FromRole="aspnet_Users" ToRole="UserHistory" />
+          <NavigationProperty Name="aspnet_Membership" Relationship="TraCuuThuatNguModel.FK__aspnet_Me__UserI__22AA2996" FromRole="aspnet_Users" ToRole="aspnet_Membership" />
+          <NavigationProperty Name="aspnet_Roles" Relationship="TraCuuThuatNguModel.aspnet_UsersInRoles" FromRole="aspnet_Users" ToRole="aspnet_Roles" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -674,6 +781,60 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="aspnet_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Guid" Name="ApplicationId" Nullable="false" />
+          <Property Type="Guid" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PasswordFormat" Nullable="false" />
+          <Property Type="String" Name="PasswordSalt" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MobilePIN" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LoweredEmail" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PasswordQuestion" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PasswordAnswer" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsApproved" Nullable="false" />
+          <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+          <Property Type="DateTime" Name="LastLoginDate" Nullable="false" />
+          <Property Type="DateTime" Name="LastPasswordChangedDate" Nullable="false" />
+          <Property Type="DateTime" Name="LastLockoutDate" Nullable="false" />
+          <Property Type="Int32" Name="FailedPasswordAttemptCount" Nullable="false" />
+          <Property Type="DateTime" Name="FailedPasswordAttemptWindowStart" Nullable="false" />
+          <Property Type="Int32" Name="FailedPasswordAnswerAttemptCount" Nullable="false" />
+          <Property Type="DateTime" Name="FailedPasswordAnswerAttemptWindowStart" Nullable="false" />
+          <Property Type="String" Name="Comment" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Users" Relationship="TraCuuThuatNguModel.FK__aspnet_Me__UserI__22AA2996" FromRole="aspnet_Membership" ToRole="aspnet_Users" />
+        </EntityType>
+        <Association Name="FK__aspnet_Me__UserI__22AA2996">
+          <End Type="TraCuuThuatNguModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
+          <End Type="TraCuuThuatNguModel.aspnet_Membership" Role="aspnet_Membership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Membership">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="aspnet_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Type="Guid" Name="ApplicationId" Nullable="false" />
+          <Property Type="Guid" Name="RoleId" Nullable="false" />
+          <Property Type="String" Name="RoleName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LoweredRoleName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Users" Relationship="TraCuuThuatNguModel.aspnet_UsersInRoles" FromRole="aspnet_Roles" ToRole="aspnet_Users" />
+        </EntityType>
+        <Association Name="aspnet_UsersInRoles">
+          <End Type="TraCuuThuatNguModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="*" />
+          <End Type="TraCuuThuatNguModel.aspnet_Users" Role="aspnet_Users" Multiplicity="*" />
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -822,6 +983,52 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Membership">
+            <EntityTypeMapping TypeName="TraCuuThuatNguModel.aspnet_Membership">
+              <MappingFragment StoreEntitySet="aspnet_Membership">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="FailedPasswordAnswerAttemptWindowStart" ColumnName="FailedPasswordAnswerAttemptWindowStart" />
+                <ScalarProperty Name="FailedPasswordAnswerAttemptCount" ColumnName="FailedPasswordAnswerAttemptCount" />
+                <ScalarProperty Name="FailedPasswordAttemptWindowStart" ColumnName="FailedPasswordAttemptWindowStart" />
+                <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
+                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+                <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MobilePIN" ColumnName="MobilePIN" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordFormat" ColumnName="PasswordFormat" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Roles">
+            <EntityTypeMapping TypeName="TraCuuThuatNguModel.aspnet_Roles">
+              <MappingFragment StoreEntitySet="aspnet_Roles">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LoweredRoleName" ColumnName="LoweredRoleName" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="aspnet_UsersInRoles" TypeName="TraCuuThuatNguModel.aspnet_UsersInRoles" StoreEntitySet="aspnet_UsersInRoles">
+            <EndProperty Name="aspnet_Users">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="aspnet_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -850,46 +1057,47 @@
         <EntityTypeShape EntityType="TraCuuThuatNguModel.SearchHistory" Width="1.5" PointX="7.625" PointY="1.25" Height="1.5923063151041674" />
         <EntityTypeShape EntityType="TraCuuThuatNguModel.Test" Width="1.5" PointX="9" PointY="9.25" Height="1.4033821614583335" />
         <AssociationConnector Association="TraCuuThuatNguModel.FK_BinhLuan_aspnet_Users" >
-          <ConnectorPoint PointX="4.25" PointY="3.8554996744791663" />
-          <ConnectorPoint PointX="4.885416666666667" PointY="3.8554996744791659" />
-          <ConnectorPoint PointX="5.052083333333333" PointY="3.8554996744791663" />
-          <ConnectorPoint PointX="5.125" PointY="3.8554996744791663" />
+          <ConnectorPoint PointX="4.25" PointY="3.7098978092447918" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="3.7098978092447914" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="3.7098978092447918" />
+          <ConnectorPoint PointX="5.125" PointY="3.7098978092447918" />
         </AssociationConnector>
         <AssociationConnector Association="TraCuuThuatNguModel.FK_YeuThich_aspnet_Users" >
-          <ConnectorPoint PointX="4.25" PointY="1.9901432291666663" />
-          <ConnectorPoint PointX="4.885416666666667" PointY="1.9901432291666656" />
-          <ConnectorPoint PointX="5.052083333333333" PointY="1.9901432291666663" />
-          <ConnectorPoint PointX="5.125" PointY="1.9901432291666663" />
+          <ConnectorPoint PointX="4.25" PointY="1.8783268229166676" />
+          <ConnectorPoint PointX="5.125" PointY="1.8783268229166676" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TraCuuThuatNguModel.Topic" Width="1.5" PointX="9" PointY="7.375" Height="1.4033821614583326" />
         <EntityTypeShape EntityType="TraCuuThuatNguModel.Profile" Width="1.5" PointX="0.5" PointY="1.125" Height="1.5923063151041674" />
         <AssociationConnector Association="TraCuuThuatNguModel.FK_Profile_aspnet_Users" >
-          <ConnectorPoint PointX="2.75" PointY="2.0189925130208337" />
-          <ConnectorPoint PointX="2.2395833333333335" PointY="2.0189925130208333" />
-          <ConnectorPoint PointX="2.0729166666666665" PointY="2.0189925130208337" />
-          <ConnectorPoint PointX="2" PointY="2.0189925130208337" />
+          <ConnectorPoint PointX="2.75" PointY="1.9211531575520837" />
+          <ConnectorPoint PointX="2" PointY="1.9211531575520837" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="TraCuuThuatNguModel.Synset" Width="1.5" PointX="6.75" PointY="6.75" Height="1.9802864583333335" />
-        <EntityTypeShape EntityType="TraCuuThuatNguModel.Answer" Width="1.5" PointX="4.875" PointY="6.25" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="TraCuuThuatNguModel.Synset" Width="1.5" PointX="7.125" PointY="6.5" Height="1.7566536458333317" />
+        <EntityTypeShape EntityType="TraCuuThuatNguModel.Answer" Width="1.5" PointX="5.125" PointY="6" Height="2.2496956380208335" />
         <EntityTypeShape EntityType="TraCuuThuatNguModel.Question" Width="1.5" PointX="2.75" PointY="6.125" Height="2.5571907552083388" />
         <EntityTypeShape EntityType="TraCuuThuatNguModel.UserContent" Width="1.5" PointX="0.75" PointY="6.75" Height="2.5571907552083371" />
         <EntityTypeShape EntityType="TraCuuThuatNguModel.WordIndex" Width="1.5" PointX="7.125" PointY="3.75" Height="1.9802864583333388" />
         <AssociationConnector Association="TraCuuThuatNguModel.FK_Answer_aspnet_Users" >
-          <ConnectorPoint PointX="4.25" PointY="0.78124999999999978" />
-          <ConnectorPoint PointX="4.96875" PointY="0.78124999999999978" />
-          <ConnectorPoint PointX="4.96875" PointY="6.25" />
+          <ConnectorPoint PointX="4.25" PointY="4.1894742838541665" />
+          <ConnectorPoint PointX="4.625" PointY="4.5644742838541665" />
+          <ConnectorPoint PointX="4.625" PointY="6.8748863642578133" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="6.8748863642578124" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="6.8748863642578133" />
+          <ConnectorPoint PointX="5.125" PointY="6.8748863642578133" />
         </AssociationConnector>
         <AssociationConnector Association="TraCuuThuatNguModel.FK_Answer_Question" >
-          <ConnectorPoint PointX="4.25" PointY="7.4660953776041694" />
-          <ConnectorPoint PointX="4.875" PointY="7.4660953776041694" />
+          <ConnectorPoint PointX="4.25" PointY="7.7497717285156256" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="7.7497717285156247" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="7.7497717285156256" />
+          <ConnectorPoint PointX="5.125" PointY="7.7497717285156256" />
         </AssociationConnector>
         <AssociationConnector Association="TraCuuThuatNguModel.FK_Question_aspnet_Users" >
-          <ConnectorPoint PointX="3.5" PointY="4.3359993489583326" />
-          <ConnectorPoint PointX="3.5" PointY="6.125" />
+          <ConnectorPoint PointX="3.4687475" PointY="4.1894742838541665" />
+          <ConnectorPoint PointX="3.4687475" PointY="6.125" />
         </AssociationConnector>
         <AssociationConnector Association="TraCuuThuatNguModel.FK_RawData_aspnet_Users1" >
-          <ConnectorPoint PointX="2.75" PointY="0.84374999999999989" />
-          <ConnectorPoint PointX="2.15625" PointY="0.84374999999999989" />
+          <ConnectorPoint PointX="2.75" PointY="3.0461531575520837" />
+          <ConnectorPoint PointX="2.15625" PointY="3.0461531575520837" />
           <ConnectorPoint PointX="2.15625" PointY="6.75" />
         </AssociationConnector>
         <AssociationConnector Association="TraCuuThuatNguModel.FK_BinhLuan_ThuatNgu1" >
@@ -902,15 +1110,31 @@
           <ConnectorPoint PointX="6.625" PointY="1.09375" />
         </AssociationConnector>
         <AssociationConnector Association="TraCuuThuatNguModel.Relation1" >
-          <ConnectorPoint PointX="7.6875" PointY="5.7302864583333388" />
-          <ConnectorPoint PointX="7.6875" PointY="6.75" />
+          <ConnectorPoint PointX="7.875" PointY="5.5066536458333326" />
+          <ConnectorPoint PointX="7.875" PointY="6.5" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TraCuuThuatNguModel.UserHistory" Width="1.5" PointX="0.5" PointY="3.375" Height="1.9802864583333388" />
         <AssociationConnector Association="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users1" >
-          <ConnectorPoint PointX="2.75" PointY="3.8554996744791663" />
-          <ConnectorPoint PointX="2.2395833333333335" PointY="3.8554996744791659" />
-          <ConnectorPoint PointX="2.0729166666666665" PointY="3.8554996744791663" />
-          <ConnectorPoint PointX="2" PointY="3.8554996744791663" />
+          <ConnectorPoint PointX="2.75" PointY="3.7822371419270833" />
+          <ConnectorPoint PointX="2.2395833333333335" PointY="3.7822371419270828" />
+          <ConnectorPoint PointX="2.0729166666666665" PointY="3.7822371419270833" />
+          <ConnectorPoint PointX="2" PointY="3.7822371419270833" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TraCuuThuatNguModel.aspnet_Membership" Width="1.5" PointX="4.75" PointY="8.875" Height="4.5505582682291674" />
+        <AssociationConnector Association="TraCuuThuatNguModel.FK__aspnet_Me__UserI__22AA2996" >
+          <ConnectorPoint PointX="4.25" PointY="3.0658268229166676" />
+          <ConnectorPoint PointX="4.90625" PointY="3.0658268229166676" />
+          <ConnectorPoint PointX="4.90625" PointY="8.875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TraCuuThuatNguModel.aspnet_Roles" Width="1.5" PointX="0.75" PointY="10" Height="1.9210009765625031" />
+        <AssociationConnector Association="TraCuuThuatNguModel.aspnet_UsersInRoles" >
+          <ConnectorPoint PointX="2.25" PointY="10.960500488281252" />
+          <ConnectorPoint PointX="2.5" PointY="10.960500488281252" />
+          <ConnectorPoint PointX="2.5" PointY="4.5644742838541665" />
+          <ConnectorPoint PointX="3.3854141666666666" PointY="4.5644742838541656" />
+          <ConnectorPoint PointX="3.5520808333333336" PointY="4.5644742838541665" />
+          <ConnectorPoint PointX="3.85937375" PointY="4.5644742838541665" />
+          <ConnectorPoint PointX="3.85937375" PointY="4.1894742838541665" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

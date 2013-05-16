@@ -4,9 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TraCuuThuatNgu.Models;
+using System.Web.Security;
 
 namespace TraCuuThuatNgu.Controllers
 {
+    [Authorize]
     public class LikeController : Controller
     {
         //model, work with database
@@ -19,8 +21,12 @@ namespace TraCuuThuatNgu.Controllers
         {
 
             var pageNumber = page ?? 1;
+            int size = 10;
 
-            ViewBag.FavoriteList = likeModel.GetPagedFavorite(pageNumber, 10);
+            MembershipUser currentUser = Membership.GetUser();
+            Guid userId = (Guid)currentUser.ProviderUserKey;
+
+            ViewBag.FavoriteList = likeModel.GetPagedFavorite(pageNumber, size, userId);
 
             return View();
         }
