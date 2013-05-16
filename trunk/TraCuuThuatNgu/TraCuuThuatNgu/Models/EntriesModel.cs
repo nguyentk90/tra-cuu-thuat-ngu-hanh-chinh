@@ -23,6 +23,12 @@ namespace TraCuuThuatNgu.Models
             return context.WordIndexes.Where(x => x.HeadWord.StartsWith(startWith)).OrderBy(x => x.HeadWord).ToPagedList(page, size);
         }
 
+        // Get terms contains keyword paged x size
+        public IPagedList<WordIndex> GetEntriesContainsPaged(int page, int size, string keyword)
+        {
+            return context.WordIndexes.Where(x => x.HeadWord.Contains(keyword)).OrderBy(x => x.HeadWord).ToPagedList(page, size);
+        }
+
 
 
         // Add new term or new synset

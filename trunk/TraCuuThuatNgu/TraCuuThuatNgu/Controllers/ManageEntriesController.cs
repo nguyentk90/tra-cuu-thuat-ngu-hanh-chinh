@@ -14,7 +14,7 @@ namespace TraCuuThuatNgu.Controllers
         //
         // GET: /ManageEntries/
 
-        public ActionResult Index(int? page, string startWith)
+        public ActionResult Index(int? page, string startWith, string keyword)
         {
             EntriesModel entriesModel = new EntriesModel();
             EntriesViewModel viewModel = new EntriesViewModel();
@@ -25,14 +25,20 @@ namespace TraCuuThuatNgu.Controllers
 
             var startW = String.IsNullOrEmpty(startWith) ? "none" : startWith;
 
-
-            if (startW.Equals("none"))
+            if (!String.IsNullOrWhiteSpace(keyword))
             {
-                viewModel.AllEntries = entriesModel.GetEntriesPaged(pageNumber, size);
+                viewModel.AllEntries = entriesModel.GetEntriesContainsPaged(pageNumber, size, keyword);
             }
             else
             {
-                viewModel.AllEntries = entriesModel.GetEntriesByStartWithPaged(pageNumber, size, startW);
+                if (startW.Equals("none"))
+                {
+                    viewModel.AllEntries = entriesModel.GetEntriesPaged(pageNumber, size);
+                }
+                else
+                {
+                    viewModel.AllEntries = entriesModel.GetEntriesByStartWithPaged(pageNumber, size, startW);
+                }
             }
 
 

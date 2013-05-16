@@ -19,6 +19,18 @@
         <span></span>
     </div>
     <div class="span span12">
+        <div class="block block-sumary">
+            <div class="sumary">
+                <form action="/Users" method="get">
+                <label>
+                    Tìm kiếm</label>
+                <input name="keyword" type="text" style="margin-right: 5px;" /><input class="btn"
+                    type="submit" value="Tìm" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="span span12">
         <div class="head">
             <div class="icm-user">
             </div>
@@ -69,11 +81,11 @@
                                 {
                                     if (role.RoleName.Equals("Admin"))
                                     {
-                                    <span style="color:Green;font-weight:bold;margin-right:5px">@role.Description</span>
+                                    <span style="color: Green; font-weight: bold; margin-right: 5px">@role.RoleName</span>
                                     }
                                     else
                                     { 
-                                    <span style="color:#666;font-weight:bold;margin-right:5px">@role.Description</span>
+                                    <span style="color: #666; font-weight: bold; margin-right: 5px">@role.RoleName</span>
                                     }
 
                                 }
@@ -89,7 +101,7 @@
                 </tbody>
             </table>
             <div class="view-more">
-                @Html.PagedListPager((IPagedList)Model.Users, page => Url.Action("Index", new { page = page, orderby = Request.QueryString["orderby"] }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< Đầu tiên", LinkToPreviousPageFormat = "&larr; Trước", LinkToNextPageFormat = "Sau &rarr;", LinkToLastPageFormat = "&Uacute;Cuối >>" })</div>
+                @Html.PagedListPager((IPagedList)Model.Users, page => Url.Action("Index", new { page = page, keyword = Request.QueryString["keyword"] }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< Đầu tiên", LinkToPreviousPageFormat = "&larr; Trước", LinkToNextPageFormat = "Sau &rarr;", LinkToLastPageFormat = "&Uacute;Cuối >>" })</div>
             <div class="clear">
             </div>
         </div>

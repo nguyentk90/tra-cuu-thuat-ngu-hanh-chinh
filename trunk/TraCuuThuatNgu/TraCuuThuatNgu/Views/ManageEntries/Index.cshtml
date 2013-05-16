@@ -59,6 +59,18 @@
         </div>
     </div>
     <div class="span span12">
+        <div class="block block-sumary">
+            <div class="sumary">
+                <form action="/ManageEntries" method="get">
+                <label>
+                    Tìm kiếm</label>
+                <input name="keyword" type="text" style="margin-right: 5px;" /><input class="btn"
+                    type="submit" value="Tìm" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="span span12">
         <div class="head">
             <div class="icm-list">
             </div>
@@ -133,8 +145,8 @@
                             <td>
                             </td>
                             <td align="center">
-                                <a style="margin-right:5px" class="btn-edit" title="Sửa" href="#">
-                                </a><a class="btn-delete synset-delete" href="#" title="Xóa">
+                                <a style="margin-right: 5px" class="btn-edit" title="Sửa" href="#"></a><a class="btn-delete synset-delete"
+                                    href="#" title="Xóa">
                                     <input type="hidden" value="173" />
                                 </a>
                             </td>
@@ -192,7 +204,7 @@
                 </tbody>
             </table>
             <div class="view-more">
-                @Html.PagedListPager((IPagedList)Model.AllEntries, page => Url.Action("Index", new { page = page, startWith = Request.QueryString["startWith"] }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< Đầu tiên", LinkToPreviousPageFormat = "&larr; Trước", LinkToNextPageFormat = "Sau &rarr;", LinkToLastPageFormat = "&Uacute;Cuối >>" })</div>
+                @Html.PagedListPager((IPagedList)Model.AllEntries, page => Url.Action("Index", new { page = page, startWith = Request.QueryString["startWith"], keyword = Request.QueryString["keyword"] }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< Đầu tiên", LinkToPreviousPageFormat = "&larr; Trước", LinkToNextPageFormat = "Sau &rarr;", LinkToLastPageFormat = "&Uacute;Cuối >>" })</div>
             <div class="clear">
             </div>
         </div>
