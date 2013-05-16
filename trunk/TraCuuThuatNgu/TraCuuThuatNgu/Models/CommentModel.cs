@@ -15,6 +15,13 @@ namespace TraCuuThuatNgu.Models
         }
 
 
+        // View all comment of special user
+        public IPagedList<Comment> GetCommentPagedByUser(int page, int size, Guid UserId)
+        {
+            return context.Comments.Where(x=>x.UserId==UserId)
+                .OrderByDescending(x => x.DateAdd).ToPagedList(page, size);
+        }
+
         // Delete comment by commnetId
         public int Delete(int commentId)
         {

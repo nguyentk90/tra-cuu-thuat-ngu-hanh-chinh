@@ -100,6 +100,11 @@ footer, #footer
 {
     background: url('img/icons/ws/ic_chat.png') center center no-repeat transparent;
 }
+.isw-plus
+{
+    background: url('img/icons/ws/ic_plus.png') center center no-repeat transparent;
+}
+
 .isw-chats
 {
     background: url('img/icons/ws/ic_chats.png') center center no-repeat transparent;
@@ -290,4 +295,12 @@ footer, #footer
 {
     padding-top:3px;    
     padding-bottom:3px;
+}
+
+/*DETAIL USER*/
+.roles-list
+{
+    list-style:none; 
+    padding-left:0px;
+    margin-top: 5px; 
 }

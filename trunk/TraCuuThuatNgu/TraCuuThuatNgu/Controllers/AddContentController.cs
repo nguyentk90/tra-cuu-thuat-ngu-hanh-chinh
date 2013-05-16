@@ -8,6 +8,7 @@ using System.Web.Security;
 
 namespace TraCuuThuatNgu.Controllers
 {
+    [Authorize]
     public class AddContentController : Controller
     {
         //
@@ -45,7 +46,10 @@ namespace TraCuuThuatNgu.Controllers
         {
             int pageNumber = page ?? 1;
             AddContentModel model = new AddContentModel();
-            ViewBag.AddContentList = model.GetAllAddContent(pageNumber, 10);
+
+            Guid userId = (Guid)Membership.GetUser().ProviderUserKey;
+
+            ViewBag.AddContentList = model.GetAllAddContentByUser(pageNumber, 10, userId);
 
             return View();
         }

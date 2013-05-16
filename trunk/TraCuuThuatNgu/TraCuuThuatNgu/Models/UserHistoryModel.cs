@@ -9,7 +9,7 @@ namespace TraCuuThuatNgu.Models
 {
     public class UserHistoryModel : CommonModel
     {
-        //add user history
+        // Add user history
         public int AddUserHistory(string keyword)
         {
             Guid userId = (Guid)Membership.GetUser().ProviderUserKey;
@@ -22,24 +22,16 @@ namespace TraCuuThuatNgu.Models
             return context.SaveChanges();
         }
 
-        //get all history by userid
-        public IQueryable<UserHistory> GetAllUserHistory()
-        {
-            Guid userId = (Guid)Membership.GetUser().ProviderUserKey;
 
-            return context.UserHistories.Where(x => x.UserId == userId).OrderByDescending(x => x.DateAdd);
+        // Get all history by userid and paged
+        public IPagedList<UserHistory> GetAllUserHistoryPagedByUser(int page,int pageSize, Guid userId)
+        {            
+            return context.UserHistories.Where(x => x.UserId == userId)
+                .OrderByDescending(x => x.DateAdd).ToPagedList(page, pageSize);
         }
 
 
-        //get all history by userid and paged
-        public IPagedList<UserHistory> GetAllUserHistoryPaged(int page,int pageSize)
-        {
-            Guid userId = (Guid)Membership.GetUser().ProviderUserKey;
-            return context.UserHistories.Where(x => x.UserId == userId).OrderByDescending(x => x.DateAdd).ToPagedList(page, pageSize);
-        }
-
-
-        //delete history by historyId       
+        // Delete history by historyId       
         public int DeleteUserHistory(int historyId)
         {
             context.UserHistories.Remove(context.UserHistories.Find(historyId));

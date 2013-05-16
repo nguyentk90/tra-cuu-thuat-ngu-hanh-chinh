@@ -399,6 +399,28 @@ input[type="submit"]
     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
+.btn-danger
+{
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #da4f49;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
+    background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
+    background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
+    background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
+    background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
+    background-repeat: repeat-x;
+    border-color: #bd362f #bd362f #802420;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
+    filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+.btn-danger:hover
+{
+    color: #ffffff !important;
+    background-color: #bd362f !important;
+}
+
 .btn:hover
 {
     color: #fff;
@@ -820,6 +842,11 @@ div#title
     background: url('img/icons/ws/ic_chats.png') center center no-repeat transparent;
 }
 
+.icm-chat
+{
+    background: url('img/icons/ws/ic_chat.png') center center no-repeat transparent;
+}
+
 .icm-list
 {
     background: url('img/icons/ws/ic_list.png') center center no-repeat transparent;
@@ -838,6 +865,14 @@ div#title
 .icm-favorite
 {
     background: url('img/icons/ws/ic_favorite.png') center center no-repeat transparent;
+}
+.icm-edit
+{
+    background: url('img/icons/ws/ic_edit.png') center center no-repeat transparent;
+}
+.icm-plus
+{
+    background: url('img/icons/ws/ic_plus.png') center center no-repeat transparent;
 }
 
 

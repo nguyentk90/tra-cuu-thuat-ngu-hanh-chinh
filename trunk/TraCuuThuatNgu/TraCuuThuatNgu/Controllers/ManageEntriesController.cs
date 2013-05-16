@@ -8,6 +8,7 @@ using TraCuuThuatNgu.ViewModels;
 
 namespace TraCuuThuatNgu.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ManageEntriesController : Controller
     {
         //

@@ -9,15 +9,15 @@ using TraCuuThuatNgu.ViewModels;
 
 namespace TraCuuThuatNgu.Controllers
 {
+   
     public class CommentController : Controller
     {
-
         //DbContext
         TraCuuThuatNguEntities context = new TraCuuThuatNguEntities();
 
         //
-        // GET: /Comment/
-
+        // GET: /Comment/     
+         [Authorize(Roles = "Admin")]
         public ActionResult Index(int? page)
         {
             var pageNumber = page??1;
@@ -34,8 +34,9 @@ namespace TraCuuThuatNgu.Controllers
 
 
         //
-        // POST: /Add Comment/
+        // POST: /Add Comment/        
         [HttpPost]
+        [Authorize]
         public ActionResult Add(string headWord, string content)
         {
             Guid userGuid = (Guid)Membership.GetUser().ProviderUserKey;
@@ -53,8 +54,9 @@ namespace TraCuuThuatNgu.Controllers
         }
 
         //
-        // POST: /Delete Comment
+        // POST: /Delete Comment        
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int commentId)
         {            
             CommentModel cmModel = new CommentModel();

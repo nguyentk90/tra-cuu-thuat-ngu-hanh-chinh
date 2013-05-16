@@ -24,10 +24,10 @@ namespace TraCuuThuatNgu.Models
 
 
         //get paged like
-        public IPagedList<Favorite> GetPagedFavorite(int page, int size)
-        {
-            Guid userId = (Guid)Membership.GetUser().ProviderUserKey;
-            return context.Favorites.Where(x => x.UserId == userId).OrderByDescending(x => x.DateAdd).ToPagedList(page, size);
+        public IPagedList<Favorite> GetPagedFavorite(int page, int size, Guid userId)
+        {            
+            return context.Favorites.Where(x => x.UserId == userId)
+                .OrderByDescending(x => x.DateAdd).ToPagedList(page, size);
         }
 
 

@@ -38,5 +38,7 @@ namespace TraCuuThuatNgu.Models
         public DbSet<UserContent> UserContents { get; set; }
         public DbSet<WordIndex> WordIndexes { get; set; }
         public DbSet<UserHistory> UserHistories { get; set; }
+        public DbSet<aspnet_Membership> aspnet_Membership { get; set; }
+        public DbSet<aspnet_Roles> aspnet_Roles { get; set; }
     }
 }
