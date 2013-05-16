@@ -235,6 +235,13 @@ namespace TraCuuThuatNgu.Controllers
                     context.SaveChanges();
                     // --
 
+                    // Add user in User role as default
+                    if (!Roles.RoleExists("User"))
+                    {
+                        Roles.CreateRole("User");                        
+                    }
+                    Roles.AddUserToRole(model.UserName,"User");
+
                     FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
                     return RedirectToAction("Index", "Home");
                 }
@@ -312,10 +319,10 @@ namespace TraCuuThuatNgu.Controllers
             switch (createStatus)
             {
                 case MembershipCreateStatus.DuplicateUserName:
-                    return "User name already exists. Please enter a different user name.";
+                    return "Tên đăng nhập này đã có người sử dụng. Xin chọn tên đăng nhập khác.";
 
                 case MembershipCreateStatus.DuplicateEmail:
-                    return "A user name for that e-mail address already exists. Please enter a different e-mail address.";
+                    return "Email này đã được dùng để đăng ký. Xin sử dụng một Email khác.";
 
                 case MembershipCreateStatus.InvalidPassword:
                     return "The password provided is invalid. Please enter a valid password value.";

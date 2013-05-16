@@ -93,11 +93,26 @@ $(document).ready(function () {
 
     $("#btn-delete-user").click(function () {
 
-        var check = confirm("Bạn có chắc muốn xóa thành viên này!");
-        if (check) {
-            
-        } else { }
-
+        var checkDelete = confirm("Bạn có chắc muốn xóa thành viên này!");
+        if (checkDelete) {
+            $.ajax({
+                url: '/Users/Delete',
+                type: 'POST',
+                data: "{ 'userId': '" + $("#userId").val() + "'}",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data.message == 'SUCCESS') {
+                        alert("Xóa thành công!");
+                        window.location.href ='/Users';
+                    } else {
+                        alert("Lỗi");
+                    }
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+        }
     });
 
 });

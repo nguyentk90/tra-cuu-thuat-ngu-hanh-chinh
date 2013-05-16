@@ -18,7 +18,7 @@ namespace TraCuuThuatNgu.Controllers
 
         UsersModel usersModel = new UsersModel();
 
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string keyword)
         {
 
             var pageNumber = page ?? 1;
@@ -26,7 +26,15 @@ namespace TraCuuThuatNgu.Controllers
 
             UsersViewModel viewModel = new UsersViewModel();
 
-            viewModel.Users = usersModel.GetAllUserPaged(pageNumber, size);
+
+            if (String.IsNullOrWhiteSpace(keyword))
+            {
+                viewModel.Users = usersModel.GetAllUserPaged(pageNumber, size);
+            }
+            else
+            {
+                viewModel.Users = usersModel.GetAllUserPagedContainsKeyword(pageNumber, size, keyword);
+            }
 
             return View(viewModel);
         }
@@ -36,19 +44,27 @@ namespace TraCuuThuatNgu.Controllers
         // GET: /Users/Detail
         public ActionResult Detail(string username)
         {
-            aspnet_Users user = usersModel.GetUserByUsername(username);
+            try
+            {
+                aspnet_Users user = usersModel.GetUserByUsername(username);
 
-            InfoViewModel userInfo = new InfoViewModel();
-            userInfo.Username = user.UserName;
-            userInfo.Fullname = user.Profile.Fullname;
-            userInfo.Birthday = user.Profile.Birthday;
-            userInfo.Email = user.aspnet_Membership.Email;
+                InfoViewModel userInfo = new InfoViewModel();
+                userInfo.Username = user.UserName;
+                userInfo.Fullname = user.Profile.Fullname;
+                userInfo.Birthday = user.Profile.Birthday;
+                userInfo.Email = user.aspnet_Membership.Email;
+                userInfo.UserId = user.UserId;
 
-            ViewBag.Birthday = userInfo.Birthday;
-            ViewBag.UserRoles = Roles.GetRolesForUser(username);
-            ViewBag.Roles = Roles.GetAllRoles();
+                ViewBag.Birthday = userInfo.Birthday;
+                ViewBag.UserRoles = Roles.GetRolesForUser(username);
+                ViewBag.Roles = Roles.GetAllRoles();
 
-            return View(userInfo);
+                return View(userInfo);
+            }
+            catch
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         //
@@ -101,11 +117,11 @@ namespace TraCuuThuatNgu.Controllers
                 profile.Fullname = info.Fullname;
                 //update profile
                 profileModel.UpdateProfile(profile);
-                
+
 
                 ViewBag.Birthday = dt;
                 ViewBag.Success = "Cập nhật thành công!";
-                
+
             }
             catch
             {
@@ -114,6 +130,23 @@ namespace TraCuuThuatNgu.Controllers
             }
 
             return View(info);
+        }
+
+
+        // POST: /Users/Delete
+        [HttpPost]
+        public ActionResult Delete(string userId)
+        {
+            Guid GuserId = Guid.Parse(userId);
+            if (usersModel.Delete(GuserId) > 0)
+            {
+                return Json(new { message = "SUCCESS" });
+            }
+            else
+            {
+                return Json(new { message = "FAIL" });
+            }
+
         }
 
     }
