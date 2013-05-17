@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Nhập dữ liệu từ file Excel";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<div class="row-fluid">
+    <h2>
+        Nhập dữ liệu từ file Excel</h2>
+    <div class="dr">
+        <span></span>
+    </div>
+    <div class="span span12">
+        <div class="head">
+            <div class="icm-plus">
+            </div>
+            <h1>
+                Nhập dữ liệu</h1>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="block">
+            @using (Html.BeginForm())
+            {
+                <div class="entry-form">
+                    <div class="editor">
+                        <div class="editor-label">
+                            Thuật ngữ
+                        </div>
+                        <div class="editor-field">
+                           
+                        </div>
+                        <div class="clear">
+                        </div>
+                    </div>  
+                    <div class="editor">
+                        <div class="editor-label">
+                        </div>
+                        <div class="editor-field">
+                            <input type="submit" class="btn" value="Thêm" />                            
+                        </div>
+                        <div class="clear">
+                        </div>
+                    </div>
+                </div>   
+            }
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+</div>
