@@ -6,6 +6,7 @@ using PagedList;
 using TraCuuThuatNgu.ViewModels;
 using System.Data.SqlClient;
 using System.Data;
+using System.Data.OleDb;
 
 namespace TraCuuThuatNgu.Models
 {
@@ -56,7 +57,7 @@ namespace TraCuuThuatNgu.Models
             }
             else
             {
-            }            
+            }
 
             // Synset
             Synset synset = new Synset();
@@ -210,6 +211,37 @@ namespace TraCuuThuatNgu.Models
         {
             return context.Database.SqlQuery<WordIndex>(
                 "SELECT * FROM fts_termSearch(@param)", new SqlParameter("param", keyword));
+        }
+
+
+        // --------------------------------------------------------
+        // Read Excel file
+        public DataTable ReadExcelContents(string fileName)
+        {
+            try
+            {
+                OleDbConnection connection = new OleDbConnection();
+
+                connection = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=Excel 8.0;Data Source=" + fileName); //Excel 97-2003, .xls //string excelQuery = @"Select [Day],[Outlook],[temp],[Humidity],[Wind], [PlaySport] // FROM [Sheet1$]";
+
+                string excelQuery = @"Select * FROM [Sheet1$]";
+                connection.Open();
+                OleDbCommand cmd = new OleDbCommand(excelQuery, connection);
+                OleDbDataAdapter adapter = new OleDbDataAdapter();
+                adapter.SelectCommand = cmd;
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+                DataTable dt = ds.Tables[0];
+
+                // dataGridView1.DataSource = dt.DefaultView;
+                connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                // MessageBox.Show("Program can't read file. " + ex.Message, "Please Note", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
     }

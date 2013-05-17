@@ -78,6 +78,7 @@
     <Compile Include="Controllers\AutoCompleteController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Controllers\LikeController.cs" />
     <Compile Include="Controllers\ManageContentController.cs" />
     <Compile Include="Controllers\ManageEntriesController.cs" />
@@ -316,6 +317,8 @@
     <Content Include="Views\MyComments\Index.cshtml" />
     <Content Include="Views\ManageContent\Index.cshtml" />
     <Content Include="Views\Users\Detail.cshtml" />
+    <None Include="Resources\TestImport.xls" />
+    <Content Include="Views\Import\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

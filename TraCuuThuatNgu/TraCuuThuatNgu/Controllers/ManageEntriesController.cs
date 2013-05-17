@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using TraCuuThuatNgu.Models;
 using TraCuuThuatNgu.ViewModels;
+using System.Data;
+using System.Text;
 
 namespace TraCuuThuatNgu.Controllers
 {
@@ -105,6 +107,36 @@ namespace TraCuuThuatNgu.Controllers
             ViewBag.Result = result;
             return RedirectToAction("Edit", new {synsetId = synsetId, headWord = editedSynset.HeadWord, r="success" });
             //return View();
+        }
+
+
+
+
+        // GET: Import form Excel file
+        public ActionResult Import()
+        {
+            return View();
+        }
+
+
+        // POST: Import from Excel file
+        [HttpPost]
+        public ActionResult Import()
+        {
+            EntriesModel entriesModel = new EntriesModel();
+
+            string path = Server.MapPath("~/Resources/TestImport.xls");
+
+            DataTable data = entriesModel.ReadExcelContents(path);
+
+            StringBuilder str = new StringBuilder();
+
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                str.AppendLine(data.Rows[i]["Thuật ngữ"].ToString());            
+            }
+            return Content(str.ToString());
+
         }
     }
 }
