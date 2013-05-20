@@ -26,7 +26,7 @@
 <XPD:OBJ name="OwnedViews[0]" type="UMLActorView" guid="djWL8RTbqUeLmpcMHPWcBAAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">228</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">264</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">81</XPD:ATTR>
@@ -35,7 +35,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="NRXhHIkVtkyjcJckDUTkLgAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="w9SNO82IF0WyvNFaDtr30gAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Thanh vien</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Thaønh vieân</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="4E0kIg64uUWP7F8Ur0ISuQAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -56,7 +56,7 @@
 <XPD:OBJ name="OwnedViews[1]" type="UMLUseCaseView" guid="16Pceh2eOUqXkJH5GoL5OwAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">124</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">356</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">120</XPD:ATTR>
@@ -65,7 +65,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="9AMW5ef7WEq5bcyuL/iX/QAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="1EXmpQvfu0G7S9BX80J2HgAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Dang nhap</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Ñaêng nhaäp</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="E+jhuPlZBEGXecVqbc10BQAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -90,7 +90,7 @@
 <XPD:OBJ name="OwnedViews[2]" type="UMLUseCaseView" guid="wa0MlOx4JEmp/sX80IvBjAAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">128</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">176</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">125</XPD:ATTR>
@@ -99,7 +99,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="Eq1zKwZObkCVzAtRvrcArgAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="jWFnUepzSkGRzbyz+BHDbwAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Dang ky</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Ñaêng kyù</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="vxrb4bdf5UOH//KrBjM+MgAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -124,7 +124,7 @@
 <XPD:OBJ name="OwnedViews[3]" type="UMLUseCaseView" guid="AXDEbstxU0qfzeybibCIYwAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">284</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">88</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">172</XPD:ATTR>
@@ -133,7 +133,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="xxDtDLw0p0yIqmksuwnOFAAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="SuAJ76n1p0OFAnYc+FucJAAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Tra cuu thuat ngu</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Tra cöùu thuaät ngöõ</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="p97UWcaAWkuG3ClTw/uTJAAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -158,7 +158,7 @@
 <XPD:OBJ name="OwnedViews[4]" type="UMLUseCaseView" guid="9gMjhD6buUuGnqHcOV0UzQAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">348</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">340</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">145</XPD:ATTR>
@@ -167,7 +167,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="rjxFWdWPaUmRZopvt+NFSQAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="gCOAtLQvSUKTs0iZ64KGmgAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Hoi dap nhanh</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Hoûi ñaùp nhanh</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="Awdx+DpazEyzcnptEeZspgAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -192,7 +192,7 @@
 <XPD:OBJ name="OwnedViews[5]" type="UMLUseCaseView" guid="V/OhQQm4iESD52YXForwbAAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">356</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">280</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">151</XPD:ATTR>
@@ -201,7 +201,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="Jbhpl3FR7Emco50A6KFgrgAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="n8D1S0EPR0ehstv1rZZ9OAAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Quan ly tra cuu</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Quaûn lyù tra cöùu</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="LQMXNzryT0up7y6/zk8UuwAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -226,7 +226,7 @@
 <XPD:OBJ name="OwnedViews[6]" type="UMLUseCaseView" guid="hVSq/U1AzUKMGkU9pmHZiQAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">352</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">220</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">145</XPD:ATTR>
@@ -235,7 +235,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="AKsX7Tq+VUywZrQt8uYalAAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="nOEW8hrBHUW9bmjRXiewtAAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Thao luan</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Thaûo luaän</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="pHfDSgguEUaVsCO2iRiqaAAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -260,7 +260,7 @@
 <XPD:OBJ name="OwnedViews[7]" type="UMLUseCaseView" guid="xYTB0zisCkmVltKhPV7JwwAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">336</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">152</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">183</XPD:ATTR>
@@ -269,7 +269,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="Or8rF0iijU2kpo9C96xmjwAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="xDLoCYRHP0GeXyLoNQMkrQAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Them yeu thich</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Theâm yeâu thích</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="UJsdylKrP0OaNLzSvK4xnQAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -294,7 +294,7 @@
 <XPD:OBJ name="OwnedViews[8]" type="UMLUseCaseView" guid="g9d/oTEI50ex6nRHhJfF1QAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">364</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">416</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">108</XPD:ATTR>
@@ -303,7 +303,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="NE2WtWCSSkeo9Vk/lvK1mwAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="8oJcSl2OaU+2bscyjHp+eQAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Dong gop</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Ñoùng goùp</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="z6MAJ3KruE+iQr+wQq/hEQAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -328,7 +328,7 @@
 <XPD:OBJ name="OwnedViews[9]" type="UMLUseCaseView" guid="Dhit83Z8EkyYWb0pw24LnQAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">260</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">472</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">246</XPD:ATTR>
@@ -337,7 +337,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="f10vSP4Q+0Gx7HJNfRHDWgAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="6z+hDY70skePdKI0dU7GvwAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Quan ly thong tin ca nhan</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Quaûn lyù thoâng tin caù nhaân</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="E/8MX3qIH0GJRBPdG1VV7AAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -362,7 +362,7 @@
 <XPD:OBJ name="OwnedViews[10]" type="UMLAssociationView" guid="dmsVVdj7kEOWp4bmeYlQ5QAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Points" type="Points">228,339;208,356</XPD:ATTR>
 <XPD:REF name="Model">YZivEQqDlUmb4Slg7evLHgAA</XPD:REF>
 <XPD:REF name="Head">16Pceh2eOUqXkJH5GoL5OwAA</XPD:REF>
@@ -447,7 +447,7 @@
 <XPD:OBJ name="OwnedViews[11]" type="UMLAssociationView" guid="Ru5zi1Ml1kS77avtsGDY6AAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Points" type="Points">292,344;369,472</XPD:ATTR>
 <XPD:REF name="Model">MN1V5LqROUysKmIKzytZxgAA</XPD:REF>
 <XPD:REF name="Head">Dhit83Z8EkyYWb0pw24LnQAA</XPD:REF>
@@ -532,7 +532,7 @@
 <XPD:OBJ name="OwnedViews[12]" type="UMLAssociationView" guid="uOfzQNrSgkqrmeQDSIvX0QAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Points" type="Points">289,264;358,132</XPD:ATTR>
 <XPD:REF name="Model">iqK9Ly03X0WGfgS5bdWH0gAA</XPD:REF>
 <XPD:REF name="Head">AXDEbstxU0qfzeybibCIYwAA</XPD:REF>
@@ -617,7 +617,7 @@
 <XPD:OBJ name="OwnedViews[13]" type="UMLAssociationView" guid="yO0y770vU06nFtR1BRcPkAAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Points" type="Points">308,319;363,340</XPD:ATTR>
 <XPD:REF name="Model">MjfmmdHhE0mWCU946rIcLgAA</XPD:REF>
 <XPD:REF name="Head">9gMjhD6buUuGnqHcOV0UzQAA</XPD:REF>
@@ -702,7 +702,7 @@
 <XPD:OBJ name="OwnedViews[14]" type="UMLAssociationView" guid="ZoJauir1PE6mdbdmGQADvQAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Points" type="Points">308,304;356,303</XPD:ATTR>
 <XPD:REF name="Model">zPQRpJwGHUWbbCGZ/JE8qgAA</XPD:REF>
 <XPD:REF name="Head">V/OhQQm4iESD52YXForwbAAA</XPD:REF>
@@ -787,7 +787,7 @@
 <XPD:OBJ name="OwnedViews[15]" type="UMLAssociationView" guid="Nc1zpnHcEk61ZoQp41kn0AAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Points" type="Points">308,288;369,264</XPD:ATTR>
 <XPD:REF name="Model">s1fDP6LQgk+RLIp9pSI3/AAA</XPD:REF>
 <XPD:REF name="Head">hVSq/U1AzUKMGkU9pmHZiQAA</XPD:REF>
@@ -872,7 +872,7 @@
 <XPD:OBJ name="OwnedViews[16]" type="UMLAssociationView" guid="XKAnMsuFokegWu1TDz7m+QAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Points" type="Points">308,271;400,196</XPD:ATTR>
 <XPD:REF name="Model">simTYfqbpEKaiWTeEgIQsAAA</XPD:REF>
 <XPD:REF name="Head">xYTB0zisCkmVltKhPV7JwwAA</XPD:REF>
@@ -957,7 +957,7 @@
 <XPD:OBJ name="OwnedViews[17]" type="UMLAssociationView" guid="D4YUwODJHk6oXLnK40u/wQAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Points" type="Points">308,340;393,416</XPD:ATTR>
 <XPD:REF name="Model">zSuT2xMi/E+MhJ3z/72WbAAA</XPD:REF>
 <XPD:REF name="Head">g9d/oTEI50ex6nRHhJfF1QAA</XPD:REF>
@@ -1042,7 +1042,7 @@
 <XPD:OBJ name="OwnedViews[18]" type="UMLUseCaseView" guid="8HGtfj9eBk2MX/Wo+2GaPwAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">568</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">120</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">173</XPD:ATTR>
@@ -1051,7 +1051,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="RDGnLeapWka4jZOB9TWO1AAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="I+8aRUTdMUGXTN2s1kpb5AAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Quan ly thuat ngu</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Quaûn lyù thuaät ngöõ</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="3Li1tYADO0eUYaKV0tyTkgAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -1076,7 +1076,7 @@
 <XPD:OBJ name="OwnedViews[19]" type="UMLUseCaseView" guid="g+Y4ALBbTkK96nH7/YEsZAAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">516</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">192</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">183</XPD:ATTR>
@@ -1085,7 +1085,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="iCrh1ONNrUyjhh5h+zJxlAAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="DfDrBmL+l0iifzxNTDD6eQAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Thong ke tra cuu</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Thoáng keâ tra cöùu</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="IMumz6I/X06WbTcM2fK9+QAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -1110,7 +1110,7 @@
 <XPD:OBJ name="OwnedViews[20]" type="UMLUseCaseView" guid="bjZvYV4/Ak2DusxGwZqJGgAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">516</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">256</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">183</XPD:ATTR>
@@ -1119,7 +1119,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="UDnCiQj3cUq/7kr4cq4xBAAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="Iy76RhsRpkmH26pZkGUNZgAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Quan ly thanh vien</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Quaûn lyù thaønh vieân</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="bvHZZBvImku5MxgE/v3JFwAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -1144,6 +1144,7 @@
 <XPD:OBJ name="OwnedViews[21]" type="UMLUseCaseView" guid="nUuwQPBPkU2uI+xBXsITjwAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">524</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">304</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">172</XPD:ATTR>
@@ -1152,7 +1153,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="361dr4aCFUm9COHktlmrrwAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="fZKMNDm7Xk2CZs2AlW3NxAAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Quan ly dong gop</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Quaûn lyù ñoùng goùp</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="5uxm+YlDVkCpOH9x9CJhCwAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -1177,6 +1178,7 @@
 <XPD:OBJ name="OwnedViews[22]" type="UMLActorView" guid="ZIB0iBN8+k61QKNR0gprMgAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">736</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">268</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">93</XPD:ATTR>
@@ -1185,7 +1187,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="lF8gbT1jFUW/uR38jTs2sgAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="CaWCxpvP60mXAnyaFb7TAQAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Quan tri vien</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Quaûn trò vieân</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="+UYIOM7ewE2xhjZvDSH3bgAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -1206,6 +1208,7 @@
 <XPD:OBJ name="OwnedViews[23]" type="UMLAssociationView" guid="GFm65IFyw0Gxs2ru7Ay8ewAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Points" type="Points">751,268;671,164</XPD:ATTR>
 <XPD:REF name="Model">VPIH5jOeZE+5yudqCI5n0QAA</XPD:REF>
 <XPD:REF name="Head">8HGtfj9eBk2MX/Wo+2GaPwAA</XPD:REF>
@@ -1290,6 +1293,7 @@
 <XPD:OBJ name="OwnedViews[24]" type="UMLAssociationView" guid="XCcAzsmTSUKE8OkRxSYhQgAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Points" type="Points">736,283;648,236</XPD:ATTR>
 <XPD:REF name="Model">UIbDLxhf2EWYc9IP3Y0LSQAA</XPD:REF>
 <XPD:REF name="Head">g+Y4ALBbTkK96nH7/YEsZAAA</XPD:REF>
@@ -1374,6 +1378,7 @@
 <XPD:OBJ name="OwnedViews[25]" type="UMLAssociationView" guid="JfhDZdeV50OUd+gtKYqfNQAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Points" type="Points">736,300;698,294</XPD:ATTR>
 <XPD:REF name="Model">lOatBlheYEKYBrDM1oIdlwAA</XPD:REF>
 <XPD:REF name="Head">bjZvYV4/Ak2DusxGwZqJGgAA</XPD:REF>
@@ -1458,6 +1463,7 @@
 <XPD:OBJ name="OwnedViews[26]" type="UMLAssociationView" guid="KV09ISQst0+5o2NvaPrz9gAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Points" type="Points">736,313;695,317</XPD:ATTR>
 <XPD:REF name="Model">UvFheigNKkOXchk0sE/A6QAA</XPD:REF>
 <XPD:REF name="Head">nUuwQPBPkU2uI+xBXsITjwAA</XPD:REF>
@@ -1542,7 +1548,7 @@
 <XPD:OBJ name="OwnedViews[27]" type="UMLAssociationView" guid="LOh8G1ajYEyJ4j3UflSisgAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Points" type="Points">239,264;206,220</XPD:ATTR>
 <XPD:REF name="Model">zO28T5F6d0SkELXGzDoA0AAA</XPD:REF>
 <XPD:REF name="Head">wa0MlOx4JEmp/sX80IvBjAAA</XPD:REF>
@@ -1627,7 +1633,7 @@
 <XPD:OBJ name="OwnedViews[28]" type="UMLUseCaseView" guid="2SLs87392UiMGSI5N7x5TQAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">560</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">436</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">219</XPD:ATTR>
@@ -1636,7 +1642,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="k58yiTRRIUWp6zk99vC9pQAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="Wl1NVzO2rkuW86jX3AubWQAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Quan ly hoi dap nhanh</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Quaûn lyù hoûi ñaùp nhanh</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="HkFKiLHd90C+6xLMUsoS3wAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -1661,7 +1667,7 @@
 <XPD:OBJ name="OwnedViews[29]" type="UMLUseCaseView" guid="Np/GdaEBVU6yE/Y6K6lcwQAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">532</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">372</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">173</XPD:ATTR>
@@ -1670,7 +1676,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="NM+w6nt+AU+RcKIAMIjPJAAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="/O/bSivvHkiQspW0DZVisQAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Quan ly thao luan</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Quaûn lyù bình luaän</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="4dE1MS0qD0W7EjF8l3phqAAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -1695,7 +1701,7 @@
 <XPD:OBJ name="OwnedViews[30]" type="UMLAssociationView" guid="XeQ2KgZzB0KLmGjWycwnEwAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Points" type="Points">752,348;686,436</XPD:ATTR>
 <XPD:REF name="Model">opUbMNFFfkGPsh7K7HSJQgAA</XPD:REF>
 <XPD:REF name="Head">2SLs87392UiMGSI5N7x5TQAA</XPD:REF>
@@ -1780,7 +1786,7 @@
 <XPD:OBJ name="OwnedViews[31]" type="UMLAssociationView" guid="NxcZkbEUq0m5E6mif05z+wAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="FontFace" type="string">Arial</XPD:ATTR>
+<XPD:ATTR name="FontFace" type="string">VNI-Helve</XPD:ATTR>
 <XPD:ATTR name="Points" type="Points">736,332;660,372</XPD:ATTR>
 <XPD:REF name="Model">zf60eexKF0K+lDOg8xuEpgAA</XPD:REF>
 <XPD:REF name="Head">Np/GdaEBVU6yE/Y6K6lcwQAA</XPD:REF>
@@ -1866,7 +1872,7 @@
 </XPD:OBJ>
 <XPD:ATTR name="#OwnedElements" type="integer">49</XPD:ATTR>
 <XPD:OBJ name="OwnedElements[0]" type="UMLActor" guid="dLJKiAOD1kS+il+hLy637gAA">
-<XPD:ATTR name="Name" type="string">Thanh vien</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Thaønh vieân</XPD:ATTR>
 <XPD:REF name="Namespace">G/ipH1K9ak+LEurrsvlCnwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">3</XPD:ATTR>
 <XPD:REF name="Views[0]">djWL8RTbqUeLmpcMHPWcBAAA</XPD:REF>
@@ -1886,7 +1892,7 @@
 <XPD:REF name="Associations[10]">1gXMCS6cxE249l6TbB7WDAAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[1]" type="UMLUseCase" guid="2dK/6qA6n0SgWL/x8u8FpwAA">
-<XPD:ATTR name="Name" type="string">Dang nhap</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Ñaêng nhaäp</XPD:ATTR>
 <XPD:REF name="Namespace">G/ipH1K9ak+LEurrsvlCnwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">16Pceh2eOUqXkJH5GoL5OwAA</XPD:REF>
@@ -1899,7 +1905,7 @@
 <XPD:REF name="Associations[2]">MHh2xt9dC0y9kmfDvPSSXgAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[2]" type="UMLUseCase" guid="Q5EF4qGeTUuZUr/bauKwnwAA">
-<XPD:ATTR name="Name" type="string">Dang ky</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Ñaêng kyù</XPD:ATTR>
 <XPD:REF name="Namespace">G/ipH1K9ak+LEurrsvlCnwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">wa0MlOx4JEmp/sX80IvBjAAA</XPD:REF>
@@ -1912,7 +1918,7 @@
 <XPD:REF name="Associations[2]">jsLDgRUm90S53AV8VbElggAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[3]" type="UMLUseCase" guid="HHVvx/surUG4iK2RXNXrvgAA">
-<XPD:ATTR name="Name" type="string">Tra cuu thuat ngu</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Tra cöùu thuaät ngöõ</XPD:ATTR>
 <XPD:REF name="Namespace">G/ipH1K9ak+LEurrsvlCnwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">AXDEbstxU0qfzeybibCIYwAA</XPD:REF>
@@ -1950,7 +1956,7 @@
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[6]" type="UMLUseCase" guid="Ai22UYSaVU+MfQGzHkLt7gAA">
-<XPD:ATTR name="Name" type="string">Hoi dap nhanh</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Hoûi ñaùp nhanh</XPD:ATTR>
 <XPD:REF name="Namespace">G/ipH1K9ak+LEurrsvlCnwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">9gMjhD6buUuGnqHcOV0UzQAA</XPD:REF>
@@ -1961,7 +1967,7 @@
 <XPD:REF name="Associations[0]">NKWgOBGCJkyzl7Hd5EHaugAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[7]" type="UMLUseCase" guid="LxsPu3jueUm988xslmo9SgAA">
-<XPD:ATTR name="Name" type="string">Quan ly tra cuu</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Quaûn lyù tra cöùu</XPD:ATTR>
 <XPD:REF name="Namespace">G/ipH1K9ak+LEurrsvlCnwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">V/OhQQm4iESD52YXForwbAAA</XPD:REF>
@@ -1972,7 +1978,7 @@
 <XPD:REF name="Associations[0]">eUU/Eta0vEyVSE8cF5NlngAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[8]" type="UMLUseCase" guid="Icuu8U5R8UeidpRQ+sNHPQAA">
-<XPD:ATTR name="Name" type="string">Thao luan</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Thaûo luaän</XPD:ATTR>
 <XPD:REF name="Namespace">G/ipH1K9ak+LEurrsvlCnwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">hVSq/U1AzUKMGkU9pmHZiQAA</XPD:REF>
@@ -1983,7 +1989,7 @@
 <XPD:REF name="Associations[0]">UItm0x6Pok+xJh+2IFu5CAAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[9]" type="UMLUseCase" guid="cE500tuyZUywxuyFyPMAgwAA">
-<XPD:ATTR name="Name" type="string">Them yeu thich</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Theâm yeâu thích</XPD:ATTR>
 <XPD:REF name="Namespace">G/ipH1K9ak+LEurrsvlCnwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">xYTB0zisCkmVltKhPV7JwwAA</XPD:REF>
@@ -1994,7 +2000,7 @@
 <XPD:REF name="Associations[0]">KRrYrOWBtEC3/CrzWkA3TwAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[10]" type="UMLUseCase" guid="7dFufpjTA0yTiqlZHz7x5QAA">
-<XPD:ATTR name="Name" type="string">Dong gop</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Ñoùng goùp</XPD:ATTR>
 <XPD:REF name="Namespace">G/ipH1K9ak+LEurrsvlCnwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">g9d/oTEI50ex6nRHhJfF1QAA</XPD:REF>
@@ -2005,7 +2011,7 @@
 <XPD:REF name="Associations[0]">ATUp9AmZ60iYzzGcY1qQKgAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[11]" type="UMLUseCase" guid="ErS63h4zcEC3pKYybak6fgAA">
-<XPD:ATTR name="Name" type="string">Quan ly thong tin ca nhan</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Quaûn lyù thoâng tin caù nhaân</XPD:ATTR>
 <XPD:REF name="Namespace">G/ipH1K9ak+LEurrsvlCnwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">Dhit83Z8EkyYWb0pw24LnQAA</XPD:REF>
@@ -2253,7 +2259,7 @@
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[21]" type="UMLUseCase" guid="WvHA8EUxokWf6TNeVL19LwAA">
-<XPD:ATTR name="Name" type="string">Quan ly thuat ngu</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Quaûn lyù thuaät ngöõ</XPD:ATTR>
 <XPD:REF name="Namespace">G/ipH1K9ak+LEurrsvlCnwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">8HGtfj9eBk2MX/Wo+2GaPwAA</XPD:REF>
@@ -2264,7 +2270,7 @@
 <XPD:REF name="Associations[0]">2Ur/b6eA10qrZW9s/Aan1gAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[22]" type="UMLUseCase" guid="faGVs7+4FU2AMxBx9Z3WlAAA">
-<XPD:ATTR name="Name" type="string">Thong ke tra cuu</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Thoáng keâ tra cöùu</XPD:ATTR>
 <XPD:REF name="Namespace">G/ipH1K9ak+LEurrsvlCnwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">g+Y4ALBbTkK96nH7/YEsZAAA</XPD:REF>
@@ -2275,7 +2281,7 @@
 <XPD:REF name="Associations[0]">wmcMPHtzZ0WSkJCHIWzBBAAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[23]" type="UMLUseCase" guid="tMhKU5XevkOQGiUPD69/ZwAA">
-<XPD:ATTR name="Name" type="string">Quan ly thanh vien</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Quaûn lyù thaønh vieân</XPD:ATTR>
 <XPD:REF name="Namespace">G/ipH1K9ak+LEurrsvlCnwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">bjZvYV4/Ak2DusxGwZqJGgAA</XPD:REF>
@@ -2315,7 +2321,7 @@
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[28]" type="UMLUseCase" guid="Kta/E2BQYkSj481Z7W3iGwAA">
-<XPD:ATTR name="Name" type="string">Quan ly dong gop</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Quaûn lyù ñoùng goùp</XPD:ATTR>
 <XPD:REF name="Namespace">G/ipH1K9ak+LEurrsvlCnwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">nUuwQPBPkU2uI+xBXsITjwAA</XPD:REF>
@@ -2397,7 +2403,7 @@
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[36]" type="UMLActor" guid="d6Ur+NhdcUSdKivXmvI7ygAA">
-<XPD:ATTR name="Name" type="string">Quan tri vien</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Quaûn trò vieân</XPD:ATTR>
 <XPD:REF name="Namespace">G/ipH1K9ak+LEurrsvlCnwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">3</XPD:ATTR>
 <XPD:REF name="Views[0]">ZIB0iBN8+k61QKNR0gprMgAA</XPD:REF>
@@ -2585,7 +2591,7 @@
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[45]" type="UMLUseCase" guid="XoRSi9+YfEu9pxxWAiUxfAAA">
-<XPD:ATTR name="Name" type="string">Quan ly hoi dap nhanh</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Quaûn lyù hoûi ñaùp nhanh</XPD:ATTR>
 <XPD:REF name="Namespace">G/ipH1K9ak+LEurrsvlCnwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">2SLs87392UiMGSI5N7x5TQAA</XPD:REF>
@@ -2596,7 +2602,7 @@
 <XPD:REF name="Associations[0]">uP3ITYgvnkGJKSZimoc26AAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[46]" type="UMLUseCase" guid="ugTF6JIpeUiT5X+w1FmYpQAA">
-<XPD:ATTR name="Name" type="string">Quan ly thao luan</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Quaûn lyù bình luaän</XPD:ATTR>
 <XPD:REF name="Namespace">G/ipH1K9ak+LEurrsvlCnwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">Np/GdaEBVU6yE/Y6K6lcwQAA</XPD:REF>
