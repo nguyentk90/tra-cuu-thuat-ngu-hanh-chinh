@@ -180,8 +180,10 @@
   <ItemGroup>
     <Content Include="Content\Admin.css" />
     <Content Include="Content\Home.css" />
+    <Content Include="Content\img\36-0.gif" />
     <Content Include="Content\img\ajax-loader.gif" />
     <Content Include="Content\img\backgrounds\box-head-green.jpg" />
+    <Content Include="Content\img\generated-image.gif" />
     <Content Include="Content\img\red-search-icon-mini.png" />
     <Content Include="Content\img\red-search-icon.png" />
     <Content Include="Content\img\search-logo.png" />
@@ -235,6 +237,7 @@
     <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.form.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -319,6 +322,8 @@
     <Content Include="Views\Users\Detail.cshtml" />
     <None Include="Resources\TestImport.xls" />
     <Content Include="Views\Import\Index.cshtml" />
+    <Content Include="Views\Shared\_LoadingPopUp.cshtml" />
+    <None Include="Resources\TestImport1.xls" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

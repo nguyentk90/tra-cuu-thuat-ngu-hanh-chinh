@@ -91,6 +91,7 @@ $(document).ready(function () {
     });
 
 
+    //delete User
     $("#btn-delete-user").click(function () {
 
         var checkDelete = confirm("Bạn có chắc muốn xóa thành viên này!");
@@ -103,7 +104,7 @@ $(document).ready(function () {
                 success: function (data) {
                     if (data.message == 'SUCCESS') {
                         alert("Xóa thành công!");
-                        window.location.href ='/Users';
+                        window.location.href = '/Users';
                     } else {
                         alert("Lỗi");
                     }
@@ -115,4 +116,57 @@ $(document).ready(function () {
         }
     });
 
+
+    //upload file and import
+    $("#ajaxUploadForm").ajaxForm({
+        iframe: true,
+        type: 'POST',
+        dataType: "json",
+        cache: false,
+        timeout: 1200000,
+        async: false,
+        beforeSubmit: function () {
+            //Do something here if needed like show in progress message
+            popUpLoadingOpen();
+        },
+        success: function (result) {
+            popUpLoadingClose();
+            if (result.data == "SUCCESS") {                
+                alert('Nhập thành công ' + result.rows + ' thuật ngữ và nghĩa.');
+            } else {               
+                alert(result.message);
+            }
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            popUpLoadingClose();
+            alert("Error uploading file");
+        }
+    });
+
 });
+
+/*LOGIN POPUP FUNCTION*/
+//-------------------------------
+function popUpLoadingOpen() {
+    //over-lay
+    var windowWidth = $(window).width();
+    var windowHeight = $(window).height();
+    $('.ui-widget-overlay').css("width", windowWidth + "px");
+    $('.ui-widget-overlay').css("height", windowHeight + "px");
+    $('.ui-widget-overlay').css("opacity", 0.5);
+    $('.ui-widget-overlay').show();
+
+    //popup div
+    var top = windowHeight / 2 - $('.ui-dialog').height() / 2;
+    var left = windowWidth / 2 - $('.ui-dialog').width() / 2;
+    //console.log(top + "-" + left)
+    $('#loading-popup').css("top", top + "px");
+    $('#loading-popup').css("left", left + "px");
+    $('#loading-popup').slideDown('slow');
+}
+
+function popUpLoadingClose() {
+    $('.ui-widget-overlay').hide();
+    $('#loading-popup').hide();
+}
+//-------------------------------------
