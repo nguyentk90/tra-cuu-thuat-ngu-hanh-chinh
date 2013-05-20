@@ -112,11 +112,12 @@ namespace TraCuuThuatNgu.Controllers
 
 
 
-        // GET: Import form Excel file
-        public ActionResult Import()
-        {
-            return View();
-        }
+        //// GET: Import form Excel file
+        //[HttpGet]
+        //public ActionResult Import()
+        //{
+        //    return View();
+        //}
 
 
         // POST: Import from Excel file
@@ -125,7 +126,7 @@ namespace TraCuuThuatNgu.Controllers
         {
             EntriesModel entriesModel = new EntriesModel();
 
-            string path = Server.MapPath("~/Resources/TestImport.xls");
+            string path = Server.MapPath("~/Resources/TestImport1.xls");
 
             DataTable data = entriesModel.ReadExcelContents(path);
 

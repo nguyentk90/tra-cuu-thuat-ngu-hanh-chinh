@@ -20,7 +20,6 @@
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
       <End Role="Profile" EntitySet="Profiles" />
     </AssociationSet>
-    <EntitySet Name="Synsets" EntityType="TraCuuThuatNguModel.Synset" />
     <EntitySet Name="Answers" EntityType="TraCuuThuatNguModel.Answer" />
     <EntitySet Name="Questions" EntityType="TraCuuThuatNguModel.Question" />
     <EntitySet Name="UserContents" EntityType="TraCuuThuatNguModel.UserContent" />
@@ -49,10 +48,6 @@
       <End Role="WordIndex" EntitySet="WordIndexes" />
       <End Role="Favorite" EntitySet="Favorites" />
     </AssociationSet>
-    <AssociationSet Name="Relation1" Association="TraCuuThuatNguModel.Relation1">
-      <End Role="WordIndex" EntitySet="WordIndexes" />
-      <End Role="Synset" EntitySet="Synsets" />
-    </AssociationSet>
     <EntitySet Name="UserHistories" EntityType="TraCuuThuatNguModel.UserHistory" />
     <AssociationSet Name="FK_UserHistory_aspnet_Users1" Association="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users1">
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
@@ -67,6 +62,11 @@
     <AssociationSet Name="aspnet_UsersInRoles" Association="TraCuuThuatNguModel.aspnet_UsersInRoles">
       <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+    </AssociationSet>
+    <EntitySet Name="Synsets" EntityType="TraCuuThuatNguModel.Synset" />
+    <AssociationSet Name="Relation" Association="TraCuuThuatNguModel.Relation">
+      <End Role="WordIndex" EntitySet="WordIndexes" />
+      <End Role="Synset" EntitySet="Synsets" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="aspnet_Users">
@@ -182,16 +182,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="Synset">
-    <Key>
-      <PropertyRef Name="SynsetId" />
-    </Key>
-    <Property Type="Int32" Name="SynsetId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="Category" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Def" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="Exa" MaxLength="512" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="WordIndexes" Relationship="TraCuuThuatNguModel.Relation1" FromRole="Synset" ToRole="WordIndex" />
-  </EntityType>
   <EntityType Name="Answer">
     <Key>
       <PropertyRef Name="AnswerId" />
@@ -239,7 +229,7 @@
     <Property Type="String" Name="WordType" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Comments" Relationship="TraCuuThuatNguModel.FK_BinhLuan_ThuatNgu1" FromRole="WordIndex" ToRole="Comment" />
     <NavigationProperty Name="Favorites" Relationship="TraCuuThuatNguModel.FK_YeuThich_ThuatNgu1" FromRole="WordIndex" ToRole="Favorite" />
-    <NavigationProperty Name="Synsets" Relationship="TraCuuThuatNguModel.Relation1" FromRole="WordIndex" ToRole="Synset" />
+    <NavigationProperty Name="Synsets" Relationship="TraCuuThuatNguModel.Relation" FromRole="WordIndex" ToRole="Synset" />
   </EntityType>
   <Association Name="FK_Answer_aspnet_Users">
     <End Type="TraCuuThuatNguModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
@@ -312,10 +302,6 @@
         <PropertyRef Name="HeadWord" />
       </Dependent>
     </ReferentialConstraint>
-  </Association>
-  <Association Name="Relation1">
-    <End Type="TraCuuThuatNguModel.WordIndex" Role="WordIndex" Multiplicity="*" />
-    <End Type="TraCuuThuatNguModel.Synset" Role="Synset" Multiplicity="*" />
   </Association>
   <EntityType Name="UserHistory">
     <Key>
@@ -392,5 +378,19 @@
   <Association Name="aspnet_UsersInRoles">
     <End Type="TraCuuThuatNguModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="*" />
     <End Type="TraCuuThuatNguModel.aspnet_Users" Role="aspnet_Users" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Synset">
+    <Key>
+      <PropertyRef Name="SynsetId" />
+    </Key>
+    <Property Type="Int32" Name="SynsetId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Category" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Def" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Exa" MaxLength="512" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="WordIndexes" Relationship="TraCuuThuatNguModel.Relation" FromRole="Synset" ToRole="WordIndex" />
+  </EntityType>
+  <Association Name="Relation">
+    <End Type="TraCuuThuatNguModel.WordIndex" Role="WordIndex" Multiplicity="*" />
+    <End Type="TraCuuThuatNguModel.Synset" Role="Synset" Multiplicity="*" />
   </Association>
 </Schema>

@@ -33,7 +33,7 @@ namespace TraCuuThuatNgu.Models
 
 
         // Add new term or new synset
-        public void AddNewTermOrSynset(AddTermViewModel term)
+        public int AddNewTermOrSynset(AddTermViewModel term)
         {
 
             // Check isExist term
@@ -57,6 +57,11 @@ namespace TraCuuThuatNgu.Models
             }
             else
             {
+                // Check duplicate content
+                var checkDup = checkTerm.Synsets.Contains(context.Synsets.Where(x => x.Def.Contains(term.Def)).FirstOrDefault());
+                if (checkDup)
+                    return 0;
+                
             }
 
             // Synset
@@ -101,10 +106,8 @@ namespace TraCuuThuatNgu.Models
             // 
             synset.WordIndexes.Add(checkTerm);
             context.Synsets.Add(synset);
-
             int result = context.SaveChanges();
-
-
+            return result;
         }
 
         // Delete synset by synsetId
@@ -224,7 +227,7 @@ namespace TraCuuThuatNgu.Models
 
                 connection = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=Excel 8.0;Data Source=" + fileName); //Excel 97-2003, .xls //string excelQuery = @"Select [Day],[Outlook],[temp],[Humidity],[Wind], [PlaySport] // FROM [Sheet1$]";
 
-                string excelQuery = @"Select * FROM [Sheet1$]";
+                string excelQuery = @"Select [Thuật ngữ],[Loại từ],[Giải thích],[Ví dụ],[Từ đồng nghĩa] FROM [Sheet1$]";
                 connection.Open();
                 OleDbCommand cmd = new OleDbCommand(excelQuery, connection);
                 OleDbDataAdapter adapter = new OleDbDataAdapter();
@@ -238,10 +241,50 @@ namespace TraCuuThuatNgu.Models
                 return dt;
             }
             catch (Exception ex)
-            {
-                // MessageBox.Show("Program can't read file. " + ex.Message, "Please Note", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {                
                 return null;
             }
+        }
+
+
+
+        // Import data
+        public int ImportData(DataTable source)
+        {
+            int result = 0;
+            if (source == null)
+            {
+                //file sai cau truc
+                return -1;
+            }
+            else
+            {
+                for (int i = 0; i < source.Rows.Count; i++)
+                {
+                    AddTermViewModel termOrSynset = new AddTermViewModel();
+
+                    var term = source.Rows[i]["Thuật ngữ"].ToString();
+                    var def =source.Rows[i]["Giải thích"].ToString();
+
+                    if (!String.IsNullOrWhiteSpace(term))
+                    {
+                        if (!String.IsNullOrWhiteSpace(def))
+                        {
+                            termOrSynset.HeadWord = term;
+                            termOrSynset.Catagory = source.Rows[i]["Loại từ"].ToString();
+                            termOrSynset.Def = def;
+                            termOrSynset.Exa = source.Rows[i]["Ví dụ"].ToString();
+                            termOrSynset.Synonyms = source.Rows[i]["Từ đồng nghĩa"].ToString();
+                            if (AddNewTermOrSynset(termOrSynset) > 0)
+                            { result++; }
+                        }
+                    }
+                }
+            
+            }
+
+            return result;
+        
         }
 
     }

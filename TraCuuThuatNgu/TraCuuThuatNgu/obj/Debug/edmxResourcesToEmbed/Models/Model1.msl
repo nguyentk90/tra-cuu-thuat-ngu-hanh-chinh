@@ -70,16 +70,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Synsets">
-      <EntityTypeMapping TypeName="TraCuuThuatNguModel.Synset">
-        <MappingFragment StoreEntitySet="Synset">
-          <ScalarProperty Name="Exa" ColumnName="Exa" />
-          <ScalarProperty Name="Def" ColumnName="Def" />
-          <ScalarProperty Name="Category" ColumnName="Category" />
-          <ScalarProperty Name="SynsetId" ColumnName="SynsetId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Answers">
       <EntityTypeMapping TypeName="TraCuuThuatNguModel.Answer">
         <MappingFragment StoreEntitySet="Answer">
@@ -125,14 +115,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="Relation1" TypeName="TraCuuThuatNguModel.Relation1" StoreEntitySet="Relation">
-      <EndProperty Name="Synset">
-        <ScalarProperty Name="SynsetId" ColumnName="SynsetId" />
-      </EndProperty>
-      <EndProperty Name="WordIndex">
-        <ScalarProperty Name="HeadWord" ColumnName="HeadWord" />
-      </EndProperty>
-    </AssociationSetMapping>
     <EntitySetMapping Name="UserHistories">
       <EntityTypeMapping TypeName="TraCuuThuatNguModel.UserHistory">
         <MappingFragment StoreEntitySet="UserHistory">
@@ -187,6 +169,24 @@
       </EndProperty>
       <EndProperty Name="aspnet_Roles">
         <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Synsets">
+      <EntityTypeMapping TypeName="TraCuuThuatNguModel.Synset">
+        <MappingFragment StoreEntitySet="Synset">
+          <ScalarProperty Name="Exa" ColumnName="Exa" />
+          <ScalarProperty Name="Def" ColumnName="Def" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="SynsetId" ColumnName="SynsetId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Relation" TypeName="TraCuuThuatNguModel.Relation" StoreEntitySet="Relation">
+      <EndProperty Name="Synset">
+        <ScalarProperty Name="SynsetId" ColumnName="SynsetId" />
+      </EndProperty>
+      <EndProperty Name="WordIndex">
+        <ScalarProperty Name="HeadWord" ColumnName="HeadWord" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

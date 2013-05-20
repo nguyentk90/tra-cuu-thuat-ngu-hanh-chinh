@@ -18,15 +18,15 @@
             </div>
         </div>
         <div class="block">
-            @using (Html.BeginForm())
-            {
-                <div class="entry-form">
+        <form id="ajaxUploadForm" action="/Import" method="post" enctype="multipart/form-data">
+             <div class="entry-form">
                     <div class="editor">
                         <div class="editor-label">
-                            Thuật ngữ
+                            Nhập dữ liệu:
                         </div>
                         <div class="editor-field">
-                           
+                           <input type="file" name="file" />
+                           <input type="submit" class="btn" value="Nhập" />       
                         </div>
                         <div class="clear">
                         </div>
@@ -35,13 +35,13 @@
                         <div class="editor-label">
                         </div>
                         <div class="editor-field">
-                            <input type="submit" class="btn" value="Thêm" />                            
+                                                 
                         </div>
                         <div class="clear">
                         </div>
                     </div>
                 </div>   
-            }
+            </form>
         </div>
     </div>
     <div class="clear">

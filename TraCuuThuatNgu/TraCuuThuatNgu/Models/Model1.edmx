@@ -462,7 +462,6 @@
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Profile" EntitySet="Profiles" />
           </AssociationSet>
-          <EntitySet Name="Synsets" EntityType="TraCuuThuatNguModel.Synset" />
           <EntitySet Name="Answers" EntityType="TraCuuThuatNguModel.Answer" />
           <EntitySet Name="Questions" EntityType="TraCuuThuatNguModel.Question" />
           <EntitySet Name="UserContents" EntityType="TraCuuThuatNguModel.UserContent" />
@@ -491,10 +490,6 @@
             <End Role="WordIndex" EntitySet="WordIndexes" />
             <End Role="Favorite" EntitySet="Favorites" />
           </AssociationSet>
-          <AssociationSet Name="Relation1" Association="TraCuuThuatNguModel.Relation1">
-            <End Role="WordIndex" EntitySet="WordIndexes" />
-            <End Role="Synset" EntitySet="Synsets" />
-          </AssociationSet>
           <EntitySet Name="UserHistories" EntityType="TraCuuThuatNguModel.UserHistory" />
           <AssociationSet Name="FK_UserHistory_aspnet_Users1" Association="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users1">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
@@ -509,6 +504,11 @@
           <AssociationSet Name="aspnet_UsersInRoles" Association="TraCuuThuatNguModel.aspnet_UsersInRoles">
             <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+          </AssociationSet>
+          <EntitySet Name="Synsets" EntityType="TraCuuThuatNguModel.Synset" />
+          <AssociationSet Name="Relation" Association="TraCuuThuatNguModel.Relation">
+            <End Role="WordIndex" EntitySet="WordIndexes" />
+            <End Role="Synset" EntitySet="Synsets" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="aspnet_Users">
@@ -624,16 +624,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Synset">
-          <Key>
-            <PropertyRef Name="SynsetId" />
-          </Key>
-          <Property Type="Int32" Name="SynsetId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Category" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Def" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Exa" MaxLength="512" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="WordIndexes" Relationship="TraCuuThuatNguModel.Relation1" FromRole="Synset" ToRole="WordIndex" />
-        </EntityType>
         <EntityType Name="Answer">
           <Key>
             <PropertyRef Name="AnswerId" />
@@ -681,7 +671,7 @@
           <Property Type="String" Name="WordType" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Comments" Relationship="TraCuuThuatNguModel.FK_BinhLuan_ThuatNgu1" FromRole="WordIndex" ToRole="Comment" />
           <NavigationProperty Name="Favorites" Relationship="TraCuuThuatNguModel.FK_YeuThich_ThuatNgu1" FromRole="WordIndex" ToRole="Favorite" />
-          <NavigationProperty Name="Synsets" Relationship="TraCuuThuatNguModel.Relation1" FromRole="WordIndex" ToRole="Synset" />
+          <NavigationProperty Name="Synsets" Relationship="TraCuuThuatNguModel.Relation" FromRole="WordIndex" ToRole="Synset" />
         </EntityType>
         <Association Name="FK_Answer_aspnet_Users">
           <End Type="TraCuuThuatNguModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
@@ -754,10 +744,6 @@
               <PropertyRef Name="HeadWord" />
             </Dependent>
           </ReferentialConstraint>
-        </Association>
-        <Association Name="Relation1">
-          <End Type="TraCuuThuatNguModel.WordIndex" Role="WordIndex" Multiplicity="*" />
-          <End Type="TraCuuThuatNguModel.Synset" Role="Synset" Multiplicity="*" />
         </Association>
         <EntityType Name="UserHistory">
           <Key>
@@ -835,6 +821,20 @@
           <End Type="TraCuuThuatNguModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="*" />
           <End Type="TraCuuThuatNguModel.aspnet_Users" Role="aspnet_Users" Multiplicity="*" />
         </Association>
+        <EntityType Name="Synset">
+          <Key>
+            <PropertyRef Name="SynsetId" />
+          </Key>
+          <Property Type="Int32" Name="SynsetId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Category" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Def" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Exa" MaxLength="512" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="WordIndexes" Relationship="TraCuuThuatNguModel.Relation" FromRole="Synset" ToRole="WordIndex" />
+        </EntityType>
+        <Association Name="Relation">
+          <End Type="TraCuuThuatNguModel.WordIndex" Role="WordIndex" Multiplicity="*" />
+          <End Type="TraCuuThuatNguModel.Synset" Role="Synset" Multiplicity="*" />
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -910,16 +910,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Synsets">
-            <EntityTypeMapping TypeName="TraCuuThuatNguModel.Synset">
-              <MappingFragment StoreEntitySet="Synset">
-                <ScalarProperty Name="Exa" ColumnName="Exa" />
-                <ScalarProperty Name="Def" ColumnName="Def" />
-                <ScalarProperty Name="Category" ColumnName="Category" />
-                <ScalarProperty Name="SynsetId" ColumnName="SynsetId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Answers">
             <EntityTypeMapping TypeName="TraCuuThuatNguModel.Answer">
               <MappingFragment StoreEntitySet="Answer">
@@ -965,14 +955,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="Relation1" TypeName="TraCuuThuatNguModel.Relation1" StoreEntitySet="Relation">
-            <EndProperty Name="Synset">
-              <ScalarProperty Name="SynsetId" ColumnName="SynsetId" />
-            </EndProperty>
-            <EndProperty Name="WordIndex">
-              <ScalarProperty Name="HeadWord" ColumnName="HeadWord" />
-            </EndProperty>
-          </AssociationSetMapping>
           <EntitySetMapping Name="UserHistories">
             <EntityTypeMapping TypeName="TraCuuThuatNguModel.UserHistory">
               <MappingFragment StoreEntitySet="UserHistory">
@@ -1029,6 +1011,24 @@
               <ScalarProperty Name="RoleId" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Synsets">
+            <EntityTypeMapping TypeName="TraCuuThuatNguModel.Synset">
+              <MappingFragment StoreEntitySet="Synset">
+                <ScalarProperty Name="Exa" ColumnName="Exa" />
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="SynsetId" ColumnName="SynsetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Relation" TypeName="TraCuuThuatNguModel.Relation" StoreEntitySet="Relation">
+            <EndProperty Name="Synset">
+              <ScalarProperty Name="SynsetId" ColumnName="SynsetId" />
+            </EndProperty>
+            <EndProperty Name="WordIndex">
+              <ScalarProperty Name="HeadWord" ColumnName="HeadWord" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1072,7 +1072,6 @@
           <ConnectorPoint PointX="2.75" PointY="1.9211531575520837" />
           <ConnectorPoint PointX="2" PointY="1.9211531575520837" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="TraCuuThuatNguModel.Synset" Width="1.5" PointX="7.125" PointY="6.5" Height="1.7566536458333317" />
         <EntityTypeShape EntityType="TraCuuThuatNguModel.Answer" Width="1.5" PointX="5.125" PointY="6" Height="2.2496956380208335" />
         <EntityTypeShape EntityType="TraCuuThuatNguModel.Question" Width="1.5" PointX="2.75" PointY="6.125" Height="2.5571907552083388" />
         <EntityTypeShape EntityType="TraCuuThuatNguModel.UserContent" Width="1.5" PointX="0.75" PointY="6.75" Height="2.5571907552083371" />
@@ -1101,17 +1100,13 @@
           <ConnectorPoint PointX="2.15625" PointY="6.75" />
         </AssociationConnector>
         <AssociationConnector Association="TraCuuThuatNguModel.FK_BinhLuan_ThuatNgu1" >
-          <ConnectorPoint PointX="7.125" PointY="4.7401432291666694" />
-          <ConnectorPoint PointX="6.625" PointY="4.7401432291666694" />
+          <ConnectorPoint PointX="7.125" PointY="4.6283268229166659" />
+          <ConnectorPoint PointX="6.625" PointY="4.6283268229166659" />
         </AssociationConnector>
         <AssociationConnector Association="TraCuuThuatNguModel.FK_YeuThich_ThuatNgu1" >
           <ConnectorPoint PointX="7.34375" PointY="3.75" />
           <ConnectorPoint PointX="7.34375" PointY="1.09375" />
           <ConnectorPoint PointX="6.625" PointY="1.09375" />
-        </AssociationConnector>
-        <AssociationConnector Association="TraCuuThuatNguModel.Relation1" >
-          <ConnectorPoint PointX="7.875" PointY="5.5066536458333326" />
-          <ConnectorPoint PointX="7.875" PointY="6.5" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TraCuuThuatNguModel.UserHistory" Width="1.5" PointX="0.5" PointY="3.375" Height="1.9802864583333388" />
         <AssociationConnector Association="TraCuuThuatNguModel.FK_UserHistory_aspnet_Users1" >
@@ -1135,6 +1130,11 @@
           <ConnectorPoint PointX="3.5520808333333336" PointY="4.5644742838541665" />
           <ConnectorPoint PointX="3.85937375" PointY="4.5644742838541665" />
           <ConnectorPoint PointX="3.85937375" PointY="4.1894742838541665" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TraCuuThuatNguModel.Synset" Width="1.5" PointX="7.125" PointY="6" Height="1.7566536458333388" />
+        <AssociationConnector Association="TraCuuThuatNguModel.Relation" >
+          <ConnectorPoint PointX="7.875" PointY="5.5066536458333326" />
+          <ConnectorPoint PointX="7.875" PointY="6" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

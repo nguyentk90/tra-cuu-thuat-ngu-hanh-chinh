@@ -3,6 +3,7 @@
 }
 @section Styles {
     <script src="@Url.Content("~/Scripts/admin.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.form.js")" type="text/javascript"></script>
     <link href="@Url.Content("~/Content/Admin.css")" rel="stylesheet" type="text/css"/>
 }
 @section Header {
@@ -63,5 +64,6 @@
         @RenderBody()
     </div>
 </div>
+@Html.Partial("_LoadingPopUp")
 @section Footer {
 }
