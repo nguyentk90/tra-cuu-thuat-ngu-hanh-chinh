@@ -7,6 +7,7 @@ using TraCuuThuatNgu.ViewModels;
 using System.Data.SqlClient;
 using System.Data;
 using System.Data.OleDb;
+using EntityFramework.Extensions;
 
 namespace TraCuuThuatNgu.Models
 {
@@ -58,10 +59,19 @@ namespace TraCuuThuatNgu.Models
             else
             {
                 // Check duplicate content
-                var checkDup = checkTerm.Synsets.Contains(context.Synsets.Where(x => x.Def.Contains(term.Def)).FirstOrDefault());
-                if (checkDup)
+                //var checkDup = checkTerm.Synsets.Contains(context.Synsets.Where(x => x.Def.Contains(term.Def)).FirstOrDefault());
+                bool checkDup2 = false;
+                foreach (var item in checkTerm.Synsets)
+                {
+                    if (item.Def.Equals(term.Def))
+                    {
+                        checkDup2 = true;
+                        break;
+                    }
+                }
+                if (checkDup2)
                     return 0;
-                
+
             }
 
             // Synset
@@ -128,14 +138,13 @@ namespace TraCuuThuatNgu.Models
         public int EditSynsetBySynsetId(AddTermViewModel editedSynset, int synsetId)
         {
             Synset synset = context.Synsets.Find(synsetId);
-
             synset.Category = editedSynset.Catagory;
             synset.Def = editedSynset.Def;
             synset.Exa = editedSynset.Exa;
 
             //delete all synonym relation 
             synset.WordIndexes.Clear();
-            context.SaveChanges();
+
             synset.WordIndexes.Add(context.WordIndexes.Find(editedSynset.HeadWord));
 
             // If synset has synonym(s)
@@ -181,7 +190,16 @@ namespace TraCuuThuatNgu.Models
         {
             AddTermViewModel editSynset = new AddTermViewModel();
 
-            Synset synset = context.Synsets.Find(synsetId);
+            Synset synset;
+            if (synsetId == -1)
+            {
+                synset = context.WordIndexes.Find(headWord).Synsets.FirstOrDefault();
+            }
+            else
+            {
+                synset = context.Synsets.Find(synsetId);
+            }
+
 
             editSynset.Catagory = synset.Category;
             editSynset.Def = synset.Def;
@@ -194,6 +212,15 @@ namespace TraCuuThuatNgu.Models
         //get synonyms
         public IEnumerable<string> GetSynonyms(int synsetId, string headWord)
         {
+            if (synsetId == -1)
+                return context.WordIndexes.Find(headWord)
+                    .Synsets
+                    .FirstOrDefault()
+                    .WordIndexes
+                    .Where(x => x.HeadWord != headWord)
+                    .Select(x => x.HeadWord)
+                    .ToList();
+
             return context.Synsets.Find(synsetId)
                 .WordIndexes.Where(x => x.HeadWord != headWord)
                 .Select(x => x.HeadWord).ToList();
@@ -203,6 +230,9 @@ namespace TraCuuThuatNgu.Models
         // Get another synset of term
         public IEnumerable<Synset> GetAnotherSynsetOfTerm(string headWord, int synsetId)
         {
+            if (synsetId == -1)
+                synsetId = context.WordIndexes.Find(headWord).Synsets.FirstOrDefault().SynsetId;
+
             var list = context.WordIndexes.Find(headWord).Synsets
                 .Where(x => x.SynsetId != synsetId).ToList();
             return list;
@@ -241,7 +271,7 @@ namespace TraCuuThuatNgu.Models
                 return dt;
             }
             catch (Exception ex)
-            {                
+            {
                 return null;
             }
         }
@@ -264,27 +294,59 @@ namespace TraCuuThuatNgu.Models
                     AddTermViewModel termOrSynset = new AddTermViewModel();
 
                     var term = source.Rows[i]["Thuật ngữ"].ToString();
-                    var def =source.Rows[i]["Giải thích"].ToString();
+                    var def = source.Rows[i]["Giải thích"].ToString();
 
-                    if (!String.IsNullOrWhiteSpace(term))
+                    if (!String.IsNullOrWhiteSpace(term) && !String.IsNullOrWhiteSpace(def))
                     {
-                        if (!String.IsNullOrWhiteSpace(def))
-                        {
-                            termOrSynset.HeadWord = term;
-                            termOrSynset.Catagory = source.Rows[i]["Loại từ"].ToString();
-                            termOrSynset.Def = def;
-                            termOrSynset.Exa = source.Rows[i]["Ví dụ"].ToString();
-                            termOrSynset.Synonyms = source.Rows[i]["Từ đồng nghĩa"].ToString();
-                            if (AddNewTermOrSynset(termOrSynset) > 0)
-                            { result++; }
-                        }
+                        termOrSynset.HeadWord = term;
+                        termOrSynset.Catagory = source.Rows[i]["Loại từ"].ToString();
+                        termOrSynset.Def = def;
+                        termOrSynset.Exa = source.Rows[i]["Ví dụ"].ToString();
+                        termOrSynset.Synonyms = source.Rows[i]["Từ đồng nghĩa"].ToString();
+                        if (AddNewTermOrSynset(termOrSynset) > 0)
+                        { result++; }
                     }
                 }
-            
+
             }
 
             return result;
-        
+
+        }
+
+
+        // Delete synset of term
+        public int DeleteSynsetOfTerm(string headWord, int synsetId)
+        {
+            // Check term isExist
+            WordIndex index = context.WordIndexes.Find(headWord);
+            Synset synset = context.Synsets.Find(synsetId);
+            if (index != null && synset != null)
+            {
+                int countSynsets = index.Synsets.Count;
+                index.Synsets.Remove(synset);
+                if (countSynsets <= 1)
+                {
+                    context.WordIndexes.Remove(index);
+                }
+                if (synset.WordIndexes.Count == 0)
+                {
+                    context.Synsets.Remove(synset);
+                }
+            }
+            else
+            {
+                return -1;
+            }
+
+
+            // Remove PK
+            context.Comments.Delete(x => x.HeadWord == headWord);
+            context.Favorites.Delete(x => x.HeadWord == headWord);
+
+
+            // Save changes
+            return context.SaveChanges();
         }
 
     }

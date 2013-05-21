@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using PagedList;
+using EntityFramework.Extensions;
 
 namespace TraCuuThuatNgu.Models
 {
@@ -41,11 +42,15 @@ namespace TraCuuThuatNgu.Models
             user.aspnet_Roles.Clear();
 
             // Delete add Foreign key
-            user.UserHistories.Clear();
-            user.Comments.Clear();
-            user.Favorites.Clear();
-            user.Questions.Clear();
-            user.Answers.Clear();
+          
+            context.UserHistories.Delete(x => x.UserId == userId);
+            
+            context.UserContents.Delete(x => x.UserId == userId);
+            context.Comments.Delete(x => x.UserId == userId);
+            context.Favorites.Delete(x => x.UserId == userId);
+            context.Questions.Delete(x => x.UserId == userId);
+            context.Answers.Delete(x => x.UserId == userId);
+           
          
             // Delete user
             context.aspnet_Users.Remove(user);

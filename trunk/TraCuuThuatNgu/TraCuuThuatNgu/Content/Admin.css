@@ -104,6 +104,10 @@ footer, #footer
 {
     background: url('img/icons/ws/ic_plus.png') center center no-repeat transparent;
 }
+.isw-sync
+{
+    background: url('img/icons/ws/ic_sync.png') center center no-repeat transparent;
+}
 
 .isw-chats
 {

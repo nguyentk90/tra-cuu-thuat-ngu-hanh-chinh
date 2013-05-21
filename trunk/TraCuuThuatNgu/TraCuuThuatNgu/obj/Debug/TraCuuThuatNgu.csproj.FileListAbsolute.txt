@@ -32,3 +32,5 @@ E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\obj\Debug\TraCuuThuatNgu.dll
 E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\obj\Debug\TraCuuThuatNgu.pdb
 C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\bin\PagedList.Mvc.dll
 C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\bin\PagedList.Mvc.xml
+C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\bin\EntityFramework.Extended.dll
+C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\bin\EntityFramework.Extended.xml
