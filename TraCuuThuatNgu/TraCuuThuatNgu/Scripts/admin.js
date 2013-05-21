@@ -143,6 +143,35 @@ $(document).ready(function () {
         }
     });
 
+
+    /*DELETE SYNSET OF TERM*/
+    $(".synset-delete").click(function () {
+
+        var checkDelete = confirm('Bạn có chắc muốn xóa không?');
+
+        //var row = $(this).parent().parent();
+
+        if (checkDelete) {
+            $.ajax({
+                url: '/ManageEntries/Delete',
+                type: 'POST',
+                data: "{ 'synsetId': '" + $(this).attr("data-synset") + "','headWord': '" + $(this).attr("data-index") + "'}",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data.message == 'SUCCESS') {
+                        alert("Xóa thành công!");
+                        window.location.href = '/ManageEntries';
+                    } else {
+                        alert("Lỗi");
+                    }
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+        }
+    });
+
 });
 
 /*LOGIN POPUP FUNCTION*/

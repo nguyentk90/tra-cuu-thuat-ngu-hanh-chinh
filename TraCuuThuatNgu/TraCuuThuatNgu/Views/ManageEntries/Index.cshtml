@@ -191,8 +191,8 @@
                             </td>
                             <td align="center">
                                 <a style="margin-right:5px" class="btn-edit" title="Sửa" href="/ManageEntries/Edit?synsetId=@t.SynsetId&headWord=@item.HeadWord">
-                                </a><a class="btn-delete synset-delete" href="/ManageEntries/Delete?synsetId=@t.SynsetId&headWord=@item.HeadWord" title="Xóa">
-                                    <input type="hidden" value="173" />
+                                </a><a class="btn-delete synset-delete" data-index="@item.HeadWord" data-synset="@t.SynsetId" href="javascript:" title="Xóa">
+                                    
                                 </a>
                             </td>
                         </tr>

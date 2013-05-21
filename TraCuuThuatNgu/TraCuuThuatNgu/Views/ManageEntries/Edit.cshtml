@@ -121,7 +121,9 @@ new SelectListItem() {Text = "Tính từ", Value = "a"}
                 </div>   
             }
             <h3 style="margin-left: 10px; color: #f89406">
-                Các nghĩa khác của thuật ngữ</h3>
+                Các nghĩa khác của thuật ngữ</h3>                
+                <a style="padding: 5px 26px; margin:0px 8px;" href="/ManageEntries/Add?headWord=@Model.HeadWord" id="add-synonym"
+                                class="btn-link btn-add">Thêm nghĩa mới</a>
             <table cellpadding="0" cellspacing="0" width="100%" class="table">
                 <thead>
                     <tr>
@@ -182,8 +184,8 @@ new SelectListItem() {Text = "Tính từ", Value = "a"}
                             </td>
                             <td align="center">
                                 <a style="margin-right:5px" class="btn-edit" title="Sửa" href="/ManageEntries/Edit?synsetId=@item.SynsetId&headWord=@Model.HeadWord">
-                                </a><a class="btn-delete synset-delete" href="/ManageEntries/Delete?synsetId=@item.SynsetId&headWord=@Model.HeadWord" title="Xóa">
-                                    <input type="hidden" value="173" />
+                                </a><a class="btn-delete synset-delete" data-index="@Model.HeadWord" data-synset="@item.SynsetId" href="javascript:" title="Xóa">
+                                    
                                 </a>
                             </td>
                         </tr>                          

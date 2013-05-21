@@ -163,7 +163,7 @@ footer
 
 .description-result .suggest-term
 {
-	margin-right:4px;
+    margin-right: 4px;
 }
 
 .description-result p
@@ -281,6 +281,8 @@ footer
 
 .itemOut .info .date
 {
+    font-size: 11px;
+    color: #9b9b9b;
     float: right;
 }
 
@@ -328,7 +330,7 @@ img
 
 .block
 {
-	margin-bottom:10px !important;
+    margin-bottom: 10px !important;
 }
 
 .block-sumary
@@ -345,5 +347,5 @@ img
 {
     margin-right: 9px;
     text-decoration: underline;
-    color:#f89406;
+    color: #f89406;
 }
