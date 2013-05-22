@@ -200,6 +200,7 @@
                 success: function (data) {
                     if (data.message == 'SUCCESS') {                        
                          alert('Cảm ơn bạn đã đóng góp nội dung!');
+                         popUpAddContentClose();
                     } else {
                         alert("Lỗi");
                     } 
