@@ -50,8 +50,8 @@
 .form-wrapper-mini input
 {
 	width: 379px;
-	height: 9px;
-	padding: 10px 5px;
+	height: 19px;
+	padding: 5px 5px;
 	float: left;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 11pt;
@@ -139,6 +139,16 @@
 	background: -webkit-linear-gradient(top, #00B7EA 0%,#009EC3 100%);
 	border-radius: 0 3px 3px 0;
 	text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+}
+@-moz-document url-prefix() {
+   .form-wrapper-mini button
+    {
+        background-color:  #00AAD6 ;
+    }
+    .form-wrapper button
+	{
+		background-color:  #00AAD6 ;
+	}
 }
 
 .form-wrapper button:hover

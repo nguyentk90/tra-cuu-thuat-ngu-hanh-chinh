@@ -34,3 +34,5 @@ C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu
 C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\bin\PagedList.Mvc.xml
 C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\bin\EntityFramework.Extended.dll
 C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\bin\EntityFramework.Extended.xml
+E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\EntityFramework.Extended.dll
+E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\EntityFramework.Extended.xml
