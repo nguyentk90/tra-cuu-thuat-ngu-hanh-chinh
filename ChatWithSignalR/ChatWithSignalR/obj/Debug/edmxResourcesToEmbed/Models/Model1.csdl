@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TraCuuThuatNguModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="TraCuuThuatNguEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Answers" EntityType="TraCuuThuatNguModel.Answer" />
+    <EntitySet Name="aspnet_Users" EntityType="TraCuuThuatNguModel.aspnet_Users" />
+    <EntitySet Name="Questions" EntityType="TraCuuThuatNguModel.Question" />
+    <AssociationSet Name="FK_Answer_aspnet_Users" Association="TraCuuThuatNguModel.FK_Answer_aspnet_Users">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Question" Association="TraCuuThuatNguModel.FK_Answer_Question">
+      <End Role="Question" EntitySet="Questions" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_aspnet_Users" Association="TraCuuThuatNguModel.FK_Question_aspnet_Users">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="Question" EntitySet="Questions" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="AnswerId" />
+    </Key>
+    <Property Name="AnswerId" Type="Int32" Nullable="false" />
+    <Property Name="AContent" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="QuestionId" Type="Int32" Nullable="false" />
+    <Property Name="DateAdd" Type="DateTime" Nullable="false" />
+    <Property Name="Reported" Type="Int32" />
+    <NavigationProperty Name="aspnet_Users" Relationship="TraCuuThuatNguModel.FK_Answer_aspnet_Users" FromRole="Answer" ToRole="aspnet_Users" />
+    <NavigationProperty Name="Question" Relationship="TraCuuThuatNguModel.FK_Answer_Question" FromRole="Answer" ToRole="Question" />
+  </EntityType>
+  <EntityType Name="aspnet_Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="LoweredUserName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="MobileAlias" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+    <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+    <Property Name="LastActivityDate" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Answers" Relationship="TraCuuThuatNguModel.FK_Answer_aspnet_Users" FromRole="aspnet_Users" ToRole="Answer" />
+    <NavigationProperty Name="Questions" Relationship="TraCuuThuatNguModel.FK_Question_aspnet_Users" FromRole="aspnet_Users" ToRole="Question" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="QuestionId" />
+    </Key>
+    <Property Name="QuestionId" Type="Int32" Nullable="false" />
+    <Property Name="QContent" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="DateAdd" Type="DateTime" Nullable="false" />
+    <Property Name="DateModify" Type="DateTime" Nullable="false" />
+    <Property Name="Reported" Type="Int32" />
+    <NavigationProperty Name="Answers" Relationship="TraCuuThuatNguModel.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
+    <NavigationProperty Name="aspnet_Users" Relationship="TraCuuThuatNguModel.FK_Question_aspnet_Users" FromRole="Question" ToRole="aspnet_Users" />
+  </EntityType>
+  <Association Name="FK_Answer_aspnet_Users">
+    <End Role="aspnet_Users" Type="TraCuuThuatNguModel.aspnet_Users" Multiplicity="1" />
+    <End Role="Answer" Type="TraCuuThuatNguModel.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Question">
+    <End Role="Question" Type="TraCuuThuatNguModel.Question" Multiplicity="1" />
+    <End Role="Answer" Type="TraCuuThuatNguModel.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="QuestionId" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="QuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_aspnet_Users">
+    <End Role="aspnet_Users" Type="TraCuuThuatNguModel.aspnet_Users" Multiplicity="1" />
+    <End Role="Question" Type="TraCuuThuatNguModel.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

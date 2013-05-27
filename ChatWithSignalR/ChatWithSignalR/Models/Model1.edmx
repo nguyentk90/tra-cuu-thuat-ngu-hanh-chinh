@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TraCuuThuatNguModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="TraCuuThuatNguModelStoreContainer">
+          <EntitySet Name="Answer" EntityType="TraCuuThuatNguModel.Store.Answer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Users" EntityType="TraCuuThuatNguModel.Store.aspnet_Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Question" EntityType="TraCuuThuatNguModel.Store.Question" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Answer_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_Answer_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answer_Question" Association="TraCuuThuatNguModel.Store.FK_Answer_Question">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_aspnet_Users" Association="TraCuuThuatNguModel.Store.FK_Question_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="int" Nullable="false" />
+          <Property Name="AContent" Type="nvarchar" Nullable="false" MaxLength="1000" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+          <Property Name="DateAdd" Type="datetime" Nullable="false" />
+          <Property Name="Reported" Type="int" />
+        </EntityType>
+        <EntityType Name="aspnet_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredUserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
+          <Property Name="IsAnonymous" Type="bit" Nullable="false" />
+          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+          <Property Name="QContent" Type="nvarchar" Nullable="false" MaxLength="1000" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DateAdd" Type="datetime" Nullable="false" />
+          <Property Name="DateModify" Type="datetime" Nullable="false" />
+          <Property Name="Reported" Type="int" />
+        </EntityType>
+        <Association Name="FK_Answer_aspnet_Users">
+          <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="Answer" Type="TraCuuThuatNguModel.Store.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answer_Question">
+          <End Role="Question" Type="TraCuuThuatNguModel.Store.Question" Multiplicity="1" />
+          <End Role="Answer" Type="TraCuuThuatNguModel.Store.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_aspnet_Users">
+          <End Role="aspnet_Users" Type="TraCuuThuatNguModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="Question" Type="TraCuuThuatNguModel.Store.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TraCuuThuatNguModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="TraCuuThuatNguEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Answers" EntityType="TraCuuThuatNguModel.Answer" />
+          <EntitySet Name="aspnet_Users" EntityType="TraCuuThuatNguModel.aspnet_Users" />
+          <EntitySet Name="Questions" EntityType="TraCuuThuatNguModel.Question" />
+          <AssociationSet Name="FK_Answer_aspnet_Users" Association="TraCuuThuatNguModel.FK_Answer_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="Answer" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answer_Question" Association="TraCuuThuatNguModel.FK_Answer_Question">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Answer" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_aspnet_Users" Association="TraCuuThuatNguModel.FK_Question_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="Int32" Nullable="false" />
+          <Property Name="AContent" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <Property Name="DateAdd" Type="DateTime" Nullable="false" />
+          <Property Name="Reported" Type="Int32" />
+          <NavigationProperty Name="aspnet_Users" Relationship="TraCuuThuatNguModel.FK_Answer_aspnet_Users" FromRole="Answer" ToRole="aspnet_Users" />
+          <NavigationProperty Name="Question" Relationship="TraCuuThuatNguModel.FK_Answer_Question" FromRole="Answer" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="aspnet_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="LoweredUserName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="MobileAlias" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Answers" Relationship="TraCuuThuatNguModel.FK_Answer_aspnet_Users" FromRole="aspnet_Users" ToRole="Answer" />
+          <NavigationProperty Name="Questions" Relationship="TraCuuThuatNguModel.FK_Question_aspnet_Users" FromRole="aspnet_Users" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <Property Name="QContent" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="DateAdd" Type="DateTime" Nullable="false" />
+          <Property Name="DateModify" Type="DateTime" Nullable="false" />
+          <Property Name="Reported" Type="Int32" />
+          <NavigationProperty Name="Answers" Relationship="TraCuuThuatNguModel.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
+          <NavigationProperty Name="aspnet_Users" Relationship="TraCuuThuatNguModel.FK_Question_aspnet_Users" FromRole="Question" ToRole="aspnet_Users" />
+        </EntityType>
+        <Association Name="FK_Answer_aspnet_Users">
+          <End Role="aspnet_Users" Type="TraCuuThuatNguModel.aspnet_Users" Multiplicity="1" />
+          <End Role="Answer" Type="TraCuuThuatNguModel.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answer_Question">
+          <End Role="Question" Type="TraCuuThuatNguModel.Question" Multiplicity="1" />
+          <End Role="Answer" Type="TraCuuThuatNguModel.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_aspnet_Users">
+          <End Role="aspnet_Users" Type="TraCuuThuatNguModel.aspnet_Users" Multiplicity="1" />
+          <End Role="Question" Type="TraCuuThuatNguModel.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TraCuuThuatNguModelStoreContainer" CdmEntityContainer="TraCuuThuatNguEntities">
+          <EntitySetMapping Name="Answers"><EntityTypeMapping TypeName="TraCuuThuatNguModel.Answer"><MappingFragment StoreEntitySet="Answer">
+            <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+            <ScalarProperty Name="AContent" ColumnName="AContent" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+            <ScalarProperty Name="DateAdd" ColumnName="DateAdd" />
+            <ScalarProperty Name="Reported" ColumnName="Reported" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Users"><EntityTypeMapping TypeName="TraCuuThuatNguModel.aspnet_Users"><MappingFragment StoreEntitySet="aspnet_Users">
+            <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="UserName" ColumnName="UserName" />
+            <ScalarProperty Name="LoweredUserName" ColumnName="LoweredUserName" />
+            <ScalarProperty Name="MobileAlias" ColumnName="MobileAlias" />
+            <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+            <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Questions"><EntityTypeMapping TypeName="TraCuuThuatNguModel.Question"><MappingFragment StoreEntitySet="Question">
+            <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+            <ScalarProperty Name="QContent" ColumnName="QContent" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="DateAdd" ColumnName="DateAdd" />
+            <ScalarProperty Name="DateModify" ColumnName="DateModify" />
+            <ScalarProperty Name="Reported" ColumnName="Reported" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="TraCuuThuatNguModel.Answer" Width="1.5" PointX="5.25" PointY="4" Height="2.2496956380208335" IsExpanded="true" />
+        <EntityTypeShape EntityType="TraCuuThuatNguModel.aspnet_Users" Width="1.5" PointX="1.75" PointY="2.375" Height="2.4140429687499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="TraCuuThuatNguModel.Question" Width="1.5" PointX="3" PointY="5.625" Height="2.2496956380208335" IsExpanded="true" />
+        <AssociationConnector Association="TraCuuThuatNguModel.FK_Answer_aspnet_Users" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.25" PointY="4.394521484375" />
+          <ConnectorPoint PointX="5.25" PointY="4.394521484375" />
+        </AssociationConnector>
+        <AssociationConnector Association="TraCuuThuatNguModel.FK_Answer_Question" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="5.9373478190104167" />
+          <ConnectorPoint PointX="5.25" PointY="5.9373478190104167" />
+        </AssociationConnector>
+        <AssociationConnector Association="TraCuuThuatNguModel.FK_Question_aspnet_Users" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.3749995" PointY="4.78904296875" />
+          <ConnectorPoint PointX="2.3749995" PointY="6.7498478190104167" />
+          <ConnectorPoint PointX="3" PointY="6.7498478190104167" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

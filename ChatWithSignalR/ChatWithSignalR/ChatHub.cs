@@ -17,11 +17,11 @@ namespace ChatWithSignalR
             {
                 QuestionId++;
                 // Call the broadcastMessage method to update clients.
-                Clients.All.broadcastMessage(name, message, type, QuestionId);
+                Clients.All.broadcastMessage1(name, message, type, QuestionId);
             }
             else
             {
-                Clients.All.broadcastMessage(name, message, type, qid);
+                Clients.All.broadcastMessage1(name, message, type, qid);
             }
         }
     }

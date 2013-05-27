@@ -6,13 +6,12 @@
     {
         width: 300px;
         border: 1px solid #ccc;
-        padding:4px 4px;
+        padding: 4px 4px;
     }
     
     #discussion
     {
-        margin-left:0px;   
-        
+        margin-left: 0px;
     }
     
     .question_input
@@ -21,20 +20,20 @@
     .question_item
     {
         /*border: 1px solid #3399FF;*/
-        list-style:none;
-        margin-bottom:5px; 
+        list-style: none;
+        margin-bottom: 5px;
     }
     
     .question_item .content
     {
         color: #3399FF;
         border: 1px solid #ccc;
-        padding:5px;
+        padding: 5px;
     }
     
     .question_item input
     {
-       width:100px;
+        width: 100px;
     }
     
     .answer_item
@@ -74,7 +73,7 @@
 
         $('.showall').live('click', function () {
             // $('#answers_' + qid + ' li').hide();
-            
+
             var qid = $(this).attr("data-value");
             $('#answers_' + qid + ' li').show();
         });
@@ -82,12 +81,12 @@
         // Declare a proxy to reference the hub. 
         var chat = $.connection.chatHub;
         // Create a function that the hub can call to broadcast messages.
-        chat.client.broadcastMessage = function (name, message, type, qid) {
+        chat.client.broadcastMessage1 = function (name, message, type, qid) {
 
             if (type != 'Q') {
                 var count = $('#answers_' + qid + ' li').size();
                 if (count > 3)
-                    var myvar = count-4 ;
+                    var myvar = count - 4;
                 //$('#answers_' + qid + ' li').hide();
                 $('#answers_' + qid + ' li').filter(':lt(' + myvar + ')').hide();
                 $('#answers_' + qid).append('<li>' + message + $('#answers_' + qid + ' li').size() + '</li>');
