@@ -36,3 +36,11 @@ C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu
 C:\Documents and Settings\Forbes\My Documents\Project Source Code\TraCuuThuatNgu\TraCuuThuatNgu\bin\EntityFramework.Extended.xml
 E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\EntityFramework.Extended.dll
 E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\EntityFramework.Extended.xml
+E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\Microsoft.Web.Infrastructure.dll
+E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\Owin.dll
+E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\Microsoft.AspNet.SignalR.Core.xml
+E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\Microsoft.AspNet.SignalR.Owin.xml
+E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Senior Project\TraCuuThuatNgu\TraCuuThuatNgu\bin\Microsoft.AspNet.SignalR.Client.xml

@@ -84,29 +84,58 @@
             //            });
 
 
-            $("#sendquestion").click(function () {
+//            $("#sendquestion").click(function () {
 
-                $('.question-list').prepend('<li class="question-item">'
-                                + '<div class="question-item-content">'
-                                    + '<p>'
-                                        + '<span class="username">aa</span><span class="date">11/11</span></p>'
-                                    + '<p>'
-                                        + 'noidung</p>'
-                                    + '<p style="text-align: right">'
-                                        + '<a class="btn-answer" href="#">Trả lời</a></p>'
-                                        + '<div class="answer-input">'
-                                            + '<textarea></textarea>'
-                                            + '<input type="button" data-qid="" value="Trả lời" />'
-                                        + '</div>'
-                                + '</div>'
-                                + '<div class="answer-list">'
+//                $('.question-list').prepend('<li class="question-item">'
+//                                + '<div class="question-item-content">'
+//                                    + '<p>'
+//                                        + '<span class="username">aa</span><span class="date">11/11</span></p>'
+//                                    + '<p>'
+//                                        + 'noidung</p>'
+//                                    + '<p style="text-align: right">'
+//                                        + '<a class="btn-answer" href="#">Trả lời</a></p>'
+//                                        + '<div class="answer-input">'
+//                                            + '<textarea></textarea>'
+//                                            + '<input type="button" data-qid="" value="Trả lời" />'
+//                                        + '</div>'
+//                                + '</div>'
+//                                + '<div class="answer-list">'
 
-                                + '</div>'
-                            + '</li>');
-            });
+//                                + '</div>'
+//                            + '</li>');
+//            });
             
         });
     </script>
+    <script type="text/javascript">
+        $(function () {
+            // Reference the auto-generated proxy for the hub.  
+            var chat = $.connection.chatHub;
+            // Create a function that the hub can call back to display messages.
+            chat.client.broadcastMessage = function (message) {
+                // Add the message to the page. 
+                alert(message);
+            };
+            // Get the user name and store it to prepend to messages.
+
+            // Set initial focus to message input box.  
+
+            // Start the connection.
+            $.connection.hub.start().done(function () {
+                $('#sendquestion').click(function () {
+                    // Call the Send method on the hub. 
+                    chat.server.send('afd');
+                    // Clear text box and reset focus for next comment. 
+
+                });
+            });
+        });
+        // This optional function html-encodes messages for display in the page.
+        function htmlEncode(value) {
+            var encodedValue = $('<div />').text(value).html();
+            return encodedValue;
+        }
+</script>
 </head>
 <body>
     <style type="text/css">

@@ -127,19 +127,25 @@ $(document).ready(function () {
         async: false,
         beforeSubmit: function () {
             //Do something here if needed like show in progress message
-            popUpLoadingOpen();
+            var check = $("#import-file").val();
+            if (check != '')
+            { popUpLoadingOpen(); }
+            else {
+                alert("Bạn chưa chọn file dữ liệu!");
+                return;
+            }
         },
         success: function (result) {
             popUpLoadingClose();
-            if (result.data == "SUCCESS") {                
+            if (result.data == "SUCCESS") {
                 alert('Nhập thành công ' + result.rows + ' thuật ngữ và nghĩa.');
-            } else {               
+            } else {
                 alert(result.message);
             }
         },
         error: function (xhr, textStatus, errorThrown) {
             popUpLoadingClose();
-            alert("Error uploading file");
+            //alert("Error uploading file");
         }
     });
 

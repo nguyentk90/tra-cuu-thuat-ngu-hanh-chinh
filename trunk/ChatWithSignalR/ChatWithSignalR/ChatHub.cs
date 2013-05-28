@@ -24,5 +24,10 @@ namespace ChatWithSignalR
                 Clients.All.broadcastMessage1(name, message, type, qid);
             }
         }
+
+        public void Send(string message)
+        {
+            Clients.All.broadcastMessage(message);
+        }
     }
 }

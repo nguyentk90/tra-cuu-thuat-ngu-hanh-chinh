@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Microsoft.AspNet.SignalR;
 
 namespace TraCuuThuatNgu
 {
@@ -31,7 +32,12 @@ namespace TraCuuThuatNgu
 
         protected void Application_Start()
         {
+           
+
             AreaRegistration.RegisterAllAreas();
+
+            // Register the default hubs route: ~/signalr
+            RouteTable.Routes.MapHubs("~/signalr", new HubConfiguration());
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
