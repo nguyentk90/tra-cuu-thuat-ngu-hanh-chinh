@@ -344,7 +344,6 @@ namespace TraCuuThuatNgu.Models
             context.Comments.Delete(x => x.HeadWord == headWord);
             context.Favorites.Delete(x => x.HeadWord == headWord);
 
-
             // Save changes
             return context.SaveChanges();
         }

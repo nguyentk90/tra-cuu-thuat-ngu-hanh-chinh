@@ -83,7 +83,7 @@
     <Key>
       <PropertyRef Name="AnswerId" />
     </Key>
-    <Property Name="AnswerId" Type="int" Nullable="false" />
+    <Property Name="AnswerId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="AContent" Type="nvarchar" Nullable="false" MaxLength="1000" />
     <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="QuestionId" Type="int" Nullable="false" />
@@ -178,7 +178,7 @@
     <Key>
       <PropertyRef Name="QuestionId" />
     </Key>
-    <Property Name="QuestionId" Type="int" Nullable="false" />
+    <Property Name="QuestionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="QContent" Type="nvarchar" Nullable="false" MaxLength="1000" />
     <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="DateAdd" Type="datetime" Nullable="false" />

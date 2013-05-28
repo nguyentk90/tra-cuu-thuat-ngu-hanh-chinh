@@ -14,7 +14,10 @@ namespace TraCuuThuatNgu.ViewModels
         {
             LogOnModel = new LogOnModel();
         }
+        
         public LogOnModel LogOnModel { get; set; }
+
+        public IEnumerable<Question> Questions { get; set; }
        
     }
 }

@@ -1,7 +1,6 @@
 ﻿@model TraCuuThuatNgu.ViewModels.ResultViewModel
 @{
-    Layout = "~/Views/Shared/_Root.cshtml";
-                //ViewBag.Title = "Kết quả tra cứu";
+    Layout = "~/Views/Shared/_Root.cshtml";               
 }
 <div class="span span8">
     <div class="head">
@@ -112,7 +111,7 @@
         </div>
             }
         @* Suggest when keyword not found*@ 
-        @*<div class="description-result">
+        <div class="description-result">
             <span class="ic-cloud"></span>
             @if (Model.Entry == null)
             {
@@ -121,10 +120,13 @@
              <span class="description-text">Thuật ngữ liên quan:</span>
             }
             @foreach (var item in Model.SuggestTerm)
-            { 
+            {
+                if (!Model.Entry.HeadWord.Equals(item.HeadWord))
+                {
                 <a class="suggest-term" href="#">@item.HeadWord</a>
+                }
             }
-        </div>*@
+        </div>
               
         
         @if (Model.Entry != null)
@@ -247,7 +249,7 @@
         </div>
     </div>
     <div class="block">
-       @Html.Partial("_QA")
+       @Html.Partial("_QA",Model.Questions)
     </div>
 </div>
 <div class="clear">
